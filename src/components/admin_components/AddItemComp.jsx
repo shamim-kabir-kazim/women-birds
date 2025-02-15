@@ -63,6 +63,11 @@ const AddItemComp = () => {
             alert('Image uploaded successfully!');
         } catch (error) {
             console.error('Error uploading image:', error);
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                console.error('Error response status:', error.response.status);
+                console.error('Error response headers:', error.response.headers);
+            }
             alert('Failed to upload image');
         }
     };
@@ -82,6 +87,11 @@ const AddItemComp = () => {
             alert(response.data.message);
         } catch (error) {
             console.error('Error adding product:', error);
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                console.error('Error response status:', error.response.status);
+                console.error('Error response headers:', error.response.headers);
+            }
             alert('Failed to add product');
         }
     };
