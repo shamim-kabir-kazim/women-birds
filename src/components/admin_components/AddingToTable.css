@@ -1,0 +1,73 @@
+.adding-to-table {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    gap: 10px;
+    margin: 10px;
+  }
+  
+  .btn-add-pp {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-icon {
+    width: 30px; /* Increased size for better visibility */
+    height: 30px;
+    margin-top: 10px; /* Push the icon below the text */
+  }
+  
+  
+  .adding-to-table button:hover {
+    background-color: #0056b3;
+  }
+  
+  .loading-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .message-popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .message-popup.success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .message-popup.error {
+    background-color: #dc3545;
+    color: white;
+  }

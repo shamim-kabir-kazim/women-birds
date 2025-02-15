@@ -1,0 +1,30 @@
+.input-field {
+  position: relative;
+  margin: 20px 0;
+  width: 48%; /* Adjust width to fit two fields per row */
+  display: inline-block; /* Ensure the fields are side by side */
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between; /* Adjust spacing between the fields */
+  margin-bottom: 20px; /* Adjust the spacing between rows */
+}
+
+.floating-label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: white;
+  padding: 0 5px;
+  color: purple;
+  font-size: 12px;
+}
+
+.text-field-input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid purple;
+  border-radius: 4px;
+  font-size: 16px;
+}

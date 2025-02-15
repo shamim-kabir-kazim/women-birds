@@ -1,0 +1,42 @@
+.op-add-item-form-container {
+    margin: 20px;
+    padding: 20px;
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.op-add-item-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.op-add-item-form label {
+    margin-bottom: 10px;
+}
+
+.op-add-item-form input,
+.op-add-item-form select,
+.op-add-item-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.op-add-item-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.op-add-item-form button:hover {
+    background-color: #0056b3;
+}

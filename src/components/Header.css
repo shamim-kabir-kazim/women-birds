@@ -1,0 +1,314 @@
+.midllHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width:1900px;
+  margin: auto;
+  
+}
+
+
+
+/* General Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between; /* Distribute space */
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 0;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+}
+
+/* Logo Section */
+.header__logo {
+  flex: 0 1 auto;
+  max-width: 500px;
+ 
+}
+
+.header__logo img {
+  width: auto;
+  height: auto;
+  max-width: 400px; /* Adjust as needed */
+  max-height: 100px;
+}
+
+/* Middle Section */
+.header__middle {
+  flex: 1 1 auto; /* Take up remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  
+}
+
+/* Right Section */
+.header__right {
+  flex: 0 1 auto; /* Take up only as much space as needed */
+  display: flex;
+  width: 800px;
+  gap: 10px; /* Space between items */
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 1%;
+ 
+}
+
+.header__menu {
+  display: flex;
+  margin-right: 10px;
+  gap: 25px; /* Consistent spacing */
+
+}
+
+.header__menu a {
+  text-decoration: none;
+  color: #431934;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header__menu a:hover {
+  color: #b771e5;
+}
+/*search partyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy*/
+.search {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: linear-gradient(180deg, #431934 44%, #9B40C0 100%);
+  overflow: visible;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.8s ease, background 0.3s ease;
+}
+
+.search.expanded {
+  width: 400px;
+  background: #f7dbf5;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.search input {
+  border: none;
+  margin: 10px;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  color: #000;
+  font-size: 16px;
+}
+
+.search .prb {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
+}
+
+.search.expanded .prb {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.search{
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+
+  
+}
+.clos{
+  width: 35px;
+  height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+  transition: none;
+
+}
+/*search partyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy*/
+
+
+
+.ico {
+  display: flex;
+  height: 60px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2%;
+ 
+}
+
+/* Container for Other Icons */
+.otherico {
+  cursor: pointer;
+  display: flex; /* Arrange items in a row */
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  gap: 10px; /* Add space between each item */
+}
+
+/* Individual Icon Styling */
+.divicos {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(180deg, #431934 44%, #9B40C0 100%);
+  border-radius: 50%; /* Make icons circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Images */
+.icos {
+  width: 24px; /* Adjust size of the icon image */
+  height: 24px;
+  object-fit: cover; /* Ensure proper scaling */
+}
+@media (max-width: 1050px) {
+  /* Your CSS rules go here */
+  .header__logo {
+    flex: 0 1 auto;
+    max-width: 300px;
+   
+  }
+  
+  .header__logo img {
+    width: auto;
+    height: auto;
+    max-width: 200px; /* Adjust as needed */
+    max-height: 100px;
+  }
+  .header__right {
+    flex: 0 1 auto; /* Take up only as much space as needed */
+    display: flex;
+    width: 600px;
+    gap: 10px; /* Space between items */
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1%;
+   
+  }
+  .header__menu {
+    display: flex;
+    margin-right: 10px;
+    gap: 15px; /* Consistent spacing */
+  
+  }
+  .header__menu a {
+    text-decoration: none;
+    color: #431934;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0em;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+}
+@media (max-width: 950px) {
+  /* Your CSS rules go here */
+  .header__logo {
+    flex: 0 1 auto;
+    max-width: 300px;
+   
+  }
+  
+  .header__logo img {
+    width: auto;
+    height: auto;
+    max-width: 200px; /* Adjust as needed */
+    max-height: 100px;
+  }
+  .header__right {
+    flex: 0 1 auto; /* Take up only as much space as needed */
+    display: flex;
+    width: 500px;
+    gap: 10px; /* Space between items */
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1%;
+   
+  }
+  .header__menu {
+    display: flex;
+    margin-right: 10px;
+    gap: 15px; /* Consistent spacing */
+  
+  }
+  .header__menu a {
+    text-decoration: none;
+    color: #431934;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7em;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .search {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: linear-gradient(180deg, #431934 44%, #9B40C0 100%);
+    overflow: visible;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.8s ease, background 0.3s ease;
+  }
+  .search .prb {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+  }
+  /* Individual Icon Styling */
+.divicos {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(180deg, #431934 44%, #9B40C0 100%);
+  border-radius: 50%; /* Make icons circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Images */
+.icos {
+  width: 20px; /* Adjust size of the icon image */
+  height: 20px;
+  object-fit: cover; /* Ensure proper scaling */
+}
+
+}

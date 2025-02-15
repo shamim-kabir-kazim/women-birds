@@ -1,0 +1,46 @@
+.prolist-midll{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    max-width:1900px;
+    min-height: 100vh;
+}
+
+.styled-heading {
+    align-self: stretch;
+    text-align: center;
+    color: #431934;
+    font-size: 8vw; /* Font size adjusts to 10% of the viewport width */
+    font-family: 'Marcellus SC', serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    
+  }
+  
+  /* Optional: Set max and min font size to prevent it from becoming too small or too large */
+  .styled-heading {
+    font-size: 8vw;
+    font-size: calc(4vw + 2rem); /* Adds 2rem for a more consistent font size across different screens */
+  }
+  
+  /* For smaller screens, adjust the font size */
+  @media (max-width: 768px) {
+    .styled-heading {
+      font-size: 8vw; /* Larger font size on smaller screens */
+    }
+  }
+  
+  /* For very large screens, limit the font size */
+  @media (min-width: 1200px) {
+    .styled-heading {
+      font-size: 4vw; /* Smaller font size on large screens */
+    }
+  }
+  

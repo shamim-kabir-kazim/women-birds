@@ -1,0 +1,77 @@
+.delivery-option {
+  padding: 1%;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+
+.delivery-option__title {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.delivery-option__text {
+  font-size: 100%;
+}
+
+.delivery-option__brand {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.delivery-option__subtitle {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+/* Responsive styles for different breakpoints */
+@media (max-width: 1400px) {
+  .delivery-option__title,
+  .delivery-option__subtitle {
+    font-size: 1.2em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1200px) {
+  .delivery-option__title,
+  .delivery-option__subtitle {
+    font-size: 1.1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1000px) {
+  .delivery-option {
+    padding: 4%;
+  }
+  .delivery-option__title,
+  .delivery-option__subtitle {
+    font-size: 1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 800px) {
+  .delivery-option {
+    padding: 5%;
+  }
+  .delivery-option__title,
+  .delivery-option__subtitle {
+    font-size: 0.9em; /* Reduced by 0.2em */
+  }
+  .delivery-option__text {
+    font-size: 0.7em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 600px) {
+  .delivery-option {
+    padding: 6%;
+  }
+  .delivery-option__title,
+  .delivery-option__subtitle {
+    font-size: 0.8em; /* Reduced by 0.2em */
+  }
+  .delivery-option__text {
+    font-size: 0.6em; /* Reduced by 0.2em */
+  }
+}

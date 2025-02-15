@@ -1,0 +1,534 @@
+
+.midll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    max-width:1900px;
+  }
+  
+  
+  .image-gallery {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1900px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0px;
+    padding-left: 100px;
+  }
+  
+  .side-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    flex-direction: column; /* Arrange thumbnails vertically */
+    gap: 10px;
+  }
+  
+  .side-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border 0.3s ease;
+    
+  }
+  
+  .side-image:hover {
+    border: 1px solid #431934;
+  }
+
+  .main-image-container {
+    width: 600px;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the image doesn't overflow the container */
+  }
+  
+  .main-image {
+    width: 100%; /* Stretch image to fill container horizontally */
+    height: auto; /* Stretch image to fill container vertically */
+    object-fit: cover; /* Ensures the image fills the container proportionally */
+    object-position: center; /* Centers the image */
+  }
+  
+  .product-card {
+    display:flex;
+    flex-direction: column;
+    padding: 0px;
+    font-family: Arial, sans-serif;
+    color: #431934;
+    margin-left: 40px;
+    align-items: flex-start;
+    text-align: left;
+    width: max-content;
+  }
+  
+  
+  .product-card h2 {
+    white-space: nowrap;
+    text-align: left;
+    margin: 0; /* Removes the default margin */
+    margin-bottom: 10px; /* Adds custom spacing below */
+  }
+  
+  
+  .price {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .size-section,
+  .color-section,
+  .quantity-section {
+    margin-bottom: 10px;
+  }
+  
+  .size-section h3,
+  .color-section h3,
+  .quantity-section h3 {
+    margin-bottom: 20px;
+  }
+  
+  
+  .size-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .size-section label {
+    display: flex;
+    align-items: center;
+    gap: 2px; /* Adjust spacing between checkbox and label */
+    font-size: 1em;
+  }
+  
+  .size-section input[type="checkbox"] {
+    transform: scale(1.2); /* Makes checkboxes slightly bigger */
+  }
+  
+  .color-section {
+  
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    gap: 10px; /* Space between text and color boxes */
+  }
+  
+  .product-head {
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove any default padding */
+    font-size: 16px; /* Adjust font size */
+    line-height: 1; /* Ensure consistent line spacing */
+    display: flex; /* Use flexbox for alignment */
+  
+     /* Center text vertically */
+  }
+  
+  .color-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .color-box:hover {
+    border: 1px solid #431934;
+  }
+  
+  .quantity-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .quantity-section button {
+    background-color: #eee;
+    border: 1px solid #431934;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  
+  .quantity-section input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #431934;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .action-buttons {
+    width: 350px;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+    margin: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .buy-now,
+  .add-to-cart {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .buy-now {
+    background-color: #431934;
+    color: #fff;
+  }
+  .buy-now:hover {
+    background-color: #2e0921;
+    color: #ffffff;
+  }
+  
+  .add-to-cart {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  .add-to-cart:hover {
+    background-color: #dbdada;
+    color: #333;
+  }
+  .product-details {
+    font-family: Arial, sans-serif;
+    color: #666; /* Subtle color for less prominence */
+    font-size: 0.85em; /* Smaller font size for text */
+    line-height: 1.5; /* Maintain good readability */
+  }
+  
+  .product-details p {
+    font-weight: bold; /* Bold for section labels */
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #431934; /* Distinct color for labels */
+  }
+  
+  .product-details ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .product-details li {
+    margin-bottom: 5px;
+    font-size: 0.85em; /* Match font size for consistency */
+  }
+  
+  .product-details strong {
+    color: #333; /* Slightly darker color for emphasis */
+  }
+  
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  
+  @media (max-width: 1500px) {
+    .image-gallery {
+      max-width: 75%; /* Reduce max-width for better fit */
+    }
+  
+    .side-images-container {
+      height: 700px; /* Adjust height for smaller screens */
+    }
+  
+    .side-image {
+      width: 80px; /* Slightly reduce size for thumbnails */
+      height: 80px;
+    }
+  
+    .main-image-container {
+      width: 550px; /* Adjust main image container size */
+      height: 750px; /* Adjust height accordingly */
+    }
+  
+    .product-card {
+      margin-left: 30px; /* Reduce left margin for better alignment */
+    }
+  
+    .price {
+      font-size: 1.3em; /* Adjust font size */
+    }
+  
+    .size-section label,
+    .color-section-text {
+      font-size: 1em; /* Adjust font size for better readability */
+    }
+  
+    .color-box {
+      width: 35px; /* Adjust color box size */
+      height: 35px;
+    }
+  
+    .quantity-section button {
+      padding: 8px 12px; /* Adjust padding for buttons */
+    }
+  
+    .quantity-section input {
+      width: 50px; /* Adjust input field size */
+    }
+  
+    .action-buttons {
+      gap: 15px; /* Increase space between buttons */
+    }
+  
+    .buy-now,
+    .add-to-cart {
+      padding: 12px; /* Adjust padding for buttons */
+      font-size: 1.1em; /* Increase font size */
+    }
+  
+    .product-details p,
+    .product-details ul {
+      font-size: 0.95em; /* Adjust font size for readability */
+    }
+  
+    .product-details li {
+      font-size: 0.95em; /* Adjust font size for consistency */
+    }
+  }
+  
+  
+  
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  
+  
+  @media (max-width: 1300px) {
+    .image-gallery {
+      max-width: 80%; /* Adjust width for smaller screens */
+    }
+  
+    .side-images-container {
+      height: 650px; /* Adjust height for smaller screens */
+    }
+  
+    .side-image {
+      width: 70px; /* Reduce size of thumbnails */
+      height: 70px;
+    }
+  
+    .main-image-container {
+      width: 500px; /* Adjust main image container size */
+      height: 700px; /* Adjust height */
+    }
+  
+    .product-card {
+      margin-left: 20px; /* Reduce left margin for better alignment */
+    }
+  
+    .price {
+      font-size: 1.1em; /* Decrease font size */
+    }
+  
+    .size-section label,
+    .color-section-text {
+      font-size: 0.9em; /* Decrease font size */
+    }
+  
+    .color-box {
+      width: 30px; /* Reduce size of color boxes */
+      height: 30px;
+    }
+  
+    .quantity-section button {
+      padding: 6px 10px; /* Adjust padding for buttons */
+    }
+  
+    .quantity-section input {
+      width: 45px; /* Adjust input field size */
+    }
+  
+    .action-buttons {
+      gap: 10px; /* Adjust gap between buttons */
+    }
+  
+    .buy-now,
+    .add-to-cart {
+      padding: 10px; /* Adjust padding for buttons */
+      font-size: 1em; /* Decrease font size */
+    }
+  
+    .product-details p,
+    .product-details ul {
+      font-size: 0.85em; /* Decrease font size for readability */
+    }
+  
+    .product-details li {
+      font-size: 0.85em; /* Decrease font size for consistency */
+    }
+  }
+  
+  
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  
+  
+  @media (max-width: 1100px) {
+    .image-gallery {
+      max-width: 90%; /* Adjust width for smaller screens */
+    }
+  
+    .side-images-container {
+      height: 600px; /* Adjust height for smaller screens */
+    }
+  
+    .side-image {
+      width: 60px; /* Reduce size of thumbnails */
+      height: 60px;
+    }
+  
+    .main-image-container {
+      width: 400px; /* Adjust main image container size */
+      height: 600px; /* Adjust height */
+    }
+  
+    .product-card {
+      margin-left: 10px; /* Reduce left margin for better alignment */
+    }
+  
+    .price {
+      font-size: 1em; /* Decrease font size */
+    }
+  
+    .size-section label,
+    .color-section-text {
+      font-size: 0.85em; /* Decrease font size */
+    }
+  
+    .color-box {
+      width: 25px; /* Reduce size of color boxes */
+      height: 25px;
+    }
+  
+    .quantity-section button {
+      padding: 5px 8px; /* Adjust padding for buttons */
+    }
+  
+    .quantity-section input {
+      width: 40px; /* Adjust input field size */
+    }
+  
+    .action-buttons {
+      gap: 8px; /* Adjust gap between buttons */
+    }
+  
+    .buy-now,
+    .add-to-cart {
+      padding: 8px; /* Adjust padding for buttons */
+      font-size: 0.95em; /* Decrease font size */
+    }
+  
+    .product-details p,
+    .product-details ul {
+      font-size: 0.8em; /* Decrease font size for readability */
+    }
+  
+    .product-details li {
+      font-size: 0.8em; /* Decrease font size for consistency */
+    }
+  }
+  
+  
+  
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  
+  
+  @media (max-width: 1100px) {
+    .image-gallery {
+      max-width: 90%; /* Adjust width for smaller screens */
+    }
+  
+    .side-images-container {
+      height: 500px; /* Adjust height for smaller screens */
+    }
+  
+    .side-image {
+      width: 50px; /* Reduce size of thumbnails */
+      height: 50px;
+    }
+  
+    .main-image-container {
+      width: 300px; /* Adjust main image container size */
+      height: 500px; /* Adjust height */
+    }
+  
+    .product-card {
+      margin-left: 10px; /* Reduce left margin for better alignment */
+    }
+  
+    .price {
+      font-size: 1em; /* Decrease font size */
+    }
+  
+    .size-section label,
+    .color-section-text {
+      font-size: 0.85em; /* Decrease font size */
+    }
+  
+    .color-box {
+      width: 25px; /* Reduce size of color boxes */
+      height: 25px;
+    }
+  
+    .quantity-section button {
+      padding: 5px 8px; /* Adjust padding for buttons */
+    }
+  
+    .quantity-section input {
+      width: 40px; /* Adjust input field size */
+    }
+  
+    .action-buttons {
+      gap: 8px; /* Adjust gap between buttons */
+    }
+  
+    .buy-now,
+    .add-to-cart {
+      padding: 8px; /* Adjust padding for buttons */
+      font-size: 0.95em; /* Decrease font size */
+    }
+  
+    .product-details p,
+    .product-details ul {
+      font-size: 0.8em; /* Decrease font size for readability */
+    }
+  
+    .product-details li {
+      font-size: 0.8em; /* Decrease font size for consistency */
+    }
+  }
+  
+  

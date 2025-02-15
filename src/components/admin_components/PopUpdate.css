@@ -1,0 +1,485 @@
+.pop-update-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.pop-update-container {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  width: 90%;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.heddo-images{
+  display: flex;
+  width: 100%;
+  align-self: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  
+  gap: 10px;
+}
+/* Specific style for the "Change Image" button */
+.heddo-button-cimg {
+  background-color: #bcd2bd;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  width: 80%;
+}
+
+.heddo-button-cimg:hover {
+  background-color: #45a049;
+}
+
+/* Specific style for the "Update Image" button */
+.heddo-button-iimg {
+  width: 80%;
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.heddo-button-iimg:hover {
+  background-color: #007bb5;
+}
+
+.image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+  gap: 10px;
+}
+
+.image-section img {
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.image-urls {
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 5px;
+}
+.all-extra-images{
+  display: flex;
+  overflow-y: auto;
+  width: 30%;
+  height: 50vh;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+.heddo-price {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.price-section, .stock-section, .checkbox-section {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.checkbox-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 10%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #e8e8e8;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+label {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  padding: 8px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="checkbox"] {
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: flex-end;
+}
+.up-button{
+  width: 40%;
+}
+button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .pop-update-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  form {
+    gap: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+.add-extra-images {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.image-box {
+  width: 40px;
+  height: 80px;
+  background-color: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+}
+
+.image-selector {
+  width: 100%;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-image-btn {
+  width: 50%;
+  font-size: 9px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  padding: 10px;
+}
+
+.add-image-btn:hover {
+  background-color: #0056b3;
+}
+
+.preview {
+  width: 100%;
+  max-height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.heddo-uproduct{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+.heddo-extra{
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.heddo-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+}
+
+.heddo-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.heddo-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.heddo-button i {
+  font-size: 24px;
+}
+.heddo-sizes{
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bb5;
+}
+.product-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-details-table th,
+.product-details-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-details-table th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.product-details-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-details-table tr:hover {
+  background-color: #ddd;
+}
+.pd-div1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  margin: auto;
+}
+.pd-div2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  margin: auto;
+}
+.pd-div3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  margin: auto;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: border 0.2s ease-in-out;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#color-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.color-box {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  margin-left: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.pd-div-col1 {
+  display: flex;  /* Ensures flex properties work */
+  flex-direction: column;  /* Stacks items in a column */
+  align-items: center;  /* Centers items horizontally */
+  justify-content: center;  /* Centers items vertically */
+  width: 100%;
+  
+  gap: 10px;
+  padding: 10px;
+  margin: auto;
+}
+
+.pd-div-row1{
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+  
+  gap: 5%;
+}
+
+.btn {
+  width: 40%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  
+}
+
+.btn-add {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #43a047;
+}
+
+.btn-update {
+  background-color: #2196F3; /* Blue */
+  color: white;
+  
+}
+
+.btn-update:hover {
+  background-color: #1e88e5;
+}
+.btn-pp {
+  width: 40%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin: 5px;
+  background-color: #4CAF50;
+  color: white;
+}

@@ -1,0 +1,141 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.left-arrow, .right-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 3%;
+  aspect-ratio: 1/2;
+  background-color: rgb(238, 238, 238);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.slider-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+.slider-item {
+ 
+  flex: 0 0 20%;
+  margin-right: 10px;
+  background: #f0f0f0;
+  padding: 0;
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  
+  flex-direction: column;
+}
+
+.slider-item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 8;
+  border-radius: 8px;
+  object-fit: cover;
+  min-width: 150px;
+}
+
+.item-details {
+  padding: 5px 0;
+  text-align: center;
+}
+
+.item-name {
+  margin-top: 5px;
+  font-size: small;
+  font-weight: normal;
+  transition: opacity 0.3s;
+}
+
+.item-price {
+  margin-top: 5px;
+  font-size: small;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  display: none;
+  border-radius: 8px;
+  transition: opacity 0.3s;
+  
+}
+
+.slider-item:hover .item-info {
+  opacity: 1;
+  display: block;
+}
+
+.slider-item:hover .item-name,
+.slider-item:hover .item-price {
+  opacity: 0;
+  display: none;
+}
+
+.add-to-cart {
+  width: 100%;
+  background: #431934;
+  border: none;
+  color: white;
+  padding: 10px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  
+  .add-to-cart {
+    width: 100%;
+    background: #431934;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+   
+  }
+  .left-arrow, .right-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 3%;
+    aspect-ratio: 1/2;
+    background-color: rgb(238, 238, 238);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+  }
+  
+  
+}

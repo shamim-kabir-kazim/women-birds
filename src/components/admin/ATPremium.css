@@ -1,0 +1,100 @@
+.P-table-container-wrapper {
+    padding: 0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    
+  }
+  
+  .P-table-scroll {
+    overflow-x: auto;
+  }
+  
+  .P-product-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 0;
+
+  }
+  
+  .P-product-order-table th,
+  .P-product-order-table td {
+    width: fit-content;
+    border: 1px solid #cccece;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .P-product-order-table th {
+    height: 70px;
+    background-color: #431934;
+    color: #ffffff;
+  }
+  
+  .P-row-odd {
+    background-color: #f7f4f4;
+  }
+  
+  .P-row-even {
+    background-color: #fdebebfa;
+  }
+  
+  .P-row-odd:hover,
+  .P-row-even:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .P-status-label {
+    font-weight: bold;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    color: white;
+  }
+  
+  .P-status-label.available {
+    color: #10b981;
+  }
+  
+  .P-status-label.sold-out {
+    color: #ef4444;
+  }
+  
+  .P-action-buttons {
+    width: 170px;
+    justify-content: center;
+    height: 70px;
+  }
+  
+  .P-btn-update,
+  .P-btn-delete {
+    padding: 0.4rem 0.8rem;
+    height: 30px;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    margin: 3px;
+  }
+  
+  .P-btn-update {
+    background-color: #431934;
+    color: #ffffff;
+  }
+  
+  .P-btn-update:hover {
+    background-color: #5f274b;
+  }
+  
+  .P-btn-delete {
+    background-color: #ef4444;
+    color: #ffffff;
+  }
+  
+  .P-btn-delete:hover {
+    background-color: #dc2626;
+  }
+  
+  .P-product-thumbnail {
+    height: 200px;
+    width: 140px;
+    margin: 0;
+  }
+  

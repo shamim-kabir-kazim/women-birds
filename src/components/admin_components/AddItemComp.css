@@ -1,0 +1,89 @@
+.ad-fi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ad-fi-row {
+  display: flex;
+  gap: 5px;
+}
+
+.ad-fi-div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ad-fi-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-align: start;
+}
+
+.ad-fi-input,
+.ad-fi-textarea,
+.ad-fi-file-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ad-fi-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+
+.ad-fi-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ad-fi-button:hover {
+  background: #0056b3;
+}
+
+.ad-fi-fi-img-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ass-inline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the start */
+  width: 100%; /* Or any specific width that suits your design */
+  overflow: hidden; /* Optional: ensures no items overflow */
+  white-space: nowrap; /* Prevents items from wrapping */
+  margin: auto;
+  gap: 5px;
+  font-size: small;
+  font-weight: bold;
+  border: 1PX solid rgb(166, 166, 166);
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+
+.chiki{
+  height: 30px;
+  width: 30px;
+}
+

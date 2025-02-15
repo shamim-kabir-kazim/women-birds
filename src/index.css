@@ -1,0 +1,13 @@
+:root, body, html {
+    background-color: white !important;
+    color: black !important;
+    color-scheme: light !important;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root, body, html {
+      background-color: white !important;
+      color: black !important;
+    }
+  }
+  

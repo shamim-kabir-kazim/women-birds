@@ -1,0 +1,96 @@
+.midll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width: 1900px;
+  margin: auto;
+}
+.premium-title {
+  align-self: stretch;
+  text-align: center;
+  color: #431934;
+  font-size: 400%; /* Adjust font size based on viewport width */
+  font-family: 'Marcellus SC', serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  margin: 30px 0;
+}
+
+.gallery {
+  display: flex;
+  gap: 60px;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: auto;
+
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+.card-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.card-label {
+  position: absolute;
+  bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #fff;
+ 
+}
+/* Responsive Design for screens under 750px */
+@media (max-width: 750px) {
+  .gallery {
+    gap: 10px; /* Reduce gap between cards */
+    padding: 10px; /* Reduce padding */
+  }
+
+  .card {
+    width: 140px; /* Reduce card width */
+    border-radius: 5px;
+  }
+
+  .premium-title {
+    font-size: 140%; /* Adjust title font size */
+  }
+
+  .card-label {
+  
+    color: #ffffff;
+    font-size: 10px; /* Adjust font size based on viewport width */
+    font-family: serif;
+    font-weight: 400;
+    
+  }
+}

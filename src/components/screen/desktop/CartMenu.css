@@ -1,0 +1,129 @@
+.cart-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 350px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  gap: 0px;
+}
+
+.cart-menu.open {
+  right: 0;
+}
+.cart-menu-hed {
+  height: 110px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.cart-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px;
+
+}
+
+.logo-icon {
+  width: auto;
+  height: 80px;
+  cursor: pointer;
+}
+
+.close-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.cart-txt-c {
+  font-size: 1.5rem; /* Font size for the heading */
+  color: #333; /* Dark text color */
+  font-weight: bold; /* Bold font style */
+  box-sizing: border-box; /* Ensure padding doesn't affect the total width */
+  line-height: 0.1; /* Set appropriate line height */
+  margin: 0px; /* Remove any extra margin */
+  padding: 0;
+
+}
+
+.separator {
+  width: 100%; /* Full width */
+  height: 2px; /* 1px height */
+  border-radius: 50px;
+  background-color: #431934; /* Separator color */
+  margin-bottom: 10px;
+}
+.separator-bottom {
+  width: 100%; /* Full width */
+  height: 1px; /* 1px height */
+  border-radius: 50px;
+  background-color: #431934; /* Separator color */
+  margin-bottom: 5px;
+  margin-top: 50px;
+}
+
+.cart-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover; /* Ensures the image covers the dimensions without distortion */
+  border-radius: 5px; /* Optional: Adds slightly rounded corners */
+  margin-right: 10px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+  color: #431934;
+  margin-bottom: 10px;
+}
+.prc {
+  font-weight: bold;
+  text-align: end;
+}
+.subtotal {
+  margin-top: 5px;
+  font-weight: bold;
+}
+.container-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-cart-1,
+.box-cart-3 {
+  flex: 0 0 auto;
+}
+
+.box-cart-2 {
+  flex: 1 1 auto;
+}
+
+.place-order {
+  display: block;
+  width: 100%;
+  background-color: #431934;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}

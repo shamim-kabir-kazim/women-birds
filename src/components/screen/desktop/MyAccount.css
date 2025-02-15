@@ -1,0 +1,79 @@
+.xvr-form-container {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column; /* Added this to stack elements vertically */
+  align-items: flex-start; /* Aligning items to the left */
+  align-self: start;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  /* Centering the container on the page */
+  
+}
+
+.xvr-form-title {
+  font-size: 24px;
+  color: #431934;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.xvr-form-subtitle {
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.xvr-details-form {
+  text-align: left;
+  font-size: 14px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.xvr-form-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.xvr-form-input {
+  background-color: white;
+  flex: 1;
+  padding: 10px;
+  margin: 10px 0; /* Adjusted margin to avoid shifting to the right */
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.xvr-form-button {
+  background-color: #431934;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  margin: 10px 0; /* Added margin to keep consistency */
+}
+
+.xvr-form-button:hover {
+  background-color: #431934;
+}
+
+.xvr-first {
+  text-align: left;
+  width: 100%;
+}
+
+.xvr-last {
+  text-align: left;
+  width: 100%;
+}

@@ -1,0 +1,185 @@
+.before-uniq-MainItem {
+  width: 90%;
+  aspect-ratio: 5 / 9; /* Width:Height = 5:6, making height 20% more than width */
+  padding: 0%;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
+}
+
+.before-uniq-ImgItem {
+  width: 90%;
+  aspect-ratio: 5 / 7;
+  padding: 0;
+  border-radius: 1%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2%;
+  background-size: cover;
+  background-position: center;
+}
+
+.before-uniq-ImgItmFavBar {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.before-uniq-ImgItmIcon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background: rgba(67, 25, 52, 0.49);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.before-uniq-FavIcon {
+  width: 20px;
+  height: 20px;
+ 
+}
+
+.before-uniq-ImgMiddleFiller {
+  width: 94px;
+  height: 100%;
+ 
+}
+
+.before-uniq-ImgItmTxtinimg {
+  width: 100%;
+  height: 63px;
+  padding: 12px 13px;
+  background: rgba(176, 176, 176, 0.4);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.before-uniq-ProductTxt2 {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.before-uniq-ItemButton {
+  
+  width: 90%;
+  height: 50px;
+  padding: 5% 0;
+  background: #3f1932;
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px; /* Use a fixed value instead of percentage */
+  cursor: pointer;
+}
+
+.before-uniq-ButtonIcon {
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  width: 30px;
+  height: 30px;
+}
+
+.before-uniq-ButtonText {
+
+  text-align: center;
+  color: white;
+  font-size: 80%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  overflow: hidden; /* Prevent overflowing text */
+}
+
+
+.before-uniq-ProductName {
+  align-self: stretch;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.before-uniq-ProductPrice {
+  align-self: stretch;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+.but-itm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.before-visibleBB,
+.before-visibleBBb,
+.before-hiddenPPp {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+
+}
+
+.before-hiddenBB,
+.before-hiddenBBb,
+.before-visiblePPp {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+ 
+  
+}
+@media(max-width:800px){
+  .before-uniq-ImgItmIcon {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    background: rgba(67, 25, 52, 0.49);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .before-uniq-FavIcon {
+    width: 15px;
+    height: 15px;
+   
+  }
+  .before-uniq-ButtonIcon {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    width: 20px;
+    height: 20px;
+  }
+}

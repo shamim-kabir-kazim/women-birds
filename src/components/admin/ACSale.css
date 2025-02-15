@@ -1,0 +1,124 @@
+.S-table-container-wrapper {
+    padding: 0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+    
+  }
+  
+  .S-table-scroll {
+    overflow-x: auto;
+  }
+  
+  .S-product-order-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 0;
+
+  }
+  
+  .S-product-order-table th,
+  .S-product-order-table td {
+    border: 1px solid #cccece;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .S-product-order-table th {
+    height: 70px;
+    background-color: #431934;
+    color: #ffffff;
+  }
+  
+  .S-row-odd {
+    background-color: #f7f4f4;
+  }
+  
+  .S-row-even {
+    background-color: #fdebebfa;
+  }
+  
+  .S-row-odd:hover,
+  .S-row-even:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .S-status-label {
+    font-weight: bold;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    color: white;
+  }
+  
+  .S-status-label.available {
+    color: #10b981;
+  }
+  
+  .S-status-label.sold-out {
+    color: #ef4444;
+  }
+  
+  .S-action-buttons {
+    width: 170px;
+    justify-content: center;
+    height: 70px;
+  }
+  
+  .S-btn-update,
+  .S-btn-delete {
+    padding: 0.4rem 0.8rem;
+    height: 30px;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    margin: 3px;
+  }
+  
+  .S-btn-update {
+    background-color: #431934;
+    color: #ffffff;
+  }
+  
+  .S-btn-update:hover {
+    background-color: #5f274b;
+  }
+  
+  .S-btn-delete {
+    background-color: #ef4444;
+    color: #ffffff;
+  }
+  
+  .S-btn-delete:hover {
+    background-color: #dc2626;
+  }
+  
+  .S-product-thumbnail {
+    height: 50px;
+    width: 40px;
+    margin: 0;
+  }
+  .S-add-item-button-box{
+    width:100%;
+    height: auto;
+    padding-left: 705px;
+    justify-content: right;
+
+  }
+  .S-add-item-button {
+    width: 220px;
+    padding: 6px 16px;
+    background-color: #ffffff;
+    color: #431934;
+    font-weight: bold;
+    border: 1px solid #431934;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .S-add-item-button:hover {
+    background-color: #431934;
+    color: #ffffff;
+ 
+  }
+  

@@ -1,0 +1,95 @@
+.returns-policy-container {
+  padding: 1%;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+
+.returns-policy-header {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.returns-policy-brand {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.returns-policy-subheader {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.returns-policy-subsubheader {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.returns-policy-list {
+  list-style-type: disc;
+  margin-left: 5%;
+  padding: 0;
+}
+
+.returns-policy-list li {
+  margin-bottom: 1%;
+}
+
+/* Responsive styles for different breakpoints */
+@media (max-width: 1400px) {
+  .returns-policy-header,
+  .returns-policy-subheader,
+  .returns-policy-subsubheader {
+    font-size: 1.2em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1200px) {
+  .returns-policy-header,
+  .returns-policy-subheader,
+  .returns-policy-subsubheader {
+    font-size: 1.1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1000px) {
+  .returns-policy-container {
+    padding: 4%;
+  }
+  .returns-policy-header,
+  .returns-policy-subheader,
+  .returns-policy-subsubheader {
+    font-size: 1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 800px) {
+  .returns-policy-container {
+    padding: 5%;
+  }
+  .returns-policy-header,
+  .returns-policy-subheader,
+  .returns-policy-subsubheader {
+    font-size: 0.9em; /* Reduced by 0.2em */
+  }
+  .returns-policy-container p,
+  .returns-policy-list li {
+    font-size: 0.7em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 600px) {
+  .returns-policy-container {
+    padding: 6%;
+  }
+  .returns-policy-header,
+  .returns-policy-subheader,
+  .returns-policy-subsubheader {
+    font-size: 0.8em; /* Reduced by 0.2em */
+  }
+  .returns-policy-container p,
+  .returns-policy-list li {
+    font-size: 0.6em; /* Reduced by 0.2em */
+  }
+}

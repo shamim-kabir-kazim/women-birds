@@ -1,0 +1,42 @@
+.cvo-hlo-main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+ 
+}
+
+.cvo-hlo-header {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.cvo-hlo-menu-item {
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.cvo-hlo-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.cvo-hlo-selected {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.cvo-hlo-content {
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  overflow-x: auto;
+}

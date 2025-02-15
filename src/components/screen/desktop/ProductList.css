@@ -1,0 +1,277 @@
+
+.pro-midll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width:1900px;
+  min-height: 100vh;
+
+}
+
+
+
+/* General Styles */
+.product-list-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensures content wraps for smaller screens */
+  width: 100%;
+  font-family: Arial, sans-serif;
+  gap: 20px; /* Increased gap for better spacing */
+  padding: 20px;
+  box-sizing: border-box;
+  /* Subtle background color for better contrast */
+}
+
+/* Filter Section */
+.filter-section {
+  flex: 1 1 20%; /* Flexbox for better responsiveness */
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+  box-sizing: border-box;
+  background-color: #ffffff; /* Separate filter section visually */
+}
+
+.filter-section h2 {
+  font-size: 18px; /* Slightly larger font for better visibility */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #431934;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 5px;
+}
+
+.filter-item {
+  margin-bottom: 15px; /* Reduced margin for better spacing */
+}
+
+.filter-item-range {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.filter-title {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #495057;
+  transition: color 0.3s ease;
+}
+
+.filter-title:hover {
+  color: #431934; /* Highlighted color on hover */
+}
+
+.filter-submenu {
+  margin-top: 10px;
+  padding-left: 10px;
+  font-size: 12px;
+  color: #495057;
+}
+
+.filter-submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-submenu li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #431934;
+  transition: color 0.3s ease;
+}
+
+.filter-submenu li:hover {
+  color: #6b2b55;
+}
+
+/* Content List Section */
+.content-list {
+  flex: 1 1 75%; /* Flexbox for better responsiveness */
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  gap: 15px; /* Increased gap for better spacing */
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.relevance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.relelabel {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.releSelect {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.releSelect:hover,
+.releSelect:focus {
+  border-color: #431934;
+}
+
+.content-item {
+  padding: 10px;
+  border-radius: 8px;
+
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.result {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Text Content */
+.text-div {
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #333;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  word-wrap: break-word; /* Ensures long words wrap */
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+  /* Filter Section */
+  .filter-section {
+    flex: 0 0 20%; /* Takes up 20% of the row */
+    padding: 20px;
+    border-right: 1px solid #dee2e6; /* Add a right border */
+    box-sizing: border-box;
+  }
+  .content-list {
+    flex: 1; /* Fills the remaining space */
+    padding: 20px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+  }
+
+  .filter-item-range {
+    display: none; /* Hide price range for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-list-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures content wraps for smaller screens */
+    width: 100%;
+    font-family: Arial, sans-serif;
+    gap: 5px; /* Increased gap for better spacing */
+    padding:5px;
+    box-sizing: border-box;
+    /* Subtle background color for better contrast */
+  }
+  /* Content List Section */
+.content-list {
+
+  
+  padding: 0px;
+  gap: 0px; /* Increased gap for better spacing */
+
+  
+}
+
+.content-item {
+  padding: 3px;
+  border-radius: 8px;
+
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+  .filter-section{
+    display: none;
+  }
+  .filter-section h2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .filter-title {
+    font-size: 11px;
+    padding: 8px 0;
+  }
+
+  .result {
+    font-size: 11px;
+  }
+
+  .relelabel {
+    font-size: 11px;
+  }
+
+  .releSelect {
+    font-size: 11px;
+    padding: 5px;
+  }
+
+  .text-div {
+    font-size: 11px;
+  }
+}
+/*
+@media (max-width: 576px) {
+
+  .product-list-container {
+    padding: 5px;
+  }
+
+  .filter-section {
+    padding: 10px;
+  }
+
+  .content-list {
+    padding: 10px;
+  }
+
+  .filter-title {
+    font-size: 11px;
+  }
+
+  .relelabel {
+    font-size: 11px;
+  }
+
+  .releSelect {
+    font-size: 11px;
+    padding: 4px;
+  }
+
+  .text-div {
+    font-size: 11px;
+  }
+}*/

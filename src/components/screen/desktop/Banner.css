@@ -1,0 +1,45 @@
+.banner-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.banner-content {
+  text-align: center;
+  max-width: 100%;
+  padding: 20px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.image-frame {
+  width: 100%;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.image-frame-item {
+  width: 45%;
+  height: auto;
+  position: relative;
+  border-radius: 25px;
+}
+
+/* Responsive styles for screens under 750px */
+@media (max-width: 750px) {
+  .image-frame {
+    gap: 10px;
+  }
+
+  .image-frame-item {
+    width: 100%; /* Images take full width */
+    border-radius: 10px;
+  }
+}

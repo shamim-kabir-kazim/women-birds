@@ -1,0 +1,121 @@
+.midll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  max-width: 1900px;
+  margin: auto;
+}
+.category-txt {
+  align-self: stretch;
+  text-align: center;
+  color: #431934;
+  font-size: 400%; /* Adjust font size based on viewport width */
+  font-family: 'Marcellus SC', serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+.Cat {
+  width: 90%;
+  max-width: 342px;
+  height: auto;
+  padding: 2% 1%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Cat2 {
+  width: 80%;
+  max-width: 294px;
+  height: auto;
+  aspect-ratio: 294 / 356;
+  position: relative;
+}
+
+.CatImgBack {
+  width: 80%;
+  max-width: 235px;
+  height: auto;
+  aspect-ratio: 235 / 310;
+  left: 7%;
+  top: 2%;
+  position: absolute;
+  background: #eeeeee;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.55);
+  border-radius: 15%;
+}
+
+.CatImg {
+  width: 80%;
+  max-width: 235px;
+  height: auto;
+  aspect-ratio: 235 / 310;
+  left: 15%;
+  top: 8%;
+  position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.55);
+  border-radius: 15%;
+  overflow: hidden;
+  background-image: url('https://i.postimg.cc/Lsc197Hg/b316df6f2ab68e16f8195ff01ccf9b1b.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.Frame15 {
+  width: 346px;
+  height: 415px;
+  left: 468px;
+  top: 0;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.55);
+  border-radius: 30px;
+}
+
+.Frame14 {
+  width: 335px;
+  height: 413px;
+  left: 518px;
+  top: 36px;
+  position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.55);
+  border-radius: 30px;
+}
+
+.Lehenga {
+  align-self: stretch;
+  text-align: center;
+  color: #431934;
+  font-size: clamp(16px, 4vw, 36px);
+  font-family: 'Marcellus SC', serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+@media (max-width: 750px) {
+  .midll {
+    display: flex;
+    flex-direction: column;
+
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 100%;
+    max-width: 800px;
+  }
+  .category-txt {
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    font-size: 150%; /* Adjust font size based on viewport width */
+  }
+}

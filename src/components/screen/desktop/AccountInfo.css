@@ -1,0 +1,118 @@
+.cvb-midll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100vh;
+  max-width:1900px;
+  margin: auto;
+}
+
+/* information.css */
+
+.cvb-main-container {
+  flex: 1;
+  display: flex;
+  max-width: 1900px;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+
+  padding: 40px;
+  gap: 5px;
+}
+
+.cvb-menu {
+  width: 15%;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvb-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 05px 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #e0e0e0;
+  color: #000000;
+}
+
+.cvb-menu-item:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.cvb-menu-item.selected {
+  background-color: #431934;
+  color: #ffffff;
+}
+
+.cvb-menu-item span {
+  font-size: 16px;
+}
+
+.cvb-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Ensures vertical stacking */
+  align-items: flex-start; /* Aligns all items to the left */
+  justify-content: flex-start; /* Ensures content starts from the top */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
+  background-color: #e6e6e6;
+  color: #2c3e50;
+  border-radius: 10px;
+  padding: 10px; /* Increased padding for better spacing */
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  text-align: left; /* Ensures text alignment is left */
+}
+
+@media only screen and (max-width: 1350px) {
+  .cvb-main-container {
+    padding: 15px;
+    gap: 5px;
+  }
+  .cvb-menu {
+    width: 20%;
+    margin: 5px;
+  }
+  .cvb-menu-item {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    gap: 5px;
+  }
+  .cvb-content {
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .cvb-main-container {
+    padding: 5px;
+  }
+  .cvb-menu {
+    width: 20%;
+    margin-left: 5px;
+  }
+  .cvb-menu-item {
+    width: 100%;
+    padding: 6px;
+    border-radius: 3px;
+    gap: 4px;
+  }
+  .cvb-content {
+    padding: 20px;
+  }
+}

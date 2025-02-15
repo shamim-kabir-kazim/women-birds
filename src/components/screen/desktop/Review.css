@@ -1,0 +1,62 @@
+.review-system {
+    width: 550px;
+    height: max-content;
+    margin-top: 20px ;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #fefefe;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .review-system h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #431934;
+  }
+  
+  textarea {
+    width: 90%;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  
+ 
+  
+  .star {
+    padding-bottom: 10px;
+    
+    font-size: 25px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+  }
+  
+  .star.filled {
+    color: #431934;
+  }
+  
+  .add-button {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #431934;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-button:hover {
+    background-color: #360F28;
+  }

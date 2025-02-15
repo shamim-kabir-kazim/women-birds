@@ -1,0 +1,116 @@
+/* Main container */
+.l-container {
+    display: flex;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    
+  }
+  
+  .l-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 700px;
+    height: auto;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Icons */
+  .l-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .f-icon {
+    padding-left: 550px;
+    
+    margin-top: 0;
+    padding-bottom: 0;
+    width: 60px;
+    height: 60px;
+ /* Prevent inherited styles from causing scaling issues */
+  }
+  .f-icon-2 {
+    padding-right: 600px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 60px;
+    height: 60px;
+   
+ /* Prevent inherited styles from causing scaling issues */
+  }
+  .u-icon {
+    width: 60px;
+    height: 60px;
+    
+    display: inline-block; 
+
+    position: relative; /* Prevent inherited styles from causing scaling issues */
+  }
+  
+
+  /* Input Fields */
+  .i-field {
+    display: block;
+    width: 45%;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .i-field:focus {
+    outline: none;
+    border-color: #431934;
+  }
+  
+
+  .l-button{
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  .l-button {
+    background-color: #431934;
+    color: white;
+  }
+  
+  .c-account-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #eee;
+    color: #431934;
+  }
+  .c-account-button:hover {
+
+    border: 1px solid #431934;
+ 
+  }
+.formaling{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.formrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem; /* Space between columns */
+}

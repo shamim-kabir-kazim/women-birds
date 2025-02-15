@@ -1,0 +1,439 @@
+.MainItem {
+  width: 240px;
+  height: 390px;
+  padding: 9px 5px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+}
+
+.ImgItem {
+  align-self: stretch;
+  height: 300px;
+  padding: 0px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.ImgItmFavBar {
+  width: 100%;
+  height: 37px;
+  padding: 12px 13px;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.ImgItmIcon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background: rgba(67, 25, 52, 0.49);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.FavIcon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.ImgMiddleFiller {
+  width: 94px;
+  height: 100%;
+  position: relative;
+}
+
+.ImgItmTxtinimg {
+  width: 240px;
+  height: 63px;
+  padding: 12px 13px;
+  background: rgba(176, 176, 176, 0.4);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ProductTxt2 {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ItemButton {
+  width: 198px;
+  height: 45px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background: #431934;
+  border-radius: 50px;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.ButtonIcon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.ButtonText {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ProductName {
+  align-self: stretch;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ProductPrice {
+  align-self: stretch;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.visibleBB {
+  display: block;
+}
+
+.hiddenBB {
+  display: none;
+}
+
+.visiblePP {
+  display: none;
+}
+
+.hiddenPP {
+  display: block;
+}
+@media (max-width: 1300px) {
+  .MainItem {
+    width: 200px;
+    height: 340px;
+    padding: 7px 4px;
+    gap: 14px;
+  }
+
+  .ImgItem {
+    height: 250px;
+    border-radius: 8px;
+    gap: 8px;
+  }
+
+  .ImgItmFavBar {
+    width: 100%;
+    height: 30px;
+    padding: 10px 11px;
+    gap: 8px;
+  }
+
+  .ImgItmIcon {
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+  }
+
+  .FavIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ImgMiddleFiller {
+    width: 80px;
+  }
+
+  .ImgItmTxtinimg {
+    width: 200px;
+    height: 50px;
+    padding: 10px 11px;
+  }
+
+  .ProductTxt2 {
+    font-size: 12px;
+  }
+
+  .ItemButton {
+    width: 160px;
+    height: 40px;
+    padding: 3px 12px;
+    gap: 5px;
+  }
+
+  .ButtonIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ButtonText {
+    font-size: 12px;
+  }
+
+  .ProductName, .ProductPrice {
+    font-size: 12px;
+  }
+}
+@media(max-width:1150px){
+  .visibleBB {
+    display: none;
+  }
+  
+  .hiddenBB {
+    display: none;
+  }
+  
+  .visiblePP {
+    display: block;
+  }
+  
+  .hiddenPP {
+    display: block;
+  }
+}
+@media (max-width: 1050px) {
+  .MainItem {
+    width: 180px;
+    height: 300px;
+    padding: 6px 3px;
+    gap: 12px;
+  }
+
+  .ImgItem {
+    height: 220px;
+    border-radius: 6px;
+    gap: 6px;
+  }
+
+  .ImgItmFavBar {
+    width: 100%;
+    height: 25px;
+    padding: 8px 9px;
+    gap: 6px;
+  }
+
+  .ImgItmIcon {
+    width: 22px;
+    height: 22px;
+    padding: 3px;
+  }
+
+  .FavIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ImgMiddleFiller {
+    width: 70px;
+  }
+
+  .ImgItmTxtinimg {
+    width: 180px;
+    height: 45px;
+    padding: 8px 9px;
+  }
+
+  .ProductTxt2 {
+    font-size: 11px;
+  }
+
+  .ItemButton {
+    width: 140px;
+    height: 35px;
+    padding: 2px 10px;
+    gap: 4px;
+  }
+
+  .ButtonIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ButtonText {
+    font-size: 11px;
+  }
+
+  .ProductName, .ProductPrice {
+    font-size: 11px;
+  }
+}
+@media (max-width: 800px) {
+  .MainItem {
+    width: 150px;
+    height: 250px;
+    padding: 5px 2px;
+    gap: 10px;
+  }
+
+  .ImgItem {
+    height: 180px;
+    border-radius: 5px;
+    gap: 5px;
+  }
+
+  .ImgItmFavBar {
+    width: 100%;
+    height: 20px;
+    padding: 6px 7px;
+    gap: 5px;
+  }
+
+  .ImgItmIcon {
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+  }
+
+  .FavIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ImgMiddleFiller {
+    width: 60px;
+  }
+
+  .ImgItmTxtinimg {
+    width: 150px;
+    height: 40px;
+    padding: 6px 7px;
+  }
+
+  .ProductTxt2 {
+    font-size: 10px;
+  }
+
+  .ItemButton {
+    width: 120px;
+    height: 30px;
+    padding: 2px 8px;
+    gap: 3px;
+  }
+
+  .ButtonIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ButtonText {
+    font-size: 10px;
+  }
+
+  .ProductName, .ProductPrice {
+    font-size: 10px;
+  }
+}
+@media (max-width: 500px) {
+  .MainItem {
+    width: 100%;
+    height: 180px;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .ImgItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    border-radius: 5px;
+    gap: 0px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .ImgItmFavBar {
+    width: 100%;
+    height: 15px;
+    padding: 3px;
+    gap: 5px;
+  }
+
+  .ImgItmIcon {
+    width: 12px;
+    height: 12px;
+    padding: 3px;
+  }
+
+  .FavIcon {
+    width: 9px;
+    height: 9px;
+  }
+
+  .ImgMiddleFiller {
+    width: 50px;
+  }
+
+  .ImgItmTxtinimg {
+    width: 100vw;
+    height: 20px;
+    padding: 5px;
+  }
+
+  .ProductTxt2 {
+    width: 100%;
+    font-size: 6px;
+    text-align: center;
+  }
+
+  .ItemButton {
+    width: 100%;
+    height: 20px;
+    padding: 4px;
+    gap: 5px;
+  }
+
+  .ButtonIcon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ButtonText {
+    font-size: 7px;
+  }
+
+  .ProductName, .ProductPrice {
+    font-size: 7px;
+  }
+}

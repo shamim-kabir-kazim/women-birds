@@ -1,0 +1,153 @@
+.product-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .product-details-table th, .product-details-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .product-details-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .product-details-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .product-details-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-group select,
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #color-display {
+    margin-top: 10px;
+  }
+  
+  #color-display .color-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .btn-add,
+  .btn-update,
+  .btn-edit,
+  .btn-delete {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .btn-add {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .btn-update {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .btn-edit {
+    background-color: #FF9800;
+    color: white;
+    margin-right: 5px;
+  }
+  
+  .btn-delete {
+    background-color: #f44336;
+    color: white;
+  }
+  .pd-color {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    margin: auto;
+  }
+  .pd-size {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    margin: auto;
+  }
+  .pd-quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    margin: auto;
+  }
+  .product-details-form-xo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+  }

@@ -1,0 +1,121 @@
+.midll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 100%;
+    max-width:1900px;
+    margin: auto;
+   
+  }
+  /* information.css */
+  
+  .A-main-container {
+    flex: 1;
+    display: flex;
+    max-width: 1900px;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    gap: 5px;
+
+ 
+  }
+  
+  .A-menu {
+    width: 18%;
+    border-radius: 20px;
+    background-color: #f1cdcd;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .A-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+    padding: 8px;
+    margin: 05px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .A-menu-item:hover {
+    background-color: #fcf0f0;
+    color: #000000;
+  }
+  
+  .A-menu-item.selected {
+    background-color: #431934;
+    color: #ffffff;
+  }
+  
+  .A-menu-item span {
+    font-size: 16px;
+  }
+  .A-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding:20px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+  }
+  
+  @media only screen and (max-width: 1350px) {
+    .A-main-container {
+      padding: 15px;
+      gap: 5px;
+    }
+    .A-menu {
+      width: 20%;
+      margin: 5px;
+    }
+    .A-menu-item {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      gap: 5px;
+    }
+    .A-content {
+      padding: 20px;
+    }
+  }
+  @media only screen and (max-width: 950px) {
+    .A-main-container {
+      padding: 5px;
+    }
+    .A-menu {
+      width: 20%;
+      margin-left: 5px;
+    }
+    .A-menu-item {
+      width: 100%;
+      padding: 6px;
+      border-radius: 3px;
+      gap: 4px;
+    }
+    .A-content {
+      padding: 20px;
+    }
+  }
+  

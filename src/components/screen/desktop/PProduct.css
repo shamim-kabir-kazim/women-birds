@@ -1,0 +1,235 @@
+
+.PP-midll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+}
+
+.PP-image-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.PP-side-images-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Show thumbnails horizontally on mobile */
+    gap: 5px;
+    justify-content: center;
+    height: auto;
+    overflow-x: auto;
+    padding: 8px;
+    gap:5px;
+}
+
+.PP-side-images {
+    width: 55px;
+    height: 80px;
+    transition: border 0.2s ease-in-out;
+    
+}
+
+  .selected-border {
+    border: 3px solid #431934; /* Change color as needed */
+    border-radius: 5px; /* Optional for rounded corners */
+  }
+  
+
+.PP-main-image-container {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+.PP-main-image {
+    width: 100%;
+    height: auto;
+}
+
+.PP-product-card {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: #431934;
+    margin: 20px;
+    align-items: left;
+    text-align: left;
+    width: 100%;
+}
+
+.PP-product-card h2 {
+    white-space: normal;
+    font-size: 1.2em;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.PP-price {
+    font-size: 1em;
+}
+
+.PP-size-section,
+.PP-color-section {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+    margin-bottom:5px ;
+}
+.PP-color-box {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border 0.3s ease; /* Smooth hover effect */
+  }
+  
+.PP-color-box:hover {
+    border: 1px solid #431934;
+  }
+  
+.PP-size-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .PP-size-section label {
+    display: flex;
+    align-items: center;
+    gap: 2px; /* Adjust spacing between checkbox and label */
+    font-size: 1em;
+  }
+  
+  .PP-size-section input[type="checkbox"] {
+    transform: scale(1.2); /* Makes checkboxes slightly bigger */
+  }
+  
+.PP-quantity-section{
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    flex-direction:row;
+    margin-bottom: 5px;
+
+}
+.PP-quantity-section input {
+    width: 40px;
+    text-align: center;
+    border: 1px solid #431934;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+
+.PP-size-section {
+    gap: 5px;
+}
+
+.PP-color-section {
+    gap: 5px;
+}
+
+.PP-quantity-section {
+    gap: 5px;
+}
+
+.PP-action-buttons {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.PP-buy-now,
+.PP-add-to-cart {
+    border:1px solid #2e0921;
+    height: 40px;
+    width: 100%;
+}
+.PP-buy-now {
+    background-color: #431934;
+    color: #fff;
+  }
+  .PP-buy-now:hover {
+    background-color: #2e0921;
+    color: #ffffff;
+  }
+  
+  .PP-add-to-cart {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  .PP-add-to-cart:hover {
+    background-color: #dbdada;
+    color: #333;
+  }
+
+/* Make everything fit well on smaller screens */
+@media (max-width: 768px) {
+    .PP-product-card {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .PP-product-card h2 {
+        font-size: 1em;
+    }
+
+    .PP-price {
+        font-size: 1em;
+    }
+
+    .PP-main-image-container {
+        width: 90%;
+        height: auto;
+    }
+
+    .PP-main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .PP-side-images-container {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .PP-side-image {
+        width: 50px;
+        height: 50px;
+    }
+
+    .PP-action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .PP-buy-now,
+    .PP-add-to-cart {
+        width: 100%;
+    }
+}
+  
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */
+  /* Reduce max-width for better fit */

@@ -1,0 +1,4 @@
+html, body {
+  overflow: auto;
+  min-height: 100vh; /* Ensures scrolling if content exceeds the screen */
+}

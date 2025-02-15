@@ -1,0 +1,13 @@
+.account-div {
+    display: flex; /* Enables flexible layout */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    min-height: 100vh; /* Makes the div take up the full viewport height */
+    width: 100%; /* Makes the div take up the full width */
+    padding: 1rem; /* Adds some spacing inside the div */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+    background-color: #f9f9f9; /* Optional: Background color */
+    margin: auto;
+  }
+  

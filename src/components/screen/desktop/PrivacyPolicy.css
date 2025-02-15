@@ -1,0 +1,98 @@
+.privacy-container {
+  padding: 1%;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+
+.privacy-heading {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.privacy-subheading {
+  color: #444;
+  margin-bottom: 2%;
+}
+
+.privacy-paragraph {
+  margin-bottom: 1%;
+}
+
+.privacy-highlight {
+  font-weight: bold;
+  color: #e91e63;
+}
+
+.privacy-list {
+  list-style-type: disc;
+  margin-left: 5%;
+  padding: 0;
+}
+
+.privacy-list-item {
+  margin-bottom: 1%;
+}
+
+/* Responsive styles for different breakpoints */@media (max-width: 1400px) {
+  .privacy-heading {
+    font-size: 1.2em; /* Reduced by 0.2em */
+  }
+  .privacy-subheading {
+    font-size: 1.1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1200px) {
+  .privacy-heading {
+    font-size: 1.1em; /* Reduced by 0.2em */
+  }
+  .privacy-subheading {
+    font-size: 1em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 1000px) {
+  .privacy-container {
+    padding: 4%;
+  }
+  .privacy-heading {
+    font-size: 1em; /* Reduced by 0.2em */
+  }
+  .privacy-subheading {
+    font-size: 0.9em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 800px) {
+  .privacy-container {
+    padding: 5%;
+  }
+  .privacy-heading {
+    font-size: 0.9em; /* Reduced by 0.2em */
+  }
+  .privacy-subheading {
+    font-size: 0.8em; /* Reduced by 0.2em */
+  }
+  .privacy-paragraph,
+  .privacy-list-item {
+    font-size: 0.7em; /* Reduced by 0.2em */
+  }
+}
+
+@media (max-width: 600px) {
+  .privacy-container {
+    padding: 6%;
+  }
+  .privacy-heading {
+    font-size: 0.8em; /* Reduced by 0.2em */
+  }
+  .privacy-subheading {
+    font-size: 0.7em; /* Reduced by 0.2em */
+  }
+  .privacy-paragraph,
+  .privacy-list-item {
+    font-size: 0.6em; /* Reduced by 0.2em */
+  }
+}

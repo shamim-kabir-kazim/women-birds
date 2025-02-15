@@ -1,0 +1,269 @@
+.midllFooter {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width: 1900px;
+  
+  margin:auto;
+}
+
+/*
+
+
+
+ /\_/\  
+( o.o ) 
+ > ^ <
+
+
+
+*/.footer-container {
+  width: 100%; /* Always span the full width of the viewport */
+  background-color: #431934;
+  color: #bb71b9;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap; /* Allows content to wrap and stay within bounds */
+  gap: 3%; /* Space between items */
+  box-sizing: border-box; /* Includes padding in width calculations */
+  text-align: center;
+  overflow: hidden; /* Hides any accidental overflow */
+}
+
+.footer-logo {
+  width: 20%; /* Adjust width to be percentage based */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.footer-logo-text {
+  text-align: center;
+  font-size: 2vw; /* Makes the font size responsive */
+  font-family: 'MonteCarlo', sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.footer-subtext {
+  font-size: 1vw; /* Makes the font size responsive */
+  font-family: 'MonteCarlo', sans-serif;
+  font-weight: 400;
+}
+
+.midcol {
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
+ 
+  gap: 5%; /* Space between columns */
+ 
+}
+
+.footer-column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+ justify-content: flex-start;
+  gap: 3%; /* Space between items */
+  
+}
+
+.footer-column-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1vw; /* Makes the font size responsive */
+  font-weight: 700;
+  line-height: 3vw;
+}
+
+.footer-column-item {
+  width: 150%;
+  font-size: 1vw; /* Makes the font size responsive */
+  font-weight: 500;
+  color: #d6cdcd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer-subscribe {
+
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1%; /* Space between elements */
+
+}
+.subscribe-button{
+  background-color: #5f2f5d;
+  width: 100%;
+  gap: 2%;
+  padding: 5px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+.inpu {
+  padding: 3%; /* Adjust padding to be responsive */
+  border-radius: 5px;
+  border: none; /* Removes the default border */
+  outline: none; /* Removes the default focus outline */
+  width: 80%; /* Makes the input width responsive */
+ 
+  font: inherit; /* Inherits the font from the parent element */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+  font-size: 1vw;
+}
+
+.submit-button {
+  cursor: pointer;
+  width: 30%;
+ background-color: #431934;
+ color: white;
+  margin-left: 1%;
+  padding: 3%;
+  border-radius: 5px;
+  font-size: 1vw;
+}
+.submit-button:hover {
+ background-color: #2e0f23;
+}
+
+
+.social-media-icons {
+  display: flex;
+  width: 100%;
+  gap: 5%; /* Space between icons */
+}
+
+.social-icon {
+  cursor: pointer;
+  width: 2vw; /* Makes the icon size responsive */
+  height: 2vw;
+  border-radius: 50%;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .footer-container {
+ flex-direction: column;
+}
+.midcol{
+  width: 90%;
+  gap: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border-bottom:1px solid  #b8b1b1;
+  border-top:1px solid  #b8b1b1 ;
+ 
+}
+.footer-column {
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1.5vw; /* Makes the font size responsive */
+  
+  
+}
+
+.footer-column-item {
+  width: 250%;
+  font-size: 1.5vw; /* Makes the font size responsive */
+  font-weight: 500;
+  color: #d6cdcd;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.footer-subscribe {
+
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1%; /* Space between elements */
+
+}
+.subscribe-button{
+  background-color: #5f2f5d;
+  width: 100%;
+  gap: 2%;
+  padding: 5px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+.inpu {
+  padding: 3%; /* Adjust padding to be responsive */
+  border-radius: 5px;
+  border: none; /* Removes the default border */
+  outline: none; /* Removes the default focus outline */
+  width: 80%; /* Makes the input width responsive */
+ 
+  font: inherit; /* Inherits the font from the parent element */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+  font-size: 1vw;
+}
+
+.submit-button {
+  cursor: pointer;
+  width: 30%;
+ background-color: #431934;
+ color: white;
+  margin-left: 1%;
+  padding: 3%;
+  border-radius: 5px;
+  font-size: 1vw;
+}
+
+.social-media-icons {
+  display: flex;
+  width: 100%;
+  gap: 5%; /* Space between icons */
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.social-icon {
+  cursor: pointer;
+  width: 1px; /* Makes the icon size responsive */
+  height: 1px;
+  border-radius: 50%;
+  margin: 10px;
+
+}
+}

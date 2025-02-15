@@ -1,0 +1,51 @@
+.ItemList {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Flexible grid layout */
+  gap: 5px; /* Consistent space between grid items */
+  padding: 5px; /* Space inside the container */
+  box-sizing: border-box; /* Ensures padding doesn't increase size */
+  max-width: 100%; /* Prevents the grid from exceeding the container width */
+  margin: 5px auto; /* Centers the grid within its parent */
+  overflow: hidden; /* Prevents overflow if content exceeds the container */
+}
+
+.GridItem {
+  box-sizing: border-box; /* Includes padding in the width calculation */
+  padding: 0px;
+  margin: 0px;
+  border-radius: 8px; /* Optional: Add rounded corners */
+  overflow: hidden; /* Prevents content from spilling out */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
+}
+
+/* Media Query for screens under 1900px */
+@media (max-width: 1050px) {
+  .ItemList {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* Two columns layout for very small screens */
+    gap: 5px; /* Consistent gap between columns */
+    padding: 5px; /* Compact padding for small screens */
+    width: 100%; /* Ensure full width */
+  }
+}
+
+/* Media Query for screens under 750px */
+@media (max-width: 750px) {
+  .ItemList {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Two columns layout for very small screens */
+    gap: 15px; /* Consistent gap between columns */
+    padding: 5px; /* Compact padding for small screens */
+    width: 100%; /* Ensure full width */
+    
+  }
+}

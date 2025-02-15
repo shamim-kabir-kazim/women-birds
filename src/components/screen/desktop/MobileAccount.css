@@ -1,0 +1,333 @@
+/* MobileAccount.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.xo-maccount-container {
+  padding: 15px;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+/* User Details Section */
+.xo-maccount-user-details {
+  text-align: center;
+  padding: 20px 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.xo-maccount-profile-picture {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+}
+
+.xo-maccount-profile-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.xo-maccount-user-info h2 {
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.xo-maccount-user-info p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.xo-maccount-edit-button {
+  background: #431934;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Options List */
+.xo-maccount-options {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.xo-options-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.xo-details-header, .xo-orders-header {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.xo-option-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.xo-option-header i {
+  font-size: 1.1rem;
+  color: #431934;
+  min-width: 24px;
+}
+
+.xo-option-header span {
+  flex-grow: 1;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* Form Styling */
+.xo-details-form, .xo-orders-list {
+  padding: 16px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
+}
+
+.xo-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.xo-input-group {
+  width: 100%;
+}
+
+.xo-input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.xo-input-group input,
+.xo-input-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.xo-password-field {
+  position: relative;
+}
+
+.xo-show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #431934;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.xo-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.xo-save-button,
+.xo-cancel-button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.xo-save-button {
+  background: #431934;
+  color: white;
+  border: none;
+}
+
+.xo-cancel-button {
+  background: #f0f0f0;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+/* Order Item Enhancements */
+.xo-order-item {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.xo-order-header {
+  display: flex;
+  
+  margin-bottom: 16px;
+  gap: 5px;
+  
+}
+
+.xo-order-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  
+}
+.xo-order-name-div{
+  display: flex;
+  
+  flex-direction: column;
+  width: 100%;
+  
+}
+.xo-order-title {
+  font-size: 0.9rem;
+  color: #1a1a1a;
+ 
+}
+.xo-order-short{
+  font-size: 0.7rem;
+  color: #666;
+}
+.xo-order-image, .xo-order-name-div {
+  margin: 0;
+}
+
+.xo-order-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.xo-order-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.xo-detail-label {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.xo-detail-value {
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.xo-status-indicator {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.xo-status-indicator.delivered {
+  background: #e3fcef;
+  color: #008a5c;
+}
+
+.xo-status-indicator.in-transit {
+  background: #fff4e5;
+  color: #ff9500;
+}
+
+.xo-status-indicator.pending {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.xo-order-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.xo-view-order-btn,
+.xo-cancel-order-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-size: 0.9rem;
+}
+
+.xo-view-order-btn {
+  background: #431934;
+  color: white;
+  border: none;
+}
+
+.xo-cancel-order-btn {
+  background: transparent;
+  color: #ff3b30;
+  border: 1px solid #ff3b30;
+}
+
+.xo-view-order-btn:hover,
+.xo-cancel-order-btn:hover {
+  opacity: 0.9;
+}
+/* Other Options */
+.xo-option-item {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.xo-option-item i {
+  color: #431934;
+  min-width: 24px;
+}
+
+.xo-option-item span {
+  flex-grow: 1;
+}
+
+.xo-option-item .fa-chevron-right {
+  font-size: 0.9rem;
+  color: #666;
+}
