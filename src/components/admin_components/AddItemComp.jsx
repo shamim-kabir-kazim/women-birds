@@ -18,8 +18,7 @@ const AddItemComp = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     useEffect(() => {
-        const token = localStorage.getItem('jwtToken');
-        console.log('JWT Token:', token);
+        localStorage.getItem('jwtToken');
     }, []);
 
     const handleChange = (e) => {
@@ -47,10 +46,9 @@ const AddItemComp = () => {
         formData.append('sku', sku);
 
         const token = localStorage.getItem('jwtToken');
-        console.log('Uploading Image with Token:', token);
 
         try {
-            const response = await axios.post('/api/add-image', formData, {
+            const response = await axios.post('/api/upload-image', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
@@ -62,13 +60,9 @@ const AddItemComp = () => {
             }));
             alert('Image uploaded successfully!');
         } catch (error) {
-            console.error('Error uploading image:', error);
             if (error.response) {
-                console.error('Error response data:', error.response.data);
-                console.error('Error response status:', error.response.status);
-                console.error('Error response headers:', error.response.headers);
+                alert('Failed to upload image');
             }
-            alert('Failed to upload image');
         }
     };
 
@@ -76,7 +70,6 @@ const AddItemComp = () => {
         e.preventDefault();
 
         const token = localStorage.getItem('jwtToken');
-        console.log('Submitting Product with Token:', token);
 
         try {
             const response = await axios.post('/api/add-product', productData, {
@@ -86,13 +79,9 @@ const AddItemComp = () => {
             });
             alert(response.data.message);
         } catch (error) {
-            console.error('Error adding product:', error);
             if (error.response) {
-                console.error('Error response data:', error.response.data);
-                console.error('Error response status:', error.response.status);
-                console.error('Error response headers:', error.response.headers);
+                alert('Failed to add product');
             }
-            alert('Failed to add product');
         }
     };
 
