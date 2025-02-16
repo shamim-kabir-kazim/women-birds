@@ -11,7 +11,12 @@ const DynamicTable = ({ category }) => {
     setLoading(true);
     setError(null);
     try {
-      const categoryResponse = await fetch(`/api/categories/${category.toLowerCase().replace(/ /g, '-')}`);
+      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+      const categoryResponse = await fetch(`/api/categories/${category.toLowerCase().replace(/ /g, '-')}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (!categoryResponse.ok) {
         throw new Error(`Failed to fetch ${category} data. Status: ${categoryResponse.status} ${categoryResponse.statusText}`);
       }
@@ -19,7 +24,11 @@ const DynamicTable = ({ category }) => {
 
       // Fetch main inventory data for each product
       const inventoryDataPromises = categoryData.map(async (item) => {
-        const inventoryResponse = await fetch(`/api/view-product/${item.product_id}`);
+        const inventoryResponse = await fetch(`/api/view-product/${item.product_id}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         if (!inventoryResponse.ok) {
           throw new Error(`Failed to fetch inventory data for product ID ${item.product_id}. Status: ${inventoryResponse.status} ${inventoryResponse.statusText}`);
         }
@@ -47,8 +56,12 @@ const DynamicTable = ({ category }) => {
 
   const handleDelete = async (id) => {
     try {
+      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
       const response = await fetch(`/api/categories/${category.toLowerCase().replace(/ /g, '-')}/${id}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       if (!response.ok) {
         throw new Error(`Failed to delete ${category} record. Status: ${response.status} ${response.statusText}`);

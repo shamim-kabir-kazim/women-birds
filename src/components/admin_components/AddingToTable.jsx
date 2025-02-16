@@ -22,10 +22,12 @@ const AddingToTable = ({ productId, onAdd }) => {
     setMessageType('');
 
     try {
+      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
       const response = await fetch(`/api/add-to-${table}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ product_id: productId }),
       });
@@ -49,46 +51,44 @@ const AddingToTable = ({ productId, onAdd }) => {
 
   return (
     <div className="adding-to-table">
-    {loading && <div className="loading-popup">Loading...</div>}
-    {message && <div className={`message-popup ${messageType}`}>{message}</div>}
-    
-    <button className="btn-add-pp" onClick={() => handleAddToTable('dresses')}>
-      Add to Dresses
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-    
-    <button className="btn-add-pp" onClick={() => handleAddToTable('sale')}>
-      Add to Sale
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  
-    <button className="btn-add-pp" onClick={() => handleAddToTable('jewellery')}>
-      Add to Jewellery
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  
-    <button className="btn-add-pp" onClick={() => handleAddToTable('best-deals')}>
-      Add to Best Deals
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  
-    <button className="btn-add-pp" onClick={() => handleAddToTable('lehenga')}>
-      Add to Lehenga
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  
-    <button className="btn-add-pp" onClick={() => handleAddToTable('new-collection')}>
-      Add to New Collection
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  
-    <button className="btn-add-pp" onClick={() => handleAddToTable('new-this-week')}>
-      Add to New This Week
-      <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
-    </button>
-  </div>
-  
-  
+      {loading && <div className="loading-popup">Loading...</div>}
+      {message && <div className={`message-popup ${messageType}`}>{message}</div>}
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('dresses')}>
+        Add to Dresses
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('sale')}>
+        Add to Sale
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('jewellery')}>
+        Add to Jewellery
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('best-deals')}>
+        Add to Best Deals
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('lehenga')}>
+        Add to Lehenga
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('new-collection')}>
+        Add to New Collection
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+
+      <button className="btn-add-pp" onClick={() => handleAddToTable('new-this-week')}>
+        Add to New This Week
+        <img src="https://i.postimg.cc/s1dbXWvd/add-circle-svgrepo-com.png" alt="Add" className="btn-icon" />
+      </button>
+    </div>
   );
 };
 

@@ -22,7 +22,12 @@ const UpdateImages = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get('/api/ads_img/1'); // Assuming there's only one row with id 1
+        const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+        const response = await axios.get('/api/ads_img/1', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }); // Assuming there's only one row with id 1
         // Prepend 'http://localhost:3000' to each image URL
         setImages({
           cat1: `http://localhost:3000${response.data.cat1}`,
@@ -60,16 +65,22 @@ const UpdateImages = () => {
     formData.append('image', selectedFiles[cat]);
 
     try {
+      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
       const response = await axios.post('/api/upload', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
         }
       });
       const imageUrl = `http://localhost:3000${response.data.imageUrl}`;
       setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
 
       // Update the image URL in the database
-      await axios.put('/api/ads_img/1', { [cat]: response.data.imageUrl }); // Assuming there's only one row with id 1
+      await axios.put('/api/ads_img/1', { [cat]: response.data.imageUrl }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }); // Assuming there's only one row with id 1
       setMessage('Image updated successfully.');
     } catch (error) {
       setError('Failed to update image.');
