@@ -57,10 +57,13 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
         quantity: detailsForm.quantity,
       };
 
+      const token = localStorage.getItem('jwtToken');
+
       const response = await fetch('/api/add-product-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(payload),
       });
@@ -85,10 +88,13 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
     try {
       const payload = { productId, ...detailsForm };
 
+      const token = localStorage.getItem('jwtToken');
+
       const response = await fetch(`/api/update-product-details/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(payload),
       });
@@ -108,8 +114,12 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
 
   const handleDeleteStock = async (detailsId) => {
     try {
+      const token = localStorage.getItem('jwtToken');
       const response = await fetch(`/api/delete-product-details/${detailsId}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       if (!response.ok) {
         const errorText = await response.text();
@@ -137,7 +147,12 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
   };
 
   const refreshProductDetails = () => {
-    fetch(`/api/view-product-details/${productId}`)
+    const token = localStorage.getItem('jwtToken');
+    fetch(`/api/view-product-details/${productId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then((response) => response.json())
       .then((data) => onUpdate(data))
       .catch((error) => console.error('Error fetching product details:', error));

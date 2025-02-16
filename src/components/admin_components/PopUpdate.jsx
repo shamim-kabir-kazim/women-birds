@@ -28,8 +28,13 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
+      const token = localStorage.getItem('jwtToken');
       try {
-        const response = await fetch(`/api/view-product/${productId}`);
+        const response = await fetch(`/api/view-product/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch product');
         }
@@ -44,8 +49,13 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
     };
 
     const fetchProductDetails = async () => {
+      const token = localStorage.getItem('jwtToken');
       try {
-        const response = await fetch(`/api/view-product-details/${productId}`);
+        const response = await fetch(`/api/view-product-details/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch product details');
         }
@@ -57,8 +67,13 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
     };
 
     const fetchExtraImages = async () => {
+      const token = localStorage.getItem('jwtToken');
       try {
-        const response = await fetch(`/api/view-extra-images/${productId}`);
+        const response = await fetch(`/api/view-extra-images/${productId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch extra images');
         }
@@ -110,10 +125,15 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
     formData.append('productName', product.product_name);
     formData.append('sku', product.sku);
 
+    const token = localStorage.getItem('jwtToken');
+
     try {
       const response = await fetch('/api/upload-image', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (!response.ok) {
@@ -147,10 +167,15 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
     formData.append('productName', product.product_name);
     formData.append('sku', product.sku);
 
+    const token = localStorage.getItem('jwtToken');
+
     try {
       const response = await fetch('/api/upload-extra-images', {
         method: 'POST',
         body: formData,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (!response.ok) {
@@ -168,9 +193,13 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
   };
 
   const handleDeleteExtraImage = async (imageId) => {
+    const token = localStorage.getItem('jwtToken');
     try {
       const response = await fetch(`/api/delete-extra-image/${imageId}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (!response.ok) {
@@ -186,11 +215,13 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('jwtToken');
     try {
       const response = await fetch(`/api/update-product/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(formData),
       });
