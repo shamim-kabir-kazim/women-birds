@@ -82,9 +82,10 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/returns-refund-policy" element={<ReturnsRefundPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/admin/dashboard" element={<Adminpage />} />
+        
         <Route path="/admin-login" element={<AdminLoginPage />} />
         <Route path="/admin-register" element={<AdminRegPage />} />
+        <Route path="/admin/dashboard" element={<Adminpage />} />
         
        
           
