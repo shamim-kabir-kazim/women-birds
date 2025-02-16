@@ -11,8 +11,13 @@ const ViewInventory = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const fetchInventory = async () => {
+    const token = localStorage.getItem('jwtToken');
     try {
-      const response = await fetch('/api/view-products');
+      const response = await fetch('/api/view-products', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch inventory');
       }
