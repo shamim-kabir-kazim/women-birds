@@ -6,7 +6,7 @@ const VerifyJWT = () => {
   const [verificationResult, setVerificationResult] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('auth/wb/jwtToken'); // Retrieve the JWT from local storage
+    const token = localStorage.getItem('jwtToken'); // Retrieve the JWT from local storage
 
     if (!token) {
       setVerificationResult('No token found in storage');
@@ -14,6 +14,7 @@ const VerifyJWT = () => {
     }
 
     setJwt(token); // Set the token in state to display it
+    console.log('Retrieved JWT:', token);
 
     const verifyToken = async () => {
       try {
@@ -30,7 +31,7 @@ const VerifyJWT = () => {
   return (
     <div>
       <h2>Verify JWT</h2>
-      <p>{`JWT Token: ${jwt}`}</p>
+      <p>{`JWT Token: ${jwt}`}</p> {/* Display the JWT token */}
       {verificationResult && <p>{verificationResult}</p>}
     </div>
   );

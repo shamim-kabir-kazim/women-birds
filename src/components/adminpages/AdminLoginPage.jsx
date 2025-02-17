@@ -13,12 +13,18 @@ function AdminLoginPage() {
       const response = await axios.post('http://localhost:3000/api/admin/login', { username, password });
       const { token } = response.data;
       
-      // Store the token in local storage with a specific folder structure
-      localStorage.setItem('auth/wb/jwtToken', token);
+      // Store the token in local storage
+      localStorage.setItem('jwtToken', token);
+      console.log('Stored JWT:', token);
+
+      // Check if token is the same after storage
+      const storedToken = localStorage.getItem('jwtToken');
+      console.log('Retrieved JWT:', storedToken);
 
       // Redirect to admin page or perform other actions
       window.location.href = '/admin/dashboard';
     } catch (err) {
+      console.error('Login Error:', err);
       setError('Invalid username or password');
     }
   };

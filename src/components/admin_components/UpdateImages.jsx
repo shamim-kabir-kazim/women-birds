@@ -29,6 +29,7 @@ const UpdateImages = () => {
     cat8: '',
     cat9: ''
   });
+  const [jwtToken, setJwtToken] = useState('');
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -81,8 +82,9 @@ const UpdateImages = () => {
     formData.append('category', cat);
 
     try {
-      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+      const token = localStorage.getItem('jwtToken'); // Assuming the JWT is stored in localStorage
       console.log('Updating image for', cat, 'with token:', token);
+      setJwtToken(token); // Set the JWT token to state to display it
       const response = await axios.post('http://localhost:3000/api/admin-image-upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -299,6 +301,7 @@ const UpdateImages = () => {
       </div>
 
       {message && <div className="vfo-message">{message}</div>}
+      {jwtToken && <div className="vfo-jwt-token">JWT Token: {jwtToken}</div>}
     </div>
   );
 };
