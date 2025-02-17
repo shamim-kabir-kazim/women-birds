@@ -48,7 +48,7 @@ const AddItemComp = () => {
         const token = localStorage.getItem('jwtToken');
 
         try {
-            const response = await axios.post('/api/upload-image', formData, {
+            const response = await axios.post('http://localhost:3000/api/upload-image', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
@@ -72,7 +72,7 @@ const AddItemComp = () => {
         const token = localStorage.getItem('jwtToken');
 
         try {
-            const response = await axios.post('/api/add-product', productData, {
+            const response = await axios.post('http://localhost:3000/api/add-product', productData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

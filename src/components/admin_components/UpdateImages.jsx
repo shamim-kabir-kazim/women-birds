@@ -23,11 +23,13 @@ const UpdateImages = () => {
     const fetchImages = async () => {
       try {
         const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
-        const response = await axios.get('/api/ads_img/1', {
+        console.log('Fetching images with token:', token);
+        const response = await axios.get('http://localhost:3000/api/ads_img/1', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         }); // Assuming there's only one row with id 1
+        console.log('Fetched images:', response.data);
         // Prepend 'http://localhost:3000' to each image URL
         setImages({
           cat1: `http://localhost:3000${response.data.cat1}`,
@@ -41,6 +43,7 @@ const UpdateImages = () => {
           cat9: `http://localhost:3000${response.data.cat9}`
         });
       } catch (error) {
+        console.error('Failed to fetch images:', error);
         setError('Failed to fetch images.');
       } finally {
         setLoading(false);
@@ -52,12 +55,14 @@ const UpdateImages = () => {
 
   const handleFileChange = (e, cat) => {
     const file = e.target.files[0];
+    console.log(`Selected file for ${cat}:`, file);
     setSelectedFiles((prevFiles) => ({ ...prevFiles, [cat]: file }));
   };
 
   const handleUpdate = async (cat) => {
     if (!selectedFiles[cat]) {
       setError('No file selected.');
+      console.log('No file selected for:', cat);
       return;
     }
 
@@ -66,23 +71,26 @@ const UpdateImages = () => {
 
     try {
       const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
-      const response = await axios.post('/api/upload', formData, {
+      console.log('Updating image for', cat, 'with token:', token);
+      const response = await axios.post('http://localhost:3000/api/upload-image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
         }
       });
-      const imageUrl = `http://localhost:3000${response.data.imageUrl}`;
+      const imageUrl = `http://localhost:3000${response.data.url}`;
       setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
 
       // Update the image URL in the database
-      await axios.put('/api/ads_img/1', { [cat]: response.data.imageUrl }, {
+      const updateResponse = await axios.put('http://localhost:3000/api/ads_img/1', { [cat]: response.data.url }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       }); // Assuming there's only one row with id 1
+      console.log('Update response:', updateResponse.data);
       setMessage('Image updated successfully.');
     } catch (error) {
+      console.error('Failed to update image:', error);
       setError('Failed to update image.');
     }
   };
@@ -98,7 +106,7 @@ const UpdateImages = () => {
   return (
     <div className="vfo-grid-container">
       <div className="vfo-containers">
-        <h2 className="vfo-heading"> Category Images</h2>
+        <h2 className="vfo-heading">Category Images</h2>
         <div className="vfo-container1">
           <div className="vfo-container">
             <div className="vfo-image-box">
@@ -140,7 +148,7 @@ const UpdateImages = () => {
       </div>
 
       <div className="vfo-containers">
-        <h2 className="vfo-heading"> Premium Collection Images</h2>
+        <h2 className="vfo-heading">Premium Collection Images</h2>
         <div className="vfo-container1">
           <div className="vfo-container">
             <div className="vfo-image-box">
@@ -195,7 +203,7 @@ const UpdateImages = () => {
 
       {/* Banner Images */}
       <div className="vfo-containers">
-        <h2 className="vfo-heading"> Banner Images</h2>
+        <h2 className="vfo-heading">Banner Images</h2>
         <div className="vfo-container1">
           <div className="vfo-container">
             <div className="vfo-image-box">
