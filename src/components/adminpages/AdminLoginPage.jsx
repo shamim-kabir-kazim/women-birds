@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AdminLoginPage.css';
 
 function AdminLoginPage() {
   const [username, setUsername] = useState('');
@@ -23,19 +24,29 @@ function AdminLoginPage() {
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
+    <div className="xo-admin-login">
+      <h2 className="xo-title">Admin Login</h2>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <div className="xo-form-group">
+          <label className="xo-label">Username:</label>
+          <input 
+            type="text" 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            className="xo-input"
+          />
         </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="xo-form-group">
+          <label className="xo-label">Password:</label>
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            className="xo-input"
+          />
         </div>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
+        <button type="submit" className="xo-button">Login</button>
+        {error && <p className="xo-message">{error}</p>}
       </form>
     </div>
   );
