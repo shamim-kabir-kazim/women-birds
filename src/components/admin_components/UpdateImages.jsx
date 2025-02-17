@@ -82,7 +82,7 @@ const UpdateImages = () => {
       setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
 
       // Update the image URL in the database
-      const updateResponse = await axios.put('http://localhost:3000/api/ads_img/1', { [cat]: response.data.url }, {
+      const updateResponse = await axios.put(`http://localhost:3000/api/update-image/1`, { [cat]: response.data.url }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
