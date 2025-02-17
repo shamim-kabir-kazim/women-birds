@@ -72,7 +72,7 @@ const UpdateImages = () => {
     try {
       const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
       console.log('Updating image for', cat, 'with token:', token);
-      const response = await axios.post('http://localhost:3000/api/upload-image', formData, {
+      const response = await axios.post('http://localhost:3000/api/ads-upload-image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
@@ -82,7 +82,7 @@ const UpdateImages = () => {
       setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
 
       // Update the image URL in the database
-      const updateResponse = await axios.put(`http://localhost:3000/api/update-image/1`, { [cat]: response.data.url }, {
+      const updateResponse = await axios.put(`http://localhost:3000/api/ads-update-image/1`, { [cat]: response.data.url }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
