@@ -18,17 +18,22 @@ const UpdateImages = () => {
   const [error, setError] = useState(null);
   const [message, setMessage] = useState('');
   const [selectedFiles, setSelectedFiles] = useState({});
+  const [inputValues, setInputValues] = useState({
+    cat1: '',
+    cat2: '',
+    cat3: '',
+    cat4: '',
+    cat5: '',
+    cat6: '',
+    cat7: '',
+    cat8: '',
+    cat9: ''
+  });
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
-        console.log('Fetching images with token:', token);
-        const response = await axios.get('http://localhost:3000/api/ads_img/1', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }); // Assuming there's only one row with id 1
+        const response = await axios.get('http://localhost:3000/api/ads_img/1'); // No JWT token needed for GET request
         console.log('Fetched images:', response.data);
         // Prepend 'http://localhost:3000' to each image URL
         setImages({
@@ -59,6 +64,11 @@ const UpdateImages = () => {
     setSelectedFiles((prevFiles) => ({ ...prevFiles, [cat]: file }));
   };
 
+  const handleInputChange = (e, cat) => {
+    const value = e.target.value;
+    setInputValues((prevValues) => ({ ...prevValues, [cat]: value }));
+  };
+
   const handleUpdate = async (cat) => {
     if (!selectedFiles[cat]) {
       setError('No file selected.');
@@ -68,6 +78,7 @@ const UpdateImages = () => {
 
     const formData = new FormData();
     formData.append('image', selectedFiles[cat]);
+    formData.append('category', cat);
 
     try {
       const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
@@ -78,16 +89,8 @@ const UpdateImages = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      const imageUrl = `http://localhost:3000${response.data.url}`;
-      setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
-
-      // Update the image URL in the database
-      const updateResponse = await axios.put(`http://localhost:3000/api/ads-update-image/1`, { [cat]: response.data.url }, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }); // Assuming there's only one row with id 1
-      console.log('Update response:', updateResponse.data);
+      const imageUrl = response.data.url;
+      setImages((prevImages) => ({ ...prevImages, [cat]: `http://localhost:3000${imageUrl}` }));
       setMessage('Image updated successfully.');
     } catch (error) {
       console.error('Failed to update image:', error);
@@ -118,6 +121,13 @@ const UpdateImages = () => {
               onChange={(e) => handleFileChange(e, 'cat1')}
               className="vfo-text-box"
             />
+            <input
+              type="text"
+              value={inputValues.cat1}
+              onChange={(e) => handleInputChange(e, 'cat1')}
+              placeholder="Enter additional info"
+              className="vfo-text-box"
+            />
             <button type="button" onClick={() => handleUpdate('cat1')} className="vfo-button">Update</button>
           </div>
           <div className="vfo-container">
@@ -130,6 +140,13 @@ const UpdateImages = () => {
               onChange={(e) => handleFileChange(e, 'cat2')}
               className="vfo-text-box"
             />
+            <input
+              type="text"
+              value={inputValues.cat2}
+              onChange={(e) => handleInputChange(e, 'cat2')}
+              placeholder="Enter additional info"
+              className="vfo-text-box"
+            />
             <button type="button" onClick={() => handleUpdate('cat2')} className="vfo-button">Update</button>
           </div>
           <div className="vfo-container">
@@ -140,6 +157,13 @@ const UpdateImages = () => {
               type="file"
               id="cat3"
               onChange={(e) => handleFileChange(e, 'cat3')}
+              className="vfo-text-box"
+            />
+            <input
+              type="text"
+              value={inputValues.cat3}
+              onChange={(e) => handleInputChange(e, 'cat3')}
+              placeholder="Enter additional info"
               className="vfo-text-box"
             />
             <button type="button" onClick={() => handleUpdate('cat3')} className="vfo-button">Update</button>
@@ -160,6 +184,13 @@ const UpdateImages = () => {
               onChange={(e) => handleFileChange(e, 'cat4')}
               className="vfo-text-box"
             />
+            <input
+              type="text"
+              value={inputValues.cat4}
+              onChange={(e) => handleInputChange(e, 'cat4')}
+              placeholder="Enter additional info"
+              className="vfo-text-box"
+            />
             <button type="button" onClick={() => handleUpdate('cat4')} className="vfo-button">Update</button>
           </div>
           <div className="vfo-container">
@@ -170,6 +201,13 @@ const UpdateImages = () => {
               type="file"
               id="cat5"
               onChange={(e) => handleFileChange(e, 'cat5')}
+              className="vfo-text-box"
+            />
+            <input
+              type="text"
+              value={inputValues.cat5}
+              onChange={(e) => handleInputChange(e, 'cat5')}
+              placeholder="Enter additional info"
               className="vfo-text-box"
             />
             <button type="button" onClick={() => handleUpdate('cat5')} className="vfo-button">Update</button>
@@ -184,6 +222,13 @@ const UpdateImages = () => {
               onChange={(e) => handleFileChange(e, 'cat6')}
               className="vfo-text-box"
             />
+            <input
+              type="text"
+              value={inputValues.cat6}
+              onChange={(e) => handleInputChange(e, 'cat6')}
+              placeholder="Enter additional info"
+              className="vfo-text-box"
+            />
             <button type="button" onClick={() => handleUpdate('cat6')} className="vfo-button">Update</button>
           </div>
           <div className="vfo-container">
@@ -194,6 +239,13 @@ const UpdateImages = () => {
               type="file"
               id="cat7"
               onChange={(e) => handleFileChange(e, 'cat7')}
+              className="vfo-text-box"
+            />
+            <input
+              type="text"
+              value={inputValues.cat7}
+              onChange={(e) => handleInputChange(e, 'cat7')}
+              placeholder="Enter additional info"
               className="vfo-text-box"
             />
             <button type="button" onClick={() => handleUpdate('cat7')} className="vfo-button">Update</button>
@@ -215,6 +267,13 @@ const UpdateImages = () => {
               onChange={(e) => handleFileChange(e, 'cat8')}
               className="vfo-text-box"
             />
+            <input
+              type="text"
+              value={inputValues.cat8}
+              onChange={(e) => handleInputChange(e, 'cat8')}
+              placeholder="Enter additional info"
+              className="vfo-text-box"
+            />
             <button type="button" onClick={() => handleUpdate('cat8')} className="vfo-button">Update</button>
           </div>
           <div className="vfo-container">
@@ -225,6 +284,13 @@ const UpdateImages = () => {
               type="file"
               id="cat9"
               onChange={(e) => handleFileChange(e, 'cat9')}
+              className="vfo-text-box"
+            />
+            <input
+              type="text"
+              value={inputValues.cat9}
+              onChange={(e) => handleInputChange(e, 'cat9')}
+              placeholder="Enter additional info"
               className="vfo-text-box"
             />
             <button type="button" onClick={() => handleUpdate('cat9')} className="vfo-button">Update</button>

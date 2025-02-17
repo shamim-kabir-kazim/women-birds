@@ -13,8 +13,8 @@ function AdminLoginPage() {
       const response = await axios.post('http://localhost:3000/api/admin/login', { username, password });
       const { token } = response.data;
       
-      // Store the token in local storage
-      localStorage.setItem('jwtToken', token);
+      // Store the token in local storage with a specific folder structure
+      localStorage.setItem('auth/wb/jwtToken', token);
 
       // Redirect to admin page or perform other actions
       window.location.href = '/admin/dashboard';

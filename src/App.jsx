@@ -24,6 +24,7 @@ import FAQ from './components/screen/desktop/FAQ';
 import Adminpage from './components/adminpages/Adminpage';
 import AdminLoginPage from './components/adminpages/AdminLoginPage';
 import AdminRegPage from './components/adminpages/AdminRegPage';
+import VerifyJWT from './components/VerifyJWT';
 
 function App() {
   const images = [
@@ -66,6 +67,7 @@ function App() {
           </header>
           {/* Show ImageScroller only on the home page */}
           {location.pathname === '/' && <ImageDisplay images={images} />}
+          <VerifyJWT /> 
         </div>
         <Routes>
           <Route path="/" element={<HomePage />} />

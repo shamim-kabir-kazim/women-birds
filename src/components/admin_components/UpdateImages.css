@@ -1,80 +1,62 @@
 .vfo-grid-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
-  background-color: #fff;
+  padding: 20px;
+}
+
+.vfo-containers {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.vfo-heading {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.vfo-container1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .vfo-container {
+  flex: 1 1 calc(33.333% - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 30%;
-  height: 600px;
-  padding: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-  text-align: center;
-  gap: 2%;
-}
-.vfo-containerx{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  padding: 1%;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 0 0 5% rgba(0, 0, 0, 0.1);
-  text-align: center;
-  gap: 2%;
-}
-.vfo-container1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 2%;
-  gap: 2%;
-  
-  border-radius: 15px;
-  text-align: center;
-  margin-top: 2%;
+  gap: 10px;
 }
 
 .vfo-image-box {
-  width: 80%;
-  height: 70%;
-  border: 1px solid #ccc;
-  margin-bottom: 5%;
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .vfo-image-preview {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .vfo-text-box {
-  display: block;
-  width: 90%;
-  padding: 2%;
-  margin-bottom: 5%;
-  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius:5px ;
+  border-radius: 5px;
 }
 
 .vfo-button {
-  display: block;
-  width: 90%;
-  height: 50px;
-  padding: 3%;
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -88,14 +70,9 @@
 
 .vfo-message {
   margin-top: 20px;
-  text-align: center;
-  color: green;
-}
-.vfo-containers{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
   padding: 10px;
-  gap: 10px;
-  font-size: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
 }
