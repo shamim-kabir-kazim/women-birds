@@ -72,7 +72,7 @@ const UpdateImages = () => {
     try {
       const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
       console.log('Updating image for', cat, 'with token:', token);
-      const response = await axios.post('http://localhost:3000/api/ads-upload-image', formData, {
+      const response = await axios.post('http://localhost:3000/api/admin-image-upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`
