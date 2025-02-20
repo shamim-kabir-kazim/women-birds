@@ -48,6 +48,24 @@ const ViewInventory = () => {
     fetchInventory();
   };
 
+  const handleDeleteClick = async (productId) => {
+    const token = localStorage.getItem('jwtToken');
+    try {
+      const response = await fetch(`/api/delete-product/${productId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete product');
+      }
+      fetchInventory();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -98,7 +116,10 @@ const ViewInventory = () => {
                   style={{ color: 'green', cursor: 'pointer', marginRight: '10px' }}
                   onClick={() => handleEditClick(item.product_id)}
                 />
-                <FaTrash style={{ color: 'red', cursor: 'pointer' }} />
+                <FaTrash
+                  style={{ color: 'red', cursor: 'pointer' }}
+                  onClick={() => handleDeleteClick(item.product_id)}
+                />
               </td>
             </tr>
           ))}
