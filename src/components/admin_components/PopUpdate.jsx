@@ -147,7 +147,7 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
       }));
       setNewImageFile(null);
       setNewImagePreview(null);
-      setSuccessMessage('Image updated successfully');
+      setSuccessMessage('Image uploaded successfully. Remember to save changes by clicking "Update Product".');
     } catch (error) {
       setError(error.message);
     }
@@ -285,7 +285,7 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
                 type="button"
                 onClick={handleImageUpload}
               >
-                Update Image
+                Upload Image
               </button>
             </div>
             <div className="image-urls">
