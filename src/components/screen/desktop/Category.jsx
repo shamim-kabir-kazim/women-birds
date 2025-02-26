@@ -2,6 +2,7 @@ import React from 'react';
 import './Category.css';
 import Sepa from './Sepa';
 import TextHed from './TextHed';
+import { Link } from "react-router-dom";
 
 const Category = () => {
   return (
@@ -51,12 +52,14 @@ const Category = () => {
                 }
               >
                 <div data-layer="Frame 15" className="Frame15" />
-                <img
+                
+                 <img
                   data-layer="Frame 14"
                   className="Frame14"
                   src="https://i.postimg.cc/Lsc197Hg/b316df6f2ab68e16f8195ff01ccf9b1b.jpg"
                   alt="Lehenga"
-                />
+                /> 
+             
               </div>
             </div>
             <div data-layer="Lehenga" className="Lehenga">
@@ -84,12 +87,12 @@ const Category = () => {
                   data-layer="Frame 14"
                   className="Frame14"
                   src="https://i.postimg.cc/Lsc197Hg/b316df6f2ab68e16f8195ff01ccf9b1b.jpg"
-                  alt="Lehenga"
+                  alt="Dresses"
                 />
               </div>
             </div>
-            <div data-layer="Lehenga" className="Lehenga">
-              Lehenga
+            <div data-layer="Dresses" className="Lehenga">
+              Dresses
             </div>
           </div>
           {/*for a single category end*/}
@@ -113,12 +116,12 @@ const Category = () => {
                   data-layer="Frame 14"
                   className="Frame14"
                   src="https://i.postimg.cc/Lsc197Hg/b316df6f2ab68e16f8195ff01ccf9b1b.jpg"
-                  alt="Lehenga"
+                  alt="Jewellery"
                 />
               </div>
             </div>
-            <div data-layer="Lehenga" className="Lehenga">
-              Lehenga
+            <div data-layer="Jewellery" className="Lehenga">
+              Jewellery
             </div>
           </div>
           {/*for a single category end*/}

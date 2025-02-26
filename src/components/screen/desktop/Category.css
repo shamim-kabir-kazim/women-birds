@@ -22,8 +22,8 @@
   margin-top: 60px;
 }
 .Cat {
-  width: 90%;
-  max-width: 342px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
   padding: 2% 1%;
   display: inline-flex;
@@ -33,18 +33,18 @@
 }
 
 .Cat2 {
-  width: 80%;
-  max-width: 294px;
+  width: 90%;
+  max-width: 394px;
   height: auto;
   aspect-ratio: 294 / 356;
   position: relative;
 }
 
 .CatImgBack {
-  width: 80%;
-  max-width: 235px;
+  width: 90%;
+  max-width: 335px;
   height: auto;
-  aspect-ratio: 235 / 310;
+  aspect-ratio: 335 / 450;
   left: 7%;
   top: 2%;
   position: absolute;
@@ -54,10 +54,10 @@
 }
 
 .CatImg {
-  width: 80%;
-  max-width: 235px;
+  width: 90%;
+  max-width: 335px;
   height: auto;
-  aspect-ratio: 235 / 310;
+  aspect-ratio: 335 / 450;
   left: 15%;
   top: 8%;
   position: absolute;
@@ -93,6 +93,8 @@
 }
 
 .Lehenga {
+  margin-top: 30px;
+  padding-left: 50px;
   align-self: stretch;
   text-align: center;
   color: #431934;

@@ -53,14 +53,18 @@
 
 .footer-logo-text {
   text-align: center;
-  font-size: 2vw; /* Makes the font size responsive */
+  font-size: 3.5vw; /* Makes the font size responsive */
   font-family: 'MonteCarlo', sans-serif;
   font-weight: 500;
   white-space: nowrap;
 }
+.footer-logo-text a {
+ text-decoration: none;
+ color: inherit
+}
 
 .footer-subtext {
-  font-size: 1vw; /* Makes the font size responsive */
+  font-size: 1.8vw; /* Makes the font size responsive */
   font-family: 'MonteCarlo', sans-serif;
   font-weight: 400;
 }
@@ -94,6 +98,7 @@
 }
 
 .footer-column-item {
+  text-decoration: none;
   width: 150%;
   font-size: 1vw; /* Makes the font size responsive */
   font-weight: 500;
@@ -102,6 +107,11 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+.footer-column-item a {
+  text-decoration: none;
+  color: inherit
+}
+
 
 .footer-subscribe {
 
@@ -170,6 +180,20 @@
   align-items: center;
 }
 @media (max-width: 700px) {
+
+  .footer-logo-text {
+    text-align: center;
+    font-size: 5.5vw; /* Makes the font size responsive */
+    font-family: 'MonteCarlo', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .footer-subtext {
+    font-size: 2.8vw; /* Makes the font size responsive */
+    font-family: 'MonteCarlo', sans-serif;
+    font-weight: 400;
+  }
   .footer-container {
  flex-direction: column;
 }
@@ -181,7 +205,7 @@
   padding: 20px;
   border-bottom:1px solid  #b8b1b1;
   border-top:1px solid  #b8b1b1 ;
- 
+
 }
 .footer-column {
  
@@ -189,14 +213,22 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1.5vw; /* Makes the font size responsive */
+ /* Makes the font size responsive */
   
   
+}
+.footer-column-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 2.5vw; /* Makes the font size responsive */
+  font-weight: 700;
+  line-height: 3vw;
 }
 
 .footer-column-item {
   width: 250%;
-  font-size: 1.5vw; /* Makes the font size responsive */
+  font-size: 2vw; /* Makes the font size responsive */
   font-weight: 500;
   color: #d6cdcd;
   display: flex;

@@ -25,9 +25,11 @@ const AccountPage = () => {
   }, []);
 
   return (
+    <div className="account-midll">
     <div className="account-div">
       <Sepa />
       {isMobile ? <MobileAccount /> : <AccountInfo />}
+      </div>
     </div>
   );
 };

@@ -76,21 +76,21 @@ const comments = [
 const Comment = ({ id, user, text, rating }) => {
   return (
   
-    <div className="comment">
-    <div className="user-icon-container">
+    <div className="R-comment">
+    <div className="R-user-icon-container">
       <img
-        className="user-icon"
+        className="R-user-icon-container"
         src="https://i.postimg.cc/NMgmfhgS/user-circle-svgrepo-com.png"
         alt="User Icon"
       />
     </div>
-    <div className="comment-details">
+    <div className="R-comment-details">
       {/* Display the username */}
-      <h6    className="comment-user">{user}   </h6>
+      <h6    className="R-comment-user">{user}   </h6>
       {/* Optionally display the ID */}
-      <p className="comment-id">
+      <p className="R-comment-id">
       {text} </p>
-      <div className="stars">
+      <div className="R-stars">
         {Array(rating)
           .fill()
           .map((_, i) => (
@@ -104,22 +104,11 @@ const Comment = ({ id, user, text, rating }) => {
 
 const CommentsList = () => {
   return (
-    <div className="midll">
-    <div 
-    style={{
-      alignSelf: 'stretch',
-      textAlign: 'center',
-      color: '#431934',
-      fontSize: '5vw', // Adjust font size based on viewport width
-      fontFamily: 'Marcellus SC',
-      fontWeight: '400',
-      wordWrap: 'break-word',
-    }}
-  >
-    Survey & Feedback
-  </div>
-     <div className="mainframe" >
-    <div className="comments-list">
+
+      <div className="R-comment-main">
+    <h1 className="R-comment-title">Survey & Feedback</h1>
+     <div className="R-mainframe" >
+    <div className="R-comments-list">
       {comments.map((comment) => (
         <Comment
           key={comment.id}
@@ -133,6 +122,7 @@ const CommentsList = () => {
     <Review/>
     </div>
     </div>
+
   );
 };
 

@@ -22,7 +22,7 @@ const AddingToTable = ({ productId, onAdd }) => {
     setMessageType('');
 
     try {
-      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+      const token = localStorage.getItem('jwtToken'); // Ensure this is the correct key for your token
       const response = await fetch(`/api/add-to-${table}`, {
         method: 'POST',
         headers: {

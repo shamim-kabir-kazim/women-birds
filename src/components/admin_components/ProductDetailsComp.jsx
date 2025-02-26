@@ -59,7 +59,7 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
 
       const token = localStorage.getItem('jwtToken');
 
-      const response = await fetch('/api/add-product-details', {
+      const response = await fetch('/api/add-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
 
       const token = localStorage.getItem('jwtToken');
 
-      const response = await fetch(`/api/update-product-details/${productId}`, {
+      const response = await fetch(`/api/update-details/${detailsForm.details_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
   const handleDeleteStock = async (detailsId) => {
     try {
       const token = localStorage.getItem('jwtToken');
-      const response = await fetch(`/api/delete-product-details/${detailsId}`, {
+      const response = await fetch(`/api/delete-details/${detailsId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -136,6 +136,7 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
 
   const handleEditStock = (detail) => {
     setDetailsForm({
+      details_id: detail.details_id,
       color: detail.color,
       size: detail.size,
       quantity: detail.quantity,
@@ -143,12 +144,11 @@ const ProductDetailsComp = ({ productId, productDetails, onUpdate }) => {
     });
     setSelectedColor({ name: detail.color, colorCode: detail.color_hex });
     setSelectedSize(detail.size);
-    refreshProductDetails();
   };
 
   const refreshProductDetails = () => {
     const token = localStorage.getItem('jwtToken');
-    fetch(`/api/view-product-details/${productId}`, {
+    fetch(`/api/view-details/${productId}`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

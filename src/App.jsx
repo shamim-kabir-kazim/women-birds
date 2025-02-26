@@ -48,26 +48,23 @@ function App() {
           padding: 0,
         }}
       >
-        <div
-          className="divi"
-          style={{
-            width: '100%',
-            background:
-              location.pathname === '/'
-                ? 'radial-gradient(100% 100% at 50% 50%, #C4B5CA 0%, #E5D2EB 22%, #DCB8E8 75%, #C1B0C7 100%)'
-                : 'transparent',
-            
-            transition: 'background 0.3s ease, border-bottom 0.3s ease',
-            margin:'0px',
-            padding:'10px',
-          }}
-        ><header>
+       <div
+  className="divi"
+  style={{
+    width: '100%',
+    background: location.pathname === '/' ? '#d7b6e2' : 'transparent',
+    transition: 'background 0.3s ease, border-bottom 0.3s ease',
+    margin: '0px',
+    padding: '10px',
+  }}
+>
+<header>
           <Headerds />
          
           </header>
           {/* Show ImageScroller only on the home page */}
           {location.pathname === '/' && <ImageDisplay images={images} />}
-          <VerifyJWT /> 
+          
         </div>
         <Routes>
           <Route path="/" element={<HomePage />} />

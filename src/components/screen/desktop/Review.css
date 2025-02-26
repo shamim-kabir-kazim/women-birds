@@ -1,62 +1,86 @@
 .review-system {
-    width: 550px;
-    height: max-content;
-    margin-top: 20px ;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #fefefe;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 50vw; /* Adjusted width for responsiveness */
+  max-width: 500px;
+  height: max-content;
+  margin-top: 2%;
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #fefefe;
+  box-shadow: 0 0.5% 1% rgba(0, 0, 0, 0.2);
+}
+
+.review-system h2 {
+  margin-bottom: 2%;
+  font-size: 1.8vw;
+  color: #431934;
+}
+
+textarea {
+  width: 90%;
+  height: 15vh;
+  padding: 2%;
+  margin-bottom: 2%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  font-size: 1vw;
+  font-family: inherit;
+}
+
+.star {
+  padding-bottom: 1%;
+  font-size: 2.5vw;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #431934;
+}
+
+.add-button {
+  width: 80%;
+  padding: 2%;
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: #fff;
+  background-color: #431934;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #360F28;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .review-system {
+      width: 90%;
+      max-width: 90%;
+      align-self: center;
   }
-  
+
   .review-system h2 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #431934;
+      font-size: 4vw;
   }
   
   textarea {
-    width: 90%;
-    height: 80px;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-    font-size: 14px;
-    font-family: inherit;
+      font-size: 3vw;
+      height: 12vh;
   }
-  
- 
-  
+
   .star {
-    padding-bottom: 10px;
-    
-    font-size: 25px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.2s;
+      font-size: 4vw;
   }
-  
-  .star.filled {
-    color: #431934;
-  }
-  
+
   .add-button {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #431934;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+      font-size: 4vw;
   }
-  
-  .add-button:hover {
-    background-color: #360F28;
-  }
+}

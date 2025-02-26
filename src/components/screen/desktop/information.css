@@ -1,4 +1,4 @@
-.midll {
+.cu-midll {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -7,32 +7,32 @@
   overflow-wrap: break-word;
   overflow: hidden;
   height: 100%;
-  max-width:1900px;
+  max-width: 1900px;
   margin: auto;
- 
 }
+
 /* information.css */
 
-.main-container {
+.cu-main-container {
   flex: 1;
   display: flex;
   max-width: 1900px;
   height: 100vh;
   font-family: Arial, sans-serif;
-
   padding: 40px;
   gap: 5px;
 }
 
-.menu {
-  width: 15%;
+.cu-menu {
+  width: 200px;
   color: #ecf0f1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.menu-item {
+.cu-menu-item {
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -46,30 +46,31 @@
   color: #000000;
 }
 
-.menu-item:hover {
+.cu-menu-item:hover {
   background-color: #ffffff;
   color: #000000;
 }
 
-.menu-item.selected {
+.cu-menu-item.selected {
   background-color: #431934;
   color: #ffffff;
 }
 
-.menu-item span {
+.cu-menu-item span {
   font-size: 16px;
 }
-.content {
+
+.cu-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  background-color: #f3e4e4;
+  background-color: #FFF0F5;
   color: #2c3e50;
   font-size: 20px;
   text-align: center;
   border-radius: 10px;
-  padding: 0px 40px;
+  padding: 0px 20px;
   overflow-wrap: break-word;
   overflow: hidden;
   height: 100%;
@@ -77,39 +78,40 @@
 }
 
 @media only screen and (max-width: 1350px) {
-  .main-container {
+  .cu-main-container {
     padding: 15px;
     gap: 5px;
   }
-  .menu {
+  .cu-menu {
     width: 20%;
     margin: 5px;
   }
-  .menu-item {
+  .cu-menu-item {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     gap: 5px;
   }
-  .content {
+  .cu-content {
     padding: 20px;
   }
 }
+
 @media only screen and (max-width: 950px) {
-  .main-container {
+  .cu-main-container {
     padding: 5px;
   }
-  .menu {
-    width: 20%;
+  .cu-menu {
+    width: 180px;
     margin-left: 5px;
   }
-  .menu-item {
+  .cu-menu-item {
     width: 100%;
     padding: 6px;
     border-radius: 3px;
     gap: 4px;
   }
-  .content {
+  .cu-content {
     padding: 20px;
   }
 }

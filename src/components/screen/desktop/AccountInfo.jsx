@@ -47,7 +47,7 @@ const AccountInfo = () => {
           {menuItems.map((item) => (
             <div
               key={item.id}
-              className={`cvb-menu-item ${item.id === selectedId ? 'cvb-selected' : ''}`}
+              className={`cvb-menu-item ${item.id === selectedId ? 'selected' : ''}`}
               onClick={() => setSelectedId(item.id)}
             >
               {item.icon}

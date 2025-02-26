@@ -17,15 +17,15 @@
   flex: 1;
   display: flex;
   max-width: 1900px;
-  height: 100vh;
+  max-height: 1200px ;
   font-family: Arial, sans-serif;
-
-  padding: 40px;
+  padding: 20px;
   gap: 5px;
 }
 
 .cvb-menu {
   width: 15%;
+
   color: #ecf0f1;
   display: flex;
   flex-direction: column;
@@ -67,10 +67,9 @@
   align-items: flex-start; /* Aligns all items to the left */
   justify-content: flex-start; /* Ensures content starts from the top */
   flex-wrap: nowrap; /* Prevents items from wrapping */
-  background-color: #e6e6e6;
-  color: #2c3e50;
-  border-radius: 10px;
-  padding: 10px; /* Increased padding for better spacing */
+  background-color: #ffffff;
+  color: #444444;
+  padding: 5px; /* Increased padding for better spacing */
   overflow-wrap: break-word;
   overflow: hidden;
   height: 100%;

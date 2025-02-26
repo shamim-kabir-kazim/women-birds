@@ -1,5 +1,19 @@
+.account-midll{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width:1900px;
+  min-height: 100vh;
+  background-color: aqua;
+}
 .account-div {
     display: flex; /* Enables flexible layout */
+
     flex-direction: column; /* Stacks children vertically */
     justify-content: center; /* Centers content vertically */
     align-items: center; /* Centers content horizontally */
@@ -10,4 +24,3 @@
     background-color: #f9f9f9; /* Optional: Background color */
     margin: auto;
   }
-  

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MyDetails from './MyDetails'; // Import the MyDetails component
 import './MyAccount.css';
 
 const MyAccount = () => {
@@ -9,6 +10,9 @@ const MyAccount = () => {
     phone: '0123456789',
     address: 'hajaribag',
   });
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,12 +25,23 @@ const MyAccount = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
+    setIsUpdated(true); // Show MyDetails after updating
   };
+
+  if (isUpdated) {
+    return <MyDetails formData={formData} />; // Replace form with MyDetails
+  }
 
   return (
     <div className="xvr-form-container">
-      <h1 className="xvr-form-title">My Details</h1>
-      <h2 className="xvr-form-subtitle">Personal Information</h2>
+      <div className="xvr-maccount-user-details">
+        <div className="xvr-maccount-profile-picture">
+          <img src="https://i.postimg.cc/NMgmfhgS/user-circle-svgrepo-com.png" alt="Profile" />
+        </div>
+        <div className="xvr-maccount-user-info">
+          <h2>Badhon Shikder</h2>
+          <p>Badhonusha@gmail.com</p>
+        </div>
       <form className="xvr-details-form" onSubmit={handleSubmit}>
         <div className="xvr-form-row">
           <div className="xvr-first">
@@ -37,7 +52,7 @@ const MyAccount = () => {
               value={formData.firstName}
               onChange={handleChange}
               className="xvr-form-input"
-              disabled
+              disabled={!isEditing}
             />
           </div>
           <div className="xvr-last">
@@ -48,7 +63,7 @@ const MyAccount = () => {
               value={formData.lastName}
               onChange={handleChange}
               className="xvr-form-input"
-              disabled
+              disabled={!isEditing}
             />
           </div>
         </div>
@@ -61,7 +76,7 @@ const MyAccount = () => {
             value={formData.email}
             onChange={handleChange}
             className="xvr-form-input"
-            disabled
+            disabled={!isEditing}
           />
         </div>
 
@@ -73,7 +88,7 @@ const MyAccount = () => {
             value={formData.phone}
             onChange={handleChange}
             className="xvr-form-input"
-            disabled
+            disabled={!isEditing}
           />
         </div>
 
@@ -85,14 +100,25 @@ const MyAccount = () => {
             value={formData.address}
             onChange={handleChange}
             className="xvr-form-input"
-            disabled
+            disabled={!isEditing}
           />
         </div>
 
-        <button type="submit" className="xvr-form-button">
-          Update
-        </button>
+        {!isEditing ? (
+          <button
+            type="button"
+            className="xvr-form-button"
+            onClick={() => setIsEditing(true)}
+          >
+            Edit
+          </button>
+        ) : (
+          <button type="submit" className="xvr-form-button">
+            Update
+          </button>
+        )}
       </form>
+      </div>
     </div>
   );
 };

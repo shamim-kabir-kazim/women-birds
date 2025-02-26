@@ -3,19 +3,21 @@ import './MyDetails.css';
 
 const MyDetails = () => {
   return (
-    <div className="form-container">
+    <div className="DD-form-container">
         
-      <h1 className="form-title">My Details</h1>
-      <h2 className="form-subtitle">Personal Information</h2>
-      <form className="details-form">
-        <div className="form-row">
-          <input type="text" placeholder="First name" className="form-input" />
-          <input type="text" placeholder="Last name" className="form-input" />
+      
+      <form className="DD-details-form">
+      <h1 className="DD-form-title">My Details</h1>
+      <h2 className="DD-form-subtitle">Personal Information</h2>
+        <div className="DD-form-row">
+        
+          <input type="text" placeholder="First name" className="DD-form-input" />
+          <input type="text" placeholder="Last name" className="DD-form-input" />
         </div>
-        <input type="email" placeholder="E-mail" className="form-input" />
-        <input type="tel" placeholder="Phone" className="form-input" />
-        <input type="text" placeholder="Address" className="form-input" />
-        <button type="submit" className="form-button">save</button>
+        <input type="email" placeholder="E-mail" className="DD-form-input" />
+        <input type="tel" placeholder="Phone" className="DD-form-input" />
+        <input type="text" placeholder="Address" className="DD-form-input" />
+        <button type="submit" className="DD-form-button">save</button>
       </form>
     </div>
    
