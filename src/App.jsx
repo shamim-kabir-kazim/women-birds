@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import ImageScroller from './components/screen/desktop/ImageScroller';
 import './App.css';
 import HomePage from './components/pages/HomePage';
@@ -27,13 +28,26 @@ import AdminRegPage from './components/adminpages/AdminRegPage';
 import VerifyJWT from './components/VerifyJWT';
 
 function App() {
-  const images = [
-    'https://i.postimg.cc/7Z2Kvkpc/f31c69fa52c67fef74e0646531818323.jpg',
-  'https://i.postimg.cc/Lsc197Hg/b316df6f2ab68e16f8195ff01ccf9b1b.jpg',
-  'https://indiaspopup.com/cdn/shop/products/Deep-Red-Bridal-Lehenga-Choli-Set-1_grande.jpg?v=1665673526',
-  'https://media.samyakk.com/pub/media/catalog/product/p/i/pink-stone-embroidered-exclusive-bridal-net-lehenga-with-leaf-neck-gc4746-b.jpg',
-  'https://i.postimg.cc/SRYMXy7b/6226738299368750209-zoom.jpg',
-  ];
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('/api/ncview');
+        if (!response.ok) {
+          throw new Error('Failed to fetch images');
+        }
+        const data = await response.json();
+        console.log('Fetched images:', data); // Added console log to debug
+        // Assuming the response is an array of objects with a `url` property
+        setImages(data.map(item => item.image_url));
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   function Layout() {
     const location = useLocation();
@@ -48,23 +62,21 @@ function App() {
           padding: 0,
         }}
       >
-       <div
-  className="divi"
-  style={{
-    width: '100%',
-    background: location.pathname === '/' ? '#d7b6e2' : 'transparent',
-    transition: 'background 0.3s ease, border-bottom 0.3s ease',
-    margin: '0px',
-    padding: '10px',
-  }}
->
-<header>
-          <Headerds />
-         
+        <div
+          className="divi"
+          style={{
+            width: '100%',
+            background: location.pathname === '/' ? '#d7b6e2' : 'transparent',
+            transition: 'background 0.3s ease, border-bottom 0.3s ease',
+            margin: '0px',
+            padding: '10px',
+          }}
+        >
+          <header>
+            <Headerds />
           </header>
           {/* Show ImageScroller only on the home page */}
           {location.pathname === '/' && <ImageDisplay images={images} />}
-          
         </div>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -74,31 +86,25 @@ function App() {
           <Route path="/Details" element={<ProductPage />} />
           <Route path="/user" element={<LoginPage />} />
           <Route path="/Information/*" element={<MobileAboutDynamicPage />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/delivery-option" element={<DeliveryOption />} />
-        <Route path="/payment-option" element={<PaymentOption />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/returns-refund-policy" element={<ReturnsRefundPolicy />} />
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-        
-        <Route path="/admin-login" element={<AdminLoginPage />} />
-        <Route path="/admin-register" element={<AdminRegPage />} />
-        <Route path="/admin/dashboard" element={<Adminpage />} />
-        
-       
-          
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/delivery-option" element={<DeliveryOption />} />
+          <Route path="/payment-option" element={<PaymentOption />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/returns-refund-policy" element={<ReturnsRefundPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/admin-login" element={<AdminLoginPage />} />
+          <Route path="/admin-register" element={<AdminRegPage />} />
+          <Route path="/admin/dashboard" element={<Adminpage />} />
         </Routes>
-     
         <div
           style={{
             width: '100%',
             background: '#431934',
           }}
         >
-          
           <footer>
-          <Footer />
+            <Footer />
           </footer>
         </div>
       </div>
