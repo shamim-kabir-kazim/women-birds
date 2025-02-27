@@ -1,20 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Banner.css';
 
 const Banner = () => {
+  const [bannerImages, setBannerImages] = useState({
+    image1: '',
+    image2: '',
+  });
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/ads_img/1'); // Fetching cat8 and cat9 from id 1
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch banner images');
+        }
+
+        const data = await response.json();
+
+        setBannerImages({
+          image1: `http://localhost:3000${data.cat8}`,
+          image2: `http://localhost:3000${data.cat9}`,
+        });
+      } catch (error) {
+        console.error('Error fetching banner images:', error);
+      }
+    };
+
+    fetchImages();
+  }, []);
+
   return (
     <div className="banner-container">
       <div className="banner-content">
         <div className="image-frame">
           <img
             className="image-frame-item"
-            src="https://i.ytimg.com/vi/-lAvAD-rlZE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD-fhkweyLUM0eWXDVAMgsXnYpFog"
-            alt="Eastern Bluebirds"
+            src={bannerImages.image1}
+            alt="Banner Image 1"
           />
           <img
             className="image-frame-item"
-            src="https://sudathi.com/cdn/shop/files/1_2f03ee13-a933-4475-8076-95d5630db6e5.jpg?v=1737109441&width=2000"
-            alt="Eastern Bluebirds"
+            src={bannerImages.image2}
+            alt="Banner Image 2"
           />
         </div>
       </div>
