@@ -7,6 +7,8 @@ const ItemLD = ({ name, price, image }) => {
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
 
+  console.log('Image URL:', image); // Log the image URL to check it
+
   return (
     <div
       className="before-uniq-MainItem"
@@ -40,14 +42,15 @@ const ItemLD = ({ name, price, image }) => {
       {/* product button */}
       <div className={isHovering ? 'before-visibleBBb' : 'before-hiddenBBb'}>
         <div className="but-itm">
-        <div className="before-uniq-ItemButton">
-          <img
-            className="before-uniq-ButtonIcon"
-            src="https://i.postimg.cc/R0qSF54C/cart-large-minimalistic-svgrepo-com-1.png"
-          />
-          <div className="before-uniq-ButtonText">
-            Add To Cart
-          </div>
+          <div className="before-uniq-ItemButton">
+            <img
+              className="before-uniq-ButtonIcon"
+              src="https://i.postimg.cc/R0qSF54C/cart-large-minimalistic-svgrepo-com-1.png"
+              alt="Cart Icon"
+            />
+            <div className="before-uniq-ButtonText">
+              Add To Cart
+            </div>
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ const Newweek = () => {
 
         const data = await response.json();
         setNewWeekItems(data.map(item => ({
+          id: item.product_id,
           name: item.product_name,
           price: item.price,
           image: `http://localhost:3000${item.primary_img_url}`,
