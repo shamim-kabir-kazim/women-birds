@@ -104,7 +104,7 @@ const ViewInventory = () => {
               <td>{item.slug}</td>
               <td>
                 <img
-                  src={`http://localhost:3000${item.primary_img_url}`}
+                  src={item.primary_img_url}
                   alt={item.product_name}
                   className="ml-xo-image"
                 />
