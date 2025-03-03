@@ -11,7 +11,9 @@ const DynamicTable = ({ category }) => {
     setLoading(true);
     setError(null);
     try {
-      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+      const token = localStorage.getItem('jwtToken'); // Assuming the JWT is stored in localStorage
+      console.log('JWT Token:', token); // Log the token being sent
+
       const categoryResponse = await fetch(`/api/categories/${category.toLowerCase().replace(/ /g, '-')}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -56,7 +58,9 @@ const DynamicTable = ({ category }) => {
 
   const handleDelete = async (id) => {
     try {
-      const token = localStorage.getItem('token'); // Assuming the JWT is stored in localStorage
+      const token = localStorage.getItem('jwtToken'); // Assuming the JWT is stored in localStorage
+      console.log('JWT Token for delete:', token); // Log the token being sent for delete
+
       const response = await fetch(`/api/categories/${category.toLowerCase().replace(/ /g, '-')}/${id}`, {
         method: 'DELETE',
         headers: {
@@ -99,8 +103,7 @@ const DynamicTable = ({ category }) => {
           {data.map((item, index) => (
             <tr key={index}>
               <td>{item.product_name}</td>
-              <td><img src={item.product_image}  alt={item.product_name} className="product-image" />
-              </td>
+              <td><img src={item.product_image} alt={item.product_name} className="product-image" /></td>
               {Object.entries(item).map(([key, value]) => (
                 key !== 'product_name' && key !== 'product_image' && <td key={key}>{value}</td>
               ))}
