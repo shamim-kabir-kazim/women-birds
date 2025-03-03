@@ -20,7 +20,7 @@ const Newweek = () => {
           id: item.product_id,
           name: item.product_name,
           price: item.price,
-          image: `http://localhost:3000${item.primary_img_url}`,
+          image: item.primary_img_url,
         })));
       } catch (error) {
         console.error('Error fetching new week items:', error);

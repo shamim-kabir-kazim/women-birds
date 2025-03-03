@@ -264,7 +264,7 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
         <form onSubmit={handleSubmit}>
           <div className="heddo-images">
             <div className="image-section">
-              <img src={newImagePreview || `http://localhost:3000${formData.primary_img_url}`} alt="Product" width="300" height="400" />
+              <img src={newImagePreview || formData.primary_img_url} alt="Product" width="300" height="400" />
               <input
                 type="file"
                 className="image-selector"
@@ -330,8 +330,9 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
                     <tr key={image.image_id}>
                       <td>{image.image_id}</td>
                       <td>
-                        <img src={`http://localhost:3000${image.image_url}`} alt="Extra" width="100" height="100" />
-                        {`http://localhost:3000${image.image_url}`}
+                        <img src={image.image_url} alt="Extra" width="100" height="100" />
+                        {image.image_url}
+
                       </td>
                       <td>
                         <button

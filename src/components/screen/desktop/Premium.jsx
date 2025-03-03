@@ -18,11 +18,11 @@ const Premium = () => {
         console.log('Fetched premium images:', data); // Add console log to debug
 
         setPremiumItems([
-          { id: 4, image: `http://localhost:3000${data.cat4}`, label: 'Fishtail lehenga' },
-          { id: 5, image: `http://localhost:3000${data.cat5}`, label: 'Alzohib Three Piece Collection' },
-          { id: 6, image: `http://localhost:3000${data.cat6}`, label: 'Wedding Saree' },
-          { id: 7, image: `http://localhost:3000${data.cat7}`, label: 'Fishtail lehenga' },
-        ]);
+          { id: 4, image: data.cat4, label: 'Fishtail lehenga' },
+          { id: 5, image: data.cat5, label: 'Alzohib Three Piece Collection' },
+          { id: 6, image: data.cat6, label: 'Wedding Saree' },
+          { id: 7, image: data.cat7, label: 'Fishtail lehenga' },
+        ]);        
       } catch (error) {
         console.error('Error fetching premium images:', error);
       }

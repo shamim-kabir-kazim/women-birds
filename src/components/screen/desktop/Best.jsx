@@ -21,7 +21,7 @@ const Best = ({ children }) => {
           id: item.product_id,
           name: item.product_name,
           price: item.price,
-          image: `http://localhost:3000${encodeURI(item.primary_img_url)}`,
+          image: encodeURI(item.primary_img_url),
         })));
       } catch (error) {
         console.error('Error fetching best deals items:', error);

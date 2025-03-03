@@ -19,9 +19,10 @@ const Banner = () => {
         const data = await response.json();
 
         setBannerImages({
-          image1: `http://localhost:3000${data.cat8}`,
-          image2: `http://localhost:3000${data.cat9}`,
+          image1: data.cat8,
+          image2: data.cat9,
         });
+        
       } catch (error) {
         console.error('Error fetching banner images:', error);
       }

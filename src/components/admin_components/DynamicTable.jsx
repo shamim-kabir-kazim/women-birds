@@ -99,7 +99,7 @@ const DynamicTable = ({ category }) => {
           {data.map((item, index) => (
             <tr key={index}>
               <td>{item.product_name}</td>
-              <td><img src={`http://localhost:3000${item.product_image}`} alt={item.product_name} className="product-image" />
+              <td><img src={item.product_image}  alt={item.product_name} className="product-image" />
               </td>
               {Object.entries(item).map(([key, value]) => (
                 key !== 'product_name' && key !== 'product_image' && <td key={key}>{value}</td>

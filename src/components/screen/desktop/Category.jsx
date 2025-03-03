@@ -24,10 +24,11 @@ const Category = () => {
         console.log('Fetched category images:', data); // Add console log to debug
 
         setCategoryImages({
-          category1: `http://localhost:3000${data.cat1}`,
-          category2: `http://localhost:3000${data.cat2}`,
-          category3: `http://localhost:3000${data.cat3}`
+          category1: data.cat1,
+          category2: data.cat2,
+          category3: data.cat3
         });
+        
       } catch (error) {
         console.error('Error fetching category images:', error);
       }

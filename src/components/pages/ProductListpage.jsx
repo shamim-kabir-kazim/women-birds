@@ -18,7 +18,11 @@ const ProductListpage = () => {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        setItems(data);
+        const formattedData = data.map(item => ({
+          ...item,
+          image: item.primary_img_url
+        }));
+        setItems(formattedData);
       } catch (error) {
         console.error('Error fetching products:', error);
       }

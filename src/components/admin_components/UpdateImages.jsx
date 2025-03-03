@@ -36,18 +36,18 @@ const UpdateImages = () => {
       try {
         const response = await axios.get('http://localhost:3000/api/ads_img/1'); // No JWT token needed for GET request
         console.log('Fetched images:', response.data);
-        // Prepend 'http://localhost:3000' to each image URL
         setImages({
-          cat1: `http://localhost:3000${response.data.cat1}`,
-          cat2: `http://localhost:3000${response.data.cat2}`,
-          cat3: `http://localhost:3000${response.data.cat3}`,
-          cat4: `http://localhost:3000${response.data.cat4}`,
-          cat5: `http://localhost:3000${response.data.cat5}`,
-          cat6: `http://localhost:3000${response.data.cat6}`,
-          cat7: `http://localhost:3000${response.data.cat7}`,
-          cat8: `http://localhost:3000${response.data.cat8}`,
-          cat9: `http://localhost:3000${response.data.cat9}`
+          cat1: response.data.cat1,
+          cat2: response.data.cat2,
+          cat3: response.data.cat3,
+          cat4: response.data.cat4,
+          cat5: response.data.cat5,
+          cat6: response.data.cat6,
+          cat7: response.data.cat7,
+          cat8: response.data.cat8,
+          cat9: response.data.cat9
         });
+        
       } catch (error) {
         console.error('Failed to fetch images:', error);
         setError('Failed to fetch images.');
@@ -92,7 +92,7 @@ const UpdateImages = () => {
         }
       });
       const imageUrl = response.data.url;
-      setImages((prevImages) => ({ ...prevImages, [cat]: `http://localhost:3000${imageUrl}` }));
+      setImages((prevImages) => ({ ...prevImages, [cat]: imageUrl }));
       setMessage('Image updated successfully.');
     } catch (error) {
       console.error('Failed to update image:', error);
