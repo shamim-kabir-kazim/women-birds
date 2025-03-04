@@ -38,7 +38,6 @@ function App() {
           throw new Error('Failed to fetch images');
         }
         const data = await response.json();
-        console.log('Fetched images:', data); // Added console log to debug
         // Assuming the response is an array of objects with a `url` property
         setImages(data.map(item => item.image_url));
       } catch (error) {

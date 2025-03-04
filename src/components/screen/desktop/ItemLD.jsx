@@ -7,8 +7,6 @@ const ItemLD = ({ name, price, image }) => {
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
 
-  console.log('Image URL:', image); // Log the image URL to check it
-
   return (
     <div
       className="before-uniq-MainItem"
