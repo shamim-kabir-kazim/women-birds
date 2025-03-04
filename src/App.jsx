@@ -9,8 +9,8 @@ import ProductListpage from './components/pages/ProductListpage';
 import ImageDisplay from './components/screen/desktop/ImageDisplay';
 import AboutPage from './components/pages/AboutPage';
 import Hed from './components/screen/desktop/Hed';
-import AccountPage from'./components/pages/AccountPage';
-import FavrtPage from'./components/pages/FavrtPage';
+import AccountPage from './components/pages/AccountPage';
+import FavrtPage from './components/pages/FavrtPage';
 import ProductPage from './components/pages/ProductPage';
 import LoginPage from './components/pages/LoginPage';
 import MobileAboutDynamicPage from './components/pages/MobileAboutDynamic';
@@ -82,7 +82,7 @@ function App() {
           <Route path="/products" element={<ProductListpage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/Favorite" element={<FavrtPage />} />
-          <Route path="/details/:id" element={<ProductPage />} />
+          <Route path="/Details" element={<ProductPage />} />
           <Route path="/user" element={<LoginPage />} />
           <Route path="/Information/*" element={<MobileAboutDynamicPage />} />
           <Route path="/contact" element={<ContactUs />} />

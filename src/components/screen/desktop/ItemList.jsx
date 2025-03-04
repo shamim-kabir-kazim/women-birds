@@ -6,8 +6,8 @@ const ItemList = ({ items }) => {
   return (
     <div className="ItemList">
       {items.map((item) => (
-        <div key={`${item.id}-${item.name}`} className="GridItem">
-          <ItemLD name={item.name} price={item.price} image={item.image} />
+        <div key={item.id} className="GridItem">
+          <ItemLD id={item.id} name={item.name} price={item.price} image={item.image} />
         </div>
       ))}
     </div>

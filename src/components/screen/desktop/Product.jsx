@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css';
 
-const Product = ({ product }) => {
+const Product = ({ productId }) => {
+  const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (product) {
-      setMainImage(product.primary_img_url);
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`/api/view-product/${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch product');
+        }
+        const data = await response.json();
+        setProduct(data);
+        setMainImage(data.primary_img_url);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (productId) {
+      fetchProduct();
     }
-  }, [product]);
+  }, [productId]);
 
   const handleSizeChange = (size) => {
     setSelectedSize((prevSize) => (prevSize === size ? null : size));
   };
-
-  if (!product) {
-    return <p>Loading...</p>;
-  }
-
-  const sideImages = [
-    product.primary_img_url,
-    // Add more images if available in the product data
-  ];
 
   const [quantity, setQuantity] = useState(1);
 
@@ -33,6 +43,23 @@ const Product = ({ product }) => {
       setQuantity(quantity - 1);
     }
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!product) {
+    return <p>No product found</p>;
+  }
+
+  const sideImages = [
+    product.primary_img_url,
+    // Add more images if available in the product data
+  ];
 
   return (
     <div className="midll">

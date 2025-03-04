@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TextHed from './TextHed';
 import ItemLD from './ItemLD';
 import './Best.css';
 
 const Best = ({ children }) => {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -31,12 +33,20 @@ const Best = ({ children }) => {
     fetchItems();
   }, []);
 
+  const handleItemClick = (id) => {
+    navigate(`/Details?id=${id}`);
+  };
+
   return (
     <div className="fvrt-container">
       <TextHed text={"Best Deals"} />
       <div className="ItemList">
         {items.map((item) => (
-          <div key={`${item.id}-${item.name}`} className="GridItem">
+          <div 
+            key={`${item.id}-${item.name}`} 
+            className="GridItem" 
+            onClick={() => handleItemClick(item.id)}
+          >
             <ItemLD name={item.name} price={item.price} image={item.image} />
           </div>
         ))}

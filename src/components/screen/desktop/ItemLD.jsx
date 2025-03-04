@@ -10,7 +10,7 @@ const ItemLD = ({ id, name, price, image }) => {
   const handleMouseLeave = () => setIsHovering(false);
 
   const handleClick = () => {
-    navigate(`/details/${id}`);
+    navigate(`/Details?id=${id}`);
   };
 
   return (
@@ -44,6 +44,7 @@ const ItemLD = ({ id, name, price, image }) => {
           </div>
         </div>
       </div>
+      {/* product button */}
       <div className={isHovering ? 'before-visibleBBb' : 'before-hiddenBBb'}>
         <div className="but-itm">
           <div className="before-uniq-ItemButton">
@@ -59,9 +60,11 @@ const ItemLD = ({ id, name, price, image }) => {
         </div>
       </div>
       <div className={isHovering ? 'before-visiblePPp' : 'before-hiddenPPp'}>
+        {/* product name */}
         <div className="before-uniq-ProductName" name="name">
           {name}
         </div>
+        {/* product price */}
         <div className="before-uniq-ProductPrice" name="price">
           {price}
         </div>
