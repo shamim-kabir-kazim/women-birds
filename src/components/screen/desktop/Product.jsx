@@ -7,6 +7,7 @@ const Product = ({ productId }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sideImages, setSideImages] = useState([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -25,8 +26,22 @@ const Product = ({ productId }) => {
       }
     };
 
+    const fetchSideImages = async () => {
+      try {
+        const response = await fetch(`/api/view-extra-images/${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch extra images');
+        }
+        const data = await response.json();
+        setSideImages(data.map(img => img.image_url));
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     if (productId) {
       fetchProduct();
+      fetchSideImages();
     }
   }, [productId]);
 
@@ -55,11 +70,6 @@ const Product = ({ productId }) => {
   if (!product) {
     return <p>No product found</p>;
   }
-
-  const sideImages = [
-    product.primary_img_url,
-    // Add more images if available in the product data
-  ];
 
   return (
     <div className="midll">
