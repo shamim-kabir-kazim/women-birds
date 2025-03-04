@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ItemLD.css';
 
-const ItemLD = ({ name, price, image }) => {
+const ItemLD = ({ id, name, price, image }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
+
+  const handleClick = () => {
+    navigate(`/details/${id}`);
+  };
 
   return (
     <div
       className="before-uniq-MainItem"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <div
         className="before-uniq-ImgItem"
@@ -37,7 +44,6 @@ const ItemLD = ({ name, price, image }) => {
           </div>
         </div>
       </div>
-      {/* product button */}
       <div className={isHovering ? 'before-visibleBBb' : 'before-hiddenBBb'}>
         <div className="but-itm">
           <div className="before-uniq-ItemButton">
@@ -53,11 +59,9 @@ const ItemLD = ({ name, price, image }) => {
         </div>
       </div>
       <div className={isHovering ? 'before-visiblePPp' : 'before-hiddenPPp'}>
-        {/* product name */}
         <div className="before-uniq-ProductName" name="name">
           {name}
         </div>
-        {/* product price */}
         <div className="before-uniq-ProductPrice" name="price">
           {price}
         </div>

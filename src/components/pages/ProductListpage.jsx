@@ -19,10 +19,11 @@ const ProductListpage = () => {
         }
         const data = await response.json();
         const formattedData = data.map(item => ({
-          id: item.product_id,
+          ...item,
+          image: item.primary_img_url,
           name: item.product_name,
           price: item.price,
-          image: item.primary_img_url
+          id: item.product_id
         }));
         setItems(formattedData);
       } catch (error) {

@@ -82,7 +82,7 @@ function App() {
           <Route path="/products" element={<ProductListpage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/Favorite" element={<FavrtPage />} />
-          <Route path="/Details" element={<ProductPage />} />
+          <Route path="/details/:id" element={<ProductPage />} />
           <Route path="/user" element={<LoginPage />} />
           <Route path="/Information/*" element={<MobileAboutDynamicPage />} />
           <Route path="/contact" element={<ContactUs />} />
