@@ -8,6 +8,7 @@ const Product = ({ productId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sideImages, setSideImages] = useState([]);
+  const [productDetails, setProductDetails] = useState([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -39,9 +40,23 @@ const Product = ({ productId }) => {
       }
     };
 
+    const fetchProductDetails = async () => {
+      try {
+        const response = await fetch(`/api/view-details/${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch product details');
+        }
+        const data = await response.json();
+        setProductDetails(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     if (productId) {
       fetchProduct();
       fetchSideImages();
+      fetchProductDetails();
     }
   }, [productId]);
 
@@ -71,6 +86,10 @@ const Product = ({ productId }) => {
     return <p>No product found</p>;
   }
 
+  const availableSizes = [...new Set(productDetails.map(detail => detail.size))];
+  const availableColors = [...new Set(productDetails.map(detail => ({ color: detail.color, hex: detail.color_hex })))];
+  const descriptionSentences = product.description.split('.').filter(sentence => sentence.trim().length > 0);
+
   return (
     <div className="midll">
       <div className="image-gallery">
@@ -95,7 +114,7 @@ const Product = ({ productId }) => {
 
           <div className="size-section">
             <h3 className="product-heads">Size:</h3>
-            {['S', 'M', 'L', 'XL'].map((size) => (
+            {availableSizes.map((size) => (
               <label key={size}>
                 <input
                   type="checkbox"
@@ -111,10 +130,14 @@ const Product = ({ productId }) => {
 
           <div className="color-section">
             <h3 className="product-heads">Color:</h3>
-            <div className="color-box" style={{ backgroundColor: '#ff9999' }}></div>
-            <div className="color-box" style={{ backgroundColor: '#ffcc99' }}></div>
-            <div className="color-box" style={{ backgroundColor: '#ccff99' }}></div>
-            <div className="color-box" style={{ backgroundColor: '#99ccff' }}></div>
+            {availableColors.map(({ color, hex }) => (
+              <div
+                key={color}
+                className="color-box"
+                style={{ backgroundColor: hex }}
+                title={color}
+              ></div>
+            ))}
           </div>
 
           <div className="quantity-section">
@@ -131,10 +154,12 @@ const Product = ({ productId }) => {
           <div className="product-details">
             <p><strong>Product Details</strong></p>
             <ul>
-              <li>{product.description}</li>
+              {descriptionSentences.map((sentence, index) => (
+                <li key={index}>{sentence.trim()}.</li>
+              ))}
             </ul>
-
-            <p><strong>Fabric:</strong> {product.fabric}</p>
+            <p><strong>Size & Fit </strong> {product.fabric}</p>
+            <p><strong>Materials & Care</strong> {product.fabric}</p>
           </div>
         </div>
       </div>

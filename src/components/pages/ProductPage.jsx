@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Product from '../screen/desktop/Product';
 import './ProductPage.css';
+import Sepa from '../screen/desktop/Sepa';
 
 const ProductPage = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const ProductPage = () => {
 
   return (
     <div className="home-div" style={{ width: '100%', height: '100%' }}>
+      <Sepa />
       <Product productId={productId} />
     </div>
   );

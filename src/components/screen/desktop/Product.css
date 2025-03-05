@@ -214,33 +214,15 @@
     background-color: #dbdada;
     color: #333;
   }
-  .product-details {
-    font-family: Arial, sans-serif;
-    color: #666; /* Subtle color for less prominence */
-    font-size: 0.85em; /* Smaller font size for text */
-    line-height: 1.5; /* Maintain good readability */
-  }
-  
-  .product-details p {
-    font-weight: bold; /* Bold for section labels */
-    margin-top: 10px;
-    margin-bottom: 5px;
-    color: #431934; /* Distinct color for labels */
-  }
-  
   .product-details ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    margin-bottom: 15px;
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
   }
   
-  .product-details li {
-    margin-bottom: 5px;
-    font-size: 0.85em; /* Match font size for consistency */
-  }
-  
-  .product-details strong {
-    color: #333; /* Slightly darker color for emphasis */
+  .product-details ul li {
+    border: none; /* Ensure no border is applied */
+    padding: 5px 0; /* Add some padding for spacing */
+    color: #a6a6a6;
   }
   
   /* Reduce max-width for better fit */
