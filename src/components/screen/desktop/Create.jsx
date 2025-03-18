@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Create.css";
 
@@ -9,7 +9,19 @@ const Create = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // 'success' or 'error'
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+        setMessageType("");
+      }, 4000); // 4 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
@@ -17,27 +29,28 @@ const Create = () => {
       const response = await axios.post('http://localhost:3000/api/user/register', {
         username: email,
         email,
-        phone,
+        phone: `+880${phone}`,
         firstname,
         lastname,
         password,
         address
       });
       const { token } = response.data;
-      
+
       // Store the token in local storage
       localStorage.setItem('jwtToken', token);
       console.log('Stored JWT:', token);
 
-      // Check if token is the same after storage
-      const storedToken = localStorage.getItem('jwtToken');
-      console.log('Retrieved JWT:', storedToken);
-
-      // Redirect to user dashboard or perform other actions
-      window.location.href = '/user/dashboard';
+      // Show success message and redirect after a short delay
+      setMessage('Account created successfully! Redirecting to dashboard...');
+      setMessageType('success');
+      setTimeout(() => {
+        window.location.href = '/user/dashboard';
+      }, 2000);
     } catch (err) {
-      console.error('Registration Error:', err.response ? err.response.data : err.message);
-      setError('Registration failed. Please try again.');
+      console.error('Registration Error:', err.response ? err.response.data.message : err.message);
+      setMessage(err.response ? err.response.data.message : 'Registration failed. Please try again.');
+      setMessageType('error');
     }
   };
 
@@ -60,21 +73,21 @@ const Create = () => {
         </div>
         <div>
           <div>
-            <img className="f-icon" src="https://i.postimg.cc/d3Z4dKfh/flower-5-svgrepo-com.png" alt="flower-icon"></img>
+            <img className="vccx-f-icon" src="https://i.postimg.cc/d3Z4dKfh/flower-5-svgrepo-com.png" alt="flower-icon"></img>
           </div>
-          <div className="l-container">
-            <div className="l-card">
-              <div className="l-icon">
+          <div className="vccx-l-container">
+            <div className="vccx-l-card">
+              <div className="vccx-l-icon">
                 <div>
-                  <img className="u-icon" src="https://i.postimg.cc/wj8bX7gg/user-plus-svgrepo-com.png" alt="user-icon"></img>
+                  <img className="vccx-u-icon" src="https://i.postimg.cc/wj8bX7gg/user-plus-svgrepo-com.png" alt="user-icon"></img>
                 </div>
               </div>
               <form onSubmit={handleCreateAccount}>
-                <div className="formaling">
-                  <div className="formrow">
+                <div className="vccx-formaling">
+                  <div className="vccx-formrow">
                     <input
                       type="text"
-                      className="i-field"
+                      className="vccx-i-field"
                       placeholder="First name"
                       name="firstname"
                       value={firstname}
@@ -82,17 +95,17 @@ const Create = () => {
                     />
                     <input
                       type="text"
-                      className="i-field"
+                      className="vccx-i-field"
                       placeholder="Last name"
                       name="lastname"
                       value={lastname}
                       onChange={(e) => setLastname(e.target.value)}
                     />
                   </div>
-                  <div className="formrow">
+                  <div className="vccx-formrow">
                     <input
-                      type="phone"
-                      className="i-field"
+                      type="tel"
+                      className="vccx-i-field"
                       placeholder="Phone Number"
                       name="phone"
                       value={phone}
@@ -100,17 +113,17 @@ const Create = () => {
                     />
                     <input
                       type="email"
-                      className="i-field"
+                      className="vccx-i-field"
                       placeholder="Email"
                       name="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  <div className="formrow">
+                  <div className="vccx-formrow">
                     <input
                       type="password"
-                      className="i-field"
+                      className="vccx-i-field"
                       placeholder="Password"
                       name="password"
                       value={password}
@@ -118,7 +131,7 @@ const Create = () => {
                     />
                     <input
                       type="text"
-                      className="i-field"
+                      className="vccx-i-field"
                       placeholder="Address"
                       name="address"
                       value={address}
@@ -126,18 +139,32 @@ const Create = () => {
                     />
                   </div>
                 </div>
-                <button type="submit" className="l-button">
+                <button type="submit" className="vccx-l-button">
                   Create
                 </button>
-                <button type="button" className="c-account-button">
+                <button type="button" className="vccx-c-account-button">
                   Login
                 </button>
-                {error && <p className="error-message">{error}</p>}
               </form>
+              {message && (
+                <div
+                  className={`vccx-notification ${messageType}`}
+                  style={{
+                    color: messageType === 'success' ? 'green' : 'red',
+                    border: `1px solid ${messageType === 'success' ? 'green' : 'red'}`,
+                    padding: '10px',
+                    marginTop: '10px',
+                    borderRadius: '5px',
+                    textAlign: 'center',
+                  }}
+                >
+                  {message}
+                </div>
+              )}
             </div>
           </div>
           <div>
-            <img className="f-icon-2" src="https://i.postimg.cc/0N9W4Fz4/flower-bouquet-svgrepo-com.png" alt="flower-icon-2"></img>
+            <img className="vccx-f-icon-2" src="https://i.postimg.cc/0N9W4Fz4/flower-bouquet-svgrepo-com.png" alt="flower-icon-2"></img>
           </div>
         </div>
       </div>
