@@ -45,7 +45,7 @@ const Create = () => {
       setMessage('Account created successfully! Redirecting to dashboard...');
       setMessageType('success');
       setTimeout(() => {
-        window.location.href = '/user/dashboard';
+        window.location.href = '/account';
       }, 2000);
     } catch (err) {
       console.error('Registration Error:', err.response ? err.response.data.message : err.message);

@@ -37,7 +37,7 @@ const AccountInfo = () => {
         console.log('Logged out successfully');
         localStorage.removeItem('jwtToken');
         // Redirect to login page or home page
-
+        window.location.href = '/user';
       } else {
         console.log('Failed to log out');
       }

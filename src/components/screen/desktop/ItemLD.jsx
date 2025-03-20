@@ -13,6 +13,34 @@ const ItemLD = ({ id, name, price, image }) => {
     navigate(`/Details?id=${id}`);
   };
 
+  const handleFavoriteClick = async (e) => {
+    e.stopPropagation(); // Prevent the click event from propagating to the parent div
+    try {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.log('No token found');
+        return;
+      }
+
+      const response = await fetch('http://localhost:3000/api/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ product_id: id })
+      });
+
+      if (response.ok) {
+        console.log('Added to favorites successfully');
+      } else {
+        console.log('Failed to add to favorites');
+      }
+    } catch (error) {
+      console.error('Error adding to favorites:', error);
+    }
+  };
+
   return (
     <div
       className="before-uniq-MainItem"
@@ -26,7 +54,7 @@ const ItemLD = ({ id, name, price, image }) => {
           backgroundImage: `url(${image})`,
         }}
       >
-        <div className="before-uniq-ImgItmFavBar">
+        <div className="before-uniq-ImgItmFavBar" onClick={handleFavoriteClick}>
           <div className="before-uniq-ImgItmIcon">
             <img
               className="before-uniq-FavIcon"

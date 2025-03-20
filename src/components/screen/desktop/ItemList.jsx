@@ -1,8 +1,12 @@
 import React from 'react';
-import ItemLD from './ItemLD'; // Updated import for the renamed component
-import './ItemList.css'; // This stays the same unless you renamed it
+import ItemLD from './ItemLD';
+import './ItemList.css';
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items = [] }) => {
+  if (!items || items.length === 0) {
+    return <div>No items to display</div>;
+  }
+
   return (
     <div className="ItemList">
       {items.map((item) => (
