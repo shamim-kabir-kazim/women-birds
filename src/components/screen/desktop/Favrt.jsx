@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ItemList from './ItemList';
 import './Favrt.css';
 
 const Fvrt = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -35,9 +37,13 @@ const Fvrt = ({ children }) => {
     fetchFavorites();
   }, []);
 
+  const handleItemClick = (productId) => {
+    navigate(`/Details?id=${productId}`);
+  };
+
   return (
     <div className="fvrt-container">
-      <ItemList items={favorites} />
+      <ItemList items={favorites} onItemClick={handleItemClick} />
       {children}
     </div>
   );
