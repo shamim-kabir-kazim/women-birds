@@ -17,6 +17,35 @@ const AccountInfo = () => {
     { id: 3, icon: <RiLogoutBoxLine />, label: 'Log out' },
   ];
 
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.log('No token found');
+        return;
+      }
+
+      const response = await fetch('http://localhost:3000/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.ok) {
+        console.log('Logged out successfully');
+        localStorage.removeItem('jwtToken');
+        // Redirect to login page or home page
+
+      } else {
+        console.log('Failed to log out');
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   const renderContent = () => {
     switch (selectedId) {
       case 1:
@@ -32,6 +61,7 @@ const AccountInfo = () => {
           </div>
         );
       case 3:
+        handleLogout();
         return (
           <div className="cvb-content">
            Log out

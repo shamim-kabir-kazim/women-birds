@@ -32,7 +32,7 @@ const Login = ({ onShowCreate }) => {
       console.log('Retrieved JWT:', storedToken);
 
       // Redirect to user dashboard or perform other actions
-      window.location.href = '/user/dashboard';
+      window.location.href = '/user';
     } catch (err) {
       console.error('Login Error:', err);
       setError('Invalid email or password');

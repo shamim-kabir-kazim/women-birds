@@ -22,7 +22,7 @@ const AccountPage = () => {
     const token = localStorage.getItem('jwtToken');
     if (!token) {
       console.log('No token found in localStorage');
-      navigate('/login');
+      navigate('/user');
       return;
     }
 
