@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css';
+import axios from 'axios';
 
 const Product = ({ productId }) => {
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sideImages, setSideImages] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
+  const [availableSizes, setAvailableSizes] = useState([]);
+  const [availableColors, setAvailableColors] = useState([]);
   const [isStyleTipsOpen, setIsStyleTipsOpen] = useState(false);
   const [isShippingReturnsOpen, setIsShippingReturnsOpen] = useState(false);
   const [isFaqsOpen, setIsFaqsOpen] = useState(false);
@@ -51,6 +55,8 @@ const Product = ({ productId }) => {
         }
         const data = await response.json();
         setProductDetails(data);
+        setAvailableSizes([...new Set(data.map(detail => detail.size))]);
+        setAvailableColors([...new Set(data.map(detail => detail.color))]);
       } catch (error) {
         setError(error.message);
       }
@@ -63,8 +69,48 @@ const Product = ({ productId }) => {
     }
   }, [productId]);
 
-  const handleSizeChange = (size) => {
-    setSelectedSize((prevSize) => (prevSize === size ? null : size));
+  const handleSizeChange = async (size) => {
+    if (selectedSize === size) {
+      setSelectedSize(null);
+      setAvailableColors([...new Set(productDetails.map(detail => detail.color))]);
+    } else {
+      setSelectedSize(size);
+      try {
+        const response = await fetch(`/api/available-colors/${productId}/${size}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch available colors');
+        }
+        const data = await response.json();
+        setAvailableColors(data);
+        if (selectedColor && !data.includes(selectedColor)) {
+          setSelectedColor(null);
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    }
+  };
+
+  const handleColorChange = async (color) => {
+    if (selectedColor === color) {
+      setSelectedColor(null);
+      setAvailableSizes([...new Set(productDetails.map(detail => detail.size))]);
+    } else {
+      setSelectedColor(color);
+      try {
+        const response = await fetch(`/api/available-sizes/${productId}/${color}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch available sizes');
+        }
+        const data = await response.json();
+        setAvailableSizes(data);
+        if (selectedSize && !data.includes(selectedSize)) {
+          setSelectedSize(null);
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    }
   };
 
   const [quantity, setQuantity] = useState(1);
@@ -74,6 +120,39 @@ const Product = ({ productId }) => {
       setQuantity(quantity + 1);
     } else if (type === 'decrement' && quantity > 1) {
       setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    if (!selectedSize || !selectedColor || quantity <= 0) {
+      alert('Please select size, color, and quantity greater than zero');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      console.log('JWT Token:', token); // Log the JWT token
+      if (!token) {
+        alert('User not authenticated');
+        return;
+      }
+
+      const response = await axios.post('/api/add-to-cart', {
+        product_id: productId,
+        color: selectedColor,
+        size: selectedSize,
+        quantity: quantity
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 200) {
+        alert('Item added to cart successfully');
+      }
+    } catch (error) {
+      alert('Failed to add item to cart');
     }
   };
 
@@ -101,8 +180,6 @@ const Product = ({ productId }) => {
     return <p>No product found</p>;
   }
 
-  const availableSizes = [...new Set(productDetails.map(detail => detail.size))];
-  const availableColors = [...new Set(productDetails.map(detail => ({ color: detail.color, hex: detail.color_hex })))];
   const descriptionSentences = product.description.split('.').filter(sentence => sentence.trim().length > 0);
 
   return (
@@ -145,12 +222,13 @@ const Product = ({ productId }) => {
 
           <div className="color-section">
             <h3 className="product-heads">Color:</h3>
-            {availableColors.map(({ color, hex }) => (
+            {availableColors.map((color) => (
               <div
                 key={color}
-                className="color-box"
-                style={{ backgroundColor: hex }}
+                className={`color-box ${selectedColor === color ? 'selected' : ''}`}
+                style={{ backgroundColor: color, border: selectedColor === color ? '3px solid #000' : '1px solid #ccc' }}
                 title={color}
+                onClick={() => handleColorChange(color)}
               ></div>
             ))}
           </div>
@@ -164,7 +242,7 @@ const Product = ({ productId }) => {
 
           <div className="action-buttons">
             <button className="buy-now">BUY NOW</button>
-            <button className="add-to-cart">ADD TO CART</button>
+            <button className="add-to-cart" onClick={handleAddToCart}>ADD TO CART</button>
           </div>
           
           <div className="product-details">
