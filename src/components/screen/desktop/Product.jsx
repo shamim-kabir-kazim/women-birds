@@ -9,6 +9,9 @@ const Product = ({ productId }) => {
   const [error, setError] = useState(null);
   const [sideImages, setSideImages] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
+  const [isStyleTipsOpen, setIsStyleTipsOpen] = useState(false);
+  const [isShippingReturnsOpen, setIsShippingReturnsOpen] = useState(false);
+  const [isFaqsOpen, setIsFaqsOpen] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -72,6 +75,18 @@ const Product = ({ productId }) => {
     } else if (type === 'decrement' && quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const toggleStyleTips = () => {
+    setIsStyleTipsOpen(!isStyleTipsOpen);
+  };
+
+  const toggleShippingReturns = () => {
+    setIsShippingReturnsOpen(!isShippingReturnsOpen);
+  };
+
+  const toggleFaqs = () => {
+    setIsFaqsOpen(!isFaqsOpen);
   };
 
   if (loading) {
@@ -159,32 +174,44 @@ const Product = ({ productId }) => {
                 <li key={index}>{sentence.trim()}.</li>
               ))}
             </ul>
+          </div>
 
-            <p><strong>Style & Tips</strong></p>
-            <ul>
-              <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit to ensure maximum comfort and style.</li>
-            </ul>
-            
+          <div className="style-tips">
+            <p className="section-header" onClick={toggleStyleTips}>
+              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+            </p>
+            {isStyleTipsOpen && (
+              <ul>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit to ensure maximum comfort and style.</li>
+              </ul>
+            )}
+          </div>
 
-            <div className="shipping-returns">
-  <p><strong>Shipping & Returns</strong></p>
-  <ul>
-    <li>Enjoy fast shipping and hassle-free returns. Kindly be advised that due to the nature of this product, we regret to inform you that it is non-returnable.</li>
-    <li><a href="https://women-bird.com/shipping-returns">Read More about Returns</a></li>
-  </ul>
-</div>
+          <div className="shipping-returns">
+            <p className="section-header" onClick={toggleShippingReturns}>
+              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+            </p>
+            {isShippingReturnsOpen && (
+              <ul>
+                <li>Enjoy fast shipping and hassle-free returns. Kindly be advised that due to the nature of this product, we regret to inform you that it is non-returnable.</li>
+                <li><a href="https://women-bird.com/shipping-returns">Read More about Returns</a></li>
+              </ul>
+            )}
+          </div>
 
-
-            <div className="faqs">
-              <p><strong>FAQs</strong></p>
+          <div className="faqs">
+            <p className="section-header" onClick={toggleFaqs}>
+              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+            </p>
+            {isFaqsOpen && (
               <ul>
                 <li><strong>What if I want to exchange or return my order?</strong></li>
                 <li>Kindly be advised that due to the nature of this product, we regret to inform you that it is non-returnable.</li>
-                <li><strong>Will I Receive a Quality Product by KALKI Fashion?</strong></li>
+                <li><strong>Will I Receive a Quality Product by Women Bird?</strong></li>
                 <li>As an international brand, we adhere to strict quality and design benchmarks. Every Women Birds product goes through a 5 step Quality Control process to ensure that you receive the best.</li>
                 <li><a href="https://women-bird.com/faqs">Read More FAQ's</a></li>
               </ul>
-            </div>
+            )}
           </div>
         </div>
       </div>

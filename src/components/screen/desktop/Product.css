@@ -1,219 +1,211 @@
-
 .midll {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    overflow-wrap: break-word;
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    max-width:1900px;
-  }
-  
-  
-  .image-gallery {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1900px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    padding: 0px;
-    padding-left: 100px;
-  }
-  
-  .side-images-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 800px;
-    flex-direction: column; /* Arrange thumbnails vertically */
-    gap: 10px;
-  }
-  
-  .side-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    transition: border 0.3s ease;
-    
-  }
-  
-  .side-image:hover {
-    border: 1px solid #431934;
-  }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  max-width: 1900px;
+}
 
-  .main-image-container {
-    width: 600px;
-    height: auto;
-    flex: 0 0 auto;
-    border-radius: 8px;
-    overflow: hidden; /* Ensures the image doesn't overflow the container */
-  }
-  
-  .main-image {
-    width: 100%; /* Stretch image to fill container horizontally */
-    height: auto; /* Stretch image to fill container vertically */
-    object-fit: cover; /* Ensures the image fills the container proportionally */
-    object-position: center; /* Centers the image */
-  }
-  
-  .product-card {
-    display:flex;
-    flex-direction: column;
-    padding: 0px;
-    font-family: Arial, sans-serif;
-    color: #431934;
-    margin-left: 40px;
-    align-items: flex-start;
-    text-align: left;
-    width: max-content;
-  }
-  
-  
-  .product-card h2 {
-    white-space: nowrap;
-    text-align: left;
-    margin: 0; /* Removes the default margin */
-    margin-bottom: 10px; /* Adds custom spacing below */
-  }
-  
-  
-  .price {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-  }
-  
-  .size-section,
-  .color-section,
-  .quantity-section {
-    margin-bottom: 10px;
-  }
-  
-  .size-section h3,
-  .color-section h3,
-  .quantity-section h3 {
-    margin-bottom: 20px;
-  }
-  
-  
-  .size-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .size-section label {
-    display: flex;
-    align-items: center;
-    gap: 2px; /* Adjust spacing between checkbox and label */
-    font-size: 1em;
-  }
-  
-  .size-section input[type="checkbox"] {
-    transform: scale(1.2); /* Makes checkboxes slightly bigger */
-  }
-  
-  .color-section {
-  
-    display: flex;
-    align-items: center; /* Ensures vertical alignment */
-    gap: 10px; /* Space between text and color boxes */
-  }
-  
-  .product-head {
-    margin: 0; /* Remove any default margins */
-    padding: 0; /* Remove any default padding */
-    font-size: 16px; /* Adjust font size */
-    line-height: 1; /* Ensure consistent line spacing */
-    display: flex; /* Use flexbox for alignment */
-  
-     /* Center text vertically */
-  }
-  
-  .color-box {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: border 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .color-box:hover {
-    border: 1px solid #431934;
-  }
-  
-  .quantity-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .quantity-section button {
-    background-color: #eee;
-    border: 1px solid #431934;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 1em;
-    border-radius: 5px;
-  }
-  
-  .quantity-section input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #431934;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  .description {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .action-buttons {
-    width: 350px;
-    height: 40px;
-    display: flex;
-    gap: 10px;
-    margin: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .buy-now,
-  .add-to-cart {
-    flex: 1;
-    padding: 10px;
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .buy-now {
-    background-color: #431934;
-    color: #fff;
-  }
-  .buy-now:hover {
-    background-color: #2e0921;
-    color: #ffffff;
-  }
-  
-  .add-to-cart {
-    background-color: #f0f0f0;
-    color: #333;
-  }
-  .add-to-cart:hover {
-    background-color: #dbdada;
-    color: #333;
-  }
+.image-gallery {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1900px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 0px;
+  padding-left: 100px;
+}
+
+.side-images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+  flex-direction: column; /* Arrange thumbnails vertically */
+  gap: 10px;
+}
+
+.side-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+.side-image:hover {
+  border: 1px solid #431934;
+}
+
+.main-image-container {
+  width: 600px;
+  height: auto;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the image doesn't overflow the container */
+}
+
+.main-image {
+  width: 100%; /* Stretch image to fill container horizontally */
+  height: auto; /* Stretch image to fill container vertically */
+  object-fit: cover; /* Ensures the image fills the container proportionally */
+  object-position: center; /* Centers the image */
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  font-family: Arial, sans-serif;
+  color: #431934;
+  margin-left: 40px;
+  align-items: flex-start;
+  text-align: left;
+  width: max-content;
+}
+
+.product-card h2 {
+  white-space: nowrap;
+  text-align: left;
+  margin: 0; /* Removes the default margin */
+  margin-bottom: 10px; /* Adds custom spacing below */
+}
+
+.price {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.size-section,
+.color-section,
+.quantity-section {
+  margin-bottom: 10px;
+}
+
+.size-section h3,
+.color-section h3,
+.quantity-section h3 {
+  margin-bottom: 20px;
+}
+
+.size-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.size-section label {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* Adjust spacing between checkbox and label */
+  font-size: 1em;
+}
+
+.size-section input[type="checkbox"] {
+  transform: scale(1.2); /* Makes checkboxes slightly bigger */
+}
+
+.color-section {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
+  gap: 10px; /* Space between text and color boxes */
+}
+
+.product-head {
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any default padding */
+  font-size: 16px; /* Adjust font size */
+  line-height: 1; /* Ensure consistent line spacing */
+  display: flex; /* Use flexbox for alignment */
+}
+
+.color-box {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border 0.3s ease; /* Smooth hover effect */
+}
+
+.color-box:hover {
+  border: 1px solid #431934;
+}
+
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-section button {
+  background-color: #eee;
+  border: 1px solid #431934;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.quantity-section input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #431934;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.description {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  width: 350px;
+  height: 40px;
+  display: flex;
+  gap: 10px;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.buy-now,
+.add-to-cart {
+  flex: 1;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buy-now {
+  background-color: #431934;
+  color: #fff;
+}
+.buy-now:hover {
+  background-color: #2e0921;
+  color: #ffffff;
+}
+
+.add-to-cart {
+  background-color: #f0f0f0;
+  color: #333;
+}
+.add-to-cart:hover {
+  background-color: #dbdada;
+  color: #333;
+}
+
 /* Product Details, Style & Tips, Returns, and FAQs Styling */
 .product-details p,
 .product-details ul,
@@ -221,53 +213,65 @@
 .style-tips p,
 .style-tips ul,
 .style-tips li,
-.returns p,
-.returns ul,
-.returns li,
-.faq p,
-.faq ul,
-.faq li {
-    font-family: Arial, sans-serif;
-    font-size: 1em;
-    color: #431934;
+.shipping-returns p,
+.shipping-returns ul,
+.shipping-returns li,
+.faqs p,
+.faqs ul,
+.faqs li {
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  color: #431934;
 }
 
 /* Add styles for links */
 .product-details a,
 .style-tips a,
-.returns a,
-.faq a {
-    color: #431934;
-    text-decoration: underline;
+.shipping-returns a,
+.faqs a {
+  color: #431934;
+  text-decoration: underline;
 }
 
 .product-details a:hover,
 .style-tips a:hover,
-.returns a:hover,
-.faq a:hover {
-    color: #2e0921;
-    text-decoration: none;
+.shipping-returns a:hover,
+.faqs a:hover {
+  color: #2e0921;
+  text-decoration: none;
 }
 
 /* Ensure consistent styling */
 .product-details ul,
 .style-tips ul,
-.returns ul,
-.faq ul {
-    list-style-type: none; /* Remove default bullet points */
-    padding: 0; /* Remove default padding */
+.shipping-returns ul,
+.faqs ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
 }
 
 .product-details ul li,
 .style-tips ul li,
-.returns ul li,
-.faq ul li {
-    border: none; /* Ensure no border is applied */
-    padding: 5px 0; /* Add some padding for spacing */
-    color: #a6a6a6;
+.shipping-returns ul li,
+.faqs ul li {
+  border: none; /* Ensure no border is applied */
+  padding: 5px 0; /* Add some padding for spacing */
+  color: #a6a6a6;
 }
 
-  
+/* Section Header with Dropdown Icon */
+.section-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+}
+
   @media (max-width: 1500px) {
     .image-gallery {
       max-width: 75%; /* Reduce max-width for better fit */
