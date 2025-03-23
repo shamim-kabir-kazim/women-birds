@@ -214,21 +214,59 @@
     background-color: #dbdada;
     color: #333;
   }
-  .product-details ul {
+/* Product Details, Style & Tips, Returns, and FAQs Styling */
+.product-details p,
+.product-details ul,
+.product-details li,
+.style-tips p,
+.style-tips ul,
+.style-tips li,
+.returns p,
+.returns ul,
+.returns li,
+.faq p,
+.faq ul,
+.faq li {
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    color: #431934;
+}
+
+/* Add styles for links */
+.product-details a,
+.style-tips a,
+.returns a,
+.faq a {
+    color: #431934;
+    text-decoration: underline;
+}
+
+.product-details a:hover,
+.style-tips a:hover,
+.returns a:hover,
+.faq a:hover {
+    color: #2e0921;
+    text-decoration: none;
+}
+
+/* Ensure consistent styling */
+.product-details ul,
+.style-tips ul,
+.returns ul,
+.faq ul {
     list-style-type: none; /* Remove default bullet points */
     padding: 0; /* Remove default padding */
-  }
-  
-  .product-details ul li {
+}
+
+.product-details ul li,
+.style-tips ul li,
+.returns ul li,
+.faq ul li {
     border: none; /* Ensure no border is applied */
     padding: 5px 0; /* Add some padding for spacing */
     color: #a6a6a6;
-  }
-  
-  /* Reduce max-width for better fit */
-  /* Reduce max-width for better fit */
-  /* Reduce max-width for better fit */
-  /* Reduce max-width for better fit */
+}
+
   
   @media (max-width: 1500px) {
     .image-gallery {

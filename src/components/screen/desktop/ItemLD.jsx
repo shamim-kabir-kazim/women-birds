@@ -82,7 +82,7 @@ const ItemLD = ({ id, name, price, image }) => {
               alt="Cart Icon"
             />
             <div className="before-uniq-ButtonText">
-              Add To Cart
+             Shop Now
             </div>
           </div>
         </div>
