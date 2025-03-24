@@ -232,21 +232,21 @@ const Product = ({ productId }) => {
 
           <div className="pro-size">
           <div className="size-section">
-            <div className="product-heads">Size:</div>
-            
-            {availableSizes.map((size) => (
-              <label key={size}>
-                <input
-                  type="checkbox"
-                  name="size"
-                  value={size}
-                  checked={selectedSize === size}
-                  onChange={() => handleSizeChange(size)}
-                />
-                {size}
-              </label>
-            ))}
-          </div>
+  <div className="product-heads">Size:</div>
+  
+  {availableSizes.map((size) => (
+    <label key={size}>
+      <input
+        type="checkbox"
+        name="size"
+        value={size}
+        checked={selectedSize === size}
+        onChange={() => handleSizeChange(size)}
+      />
+      {size} {/* Display size letter inside the custom checkbox */}
+    </label>
+  ))}
+</div>
           </div>
 
           <div className="pro-color">

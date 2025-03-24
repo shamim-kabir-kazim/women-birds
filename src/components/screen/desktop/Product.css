@@ -97,7 +97,7 @@
 
 .size-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Ensure all size checkboxes stay in one row */
   align-items: center;
   gap: 8px;
 }
@@ -105,14 +105,32 @@
 .size-section label {
   display: flex;
   align-items: center;
-  gap: 2px; /* Adjust spacing between checkbox and label */
+  justify-content: center;
+  width: 40px; /* Set width of custom checkbox */
+  height: 40px; /* Set height of custom checkbox */
+  background-color: #f0f0f0; /* Background color of custom checkbox */
+  border: 1px solid #a6a6a6; /* Ash color border for unselected checkbox */
+  border-radius: 5px; /* Rounded corners for custom checkbox */
+  cursor: pointer; /* Pointer cursor on hover */
   font-size: 1em;
+  color: #431934; /* Text color inside custom checkbox */
+  font-weight: bold;
+  margin: 2px; /* Space between checkboxes */
 }
 
 .size-section input[type="checkbox"] {
-  transform: scale(1.2); /* Makes checkboxes slightly bigger */
+  display: none; /* Hide the default checkbox */
 }
 
+.size-section input[type="checkbox"]:checked + label {
+  border: 2px solid #431934; /* Dark color border when checked */
+  background-color: #e0e0e0; /* Slightly darker background when checked */
+  color: #431934; /* Text color when checked */
+}
+
+.size-section label:hover {
+  background-color: #e0e0e0; /* Background color on hover */
+}
 .color-section {
   display: flex;
   align-items: center; /* Ensures vertical alignment */
