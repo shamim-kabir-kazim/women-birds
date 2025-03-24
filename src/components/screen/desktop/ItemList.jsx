@@ -4,7 +4,7 @@ import './ItemList.css';
 
 const ItemList = ({ items = [], onItemClick }) => {
   if (!items || items.length === 0) {
-    return <div>No items to display</div>;
+    return <div style={{ backgroundColor: 'white', width: '100%', height: '100%' }}></div>;
   }
 
   return (

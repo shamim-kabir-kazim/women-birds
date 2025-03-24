@@ -192,16 +192,8 @@ const Product = ({ productId }) => {
     setIsFaqsOpen(!isFaqsOpen);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!product) {
-    return <p>No product found</p>;
+  if (loading || !product) {
+    return <div style={{ backgroundColor: 'white', width: '100%', height: '100%' }}></div>;
   }
 
   const descriptionSentences = product.description.split('.').filter(sentence => sentence.trim().length > 0);
@@ -284,7 +276,7 @@ const Product = ({ productId }) => {
             </p>
             {isStyleTipsOpen && (
               <ul>
-                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit for maximum comfort.</li>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and color combinations to enhance your appearance.</li>
               </ul>
             )}
           </div>
@@ -310,7 +302,7 @@ const Product = ({ productId }) => {
                 <li><strong>What if I want to exchange or return my order?</strong></li>
                 <li>Kindly be advised that due to the nature of this product, we regret to inform you that it is non-returnable.</li>
                 <li><strong>Will I Receive a Quality Product by Women Bird?</strong></li>
-                <li>As an international brand, we adhere to strict quality and design benchmarks. Every Women Birds product goes through a 5 step Quality Control process to ensure that you receive the best.</li>
+                <li>As an international brand, we adhere to strict quality and design benchmarks. Every Women Birds product goes through a 5 step Quality Control process to ensure that you receive the best quality.</li>
                 <li><a href="https://women-bird.com/faqs">Read More FAQ's</a></li>
               </ul>
             )}

@@ -1,4 +1,4 @@
-.midll {
+.midll-product {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -8,24 +8,24 @@
   height: 100%;
   width: 100%;
   max-width: 1900px;
+  
 }
 
 .image-gallery {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   width: 100%;
   max-width: 1900px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding: 0px;
-  padding-left: 100px;
+  margin-top: 20px;
+
 }
 
 .side-images-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 800px;
+  height: 600px;
   flex-direction: column; /* Arrange thumbnails vertically */
   gap: 10px;
 }

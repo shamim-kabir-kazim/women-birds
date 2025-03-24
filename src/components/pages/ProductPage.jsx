@@ -4,6 +4,7 @@ import Product from '../screen/desktop/Product';
 import ItemList from '../screen/desktop/ItemList';
 import './ProductPage.css';
 import Sepa from '../screen/desktop/Sepa';
+import TextHed from '../screen/desktop/TextHed';
 
 const ProductPage = () => {
   const location = useLocation();
@@ -75,7 +76,7 @@ const ProductPage = () => {
   }, [productType, productId]);
 
   const handleItemClick = (id) => {
-    navigate(`/Details?id=${id}`);
+    window.location.href = `/Details?id=${id}`;
   };
 
   if (!productId) {
@@ -86,8 +87,9 @@ const ProductPage = () => {
     <div className="home-div" style={{ width: '100%', height: '100%' }}>
       <Sepa />
       <Product productId={productId} />
-      <Sepa />
-      <h2>Related Products</h2>
+
+      <TextHed text={"Related Products"} />
+      
       <ItemList items={relatedItems} onItemClick={handleItemClick} />
     </div>
   );
