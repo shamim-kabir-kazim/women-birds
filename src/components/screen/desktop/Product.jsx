@@ -7,6 +7,7 @@ const Product = ({ productId }) => {
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedColorCode, setSelectedColorCode] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -93,12 +94,14 @@ const Product = ({ productId }) => {
     }
   };
 
-  const handleColorChange = async (color) => {
+  const handleColorChange = async (color, colorCode) => {
     if (selectedColor === color) {
       setSelectedColor(null);
+      setSelectedColorCode(null);
       setAvailableSizes([...new Set(productDetails.map(detail => detail.size))]);
     } else {
       setSelectedColor(color);
+      setSelectedColorCode(colorCode);
       try {
         const response = await fetch(`/api/available-sizes/${productId}/${color}`);
         if (!response.ok) {
@@ -155,6 +158,7 @@ const Product = ({ productId }) => {
       const response = await axios.post('/api/add-to-cart', {
         product_id: productId,
         color: selectedColor,
+        color_code: selectedColorCode,
         size: selectedSize,
         quantity: quantity
       }, {
@@ -243,7 +247,7 @@ const Product = ({ productId }) => {
                 className={`color-box ${selectedColor === color ? 'selected' : ''}`}
                 style={{ backgroundColor: color, border: selectedColor === color ? '3px solid #000' : '1px solid #ccc' }}
                 title={color}
-                onClick={() => handleColorChange(color)}
+                onClick={() => handleColorChange(color, color)} // Assuming color is the color code here
               ></div>
             ))}
           </div>
