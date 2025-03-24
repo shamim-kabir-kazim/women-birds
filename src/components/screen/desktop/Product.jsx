@@ -7,6 +7,7 @@ const Product = ({ productId }) => {
   const [mainImage, setMainImage] = useState('');
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [sideImages, setSideImages] = useState([]);
@@ -16,6 +17,7 @@ const Product = ({ productId }) => {
   const [isStyleTipsOpen, setIsStyleTipsOpen] = useState(false);
   const [isShippingReturnsOpen, setIsShippingReturnsOpen] = useState(false);
   const [isFaqsOpen, setIsFaqsOpen] = useState(false);
+  const [notification, setNotification] = useState({ visible: false, message: '' });
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -113,8 +115,6 @@ const Product = ({ productId }) => {
     }
   };
 
-  const [quantity, setQuantity] = useState(1);
-
   const handleQuantityChange = (type) => {
     if (type === 'increment') {
       setQuantity(quantity + 1);
@@ -123,17 +123,32 @@ const Product = ({ productId }) => {
     }
   };
 
+  const showNotification = (message) => {
+    setNotification({ visible: true, message });
+    setTimeout(() => {
+      setNotification({ visible: false, message: '' });
+    }, 2000);
+  };
+
   const handleAddToCart = async () => {
-    if (!selectedSize || !selectedColor || quantity <= 0) {
-      alert('Please select size, color, and quantity greater than zero');
+    if (!selectedSize) {
+      showNotification('Please select a size');
+      return;
+    }
+    if (!selectedColor) {
+      showNotification('Please select a color');
+      return;
+    }
+    if (quantity <= 0) {
+      showNotification('Quantity must be greater than zero');
       return;
     }
 
     try {
-      const token = localStorage.getItem('token');
-      console.log('JWT Token:', token); // Log the JWT token
+      const token = localStorage.getItem('jwtToken');
+      console.log('JWT Token:', token);
       if (!token) {
-        alert('User not authenticated');
+        showNotification('User not authenticated');
         return;
       }
 
@@ -293,6 +308,11 @@ const Product = ({ productId }) => {
           </div>
         </div>
       </div>
+      {notification.visible && (
+        <div className="notification">
+          <p>{notification.message}</p>
+        </div>
+      )}
     </div>
   );
 };
