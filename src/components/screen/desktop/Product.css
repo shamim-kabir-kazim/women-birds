@@ -97,40 +97,38 @@
 
 .size-section {
   display: flex;
-  flex-direction: row; /* Ensure all size checkboxes stay in one row */
+  flex-direction: row; /* Ensure all size boxes stay in one row */
   align-items: center;
   gap: 8px;
 }
 
-.size-section label {
+.size-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Set width of custom checkbox */
-  height: 40px; /* Set height of custom checkbox */
-  background-color: #f0f0f0; /* Background color of custom checkbox */
-  border: 1px solid #a6a6a6; /* Ash color border for unselected checkbox */
-  border-radius: 5px; /* Rounded corners for custom checkbox */
+  width: 40px; /* Set width of custom size box */
+  height: 40px; /* Set height of custom size box */
+  background-color: #f0f0f0; /* Background color of custom size box */
+  border: 1px solid #a6a6a6; /* Ash color border for unselected size box */
+  border-radius: 5px; /* Rounded corners for custom size box */
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 1em;
-  color: #431934; /* Text color inside custom checkbox */
+  color: #431934; /* Text color inside custom size box */
   font-weight: bold;
-  margin: 2px; /* Space between checkboxes */
+  margin: 2px; /* Space between size boxes */
+  transition: border 0.3s ease, background-color 0.3s ease; /* Smooth transition for border and background color */
 }
 
-.size-section input[type="checkbox"] {
-  display: none; /* Hide the default checkbox */
+.size-box.selected {
+  border: 2px solid #431934; /* Change to 2px solid red when selected */
+  background-color: #e0e0e0; /* Slightly darker background when selected */
+  color: #431934; /* Text color when selected */
 }
 
-.size-section input[type="checkbox"]:checked + label {
-  border: 2px solid #431934; /* Dark color border when checked */
-  background-color: #e0e0e0; /* Slightly darker background when checked */
-  color: #431934; /* Text color when checked */
-}
-
-.size-section label:hover {
+.size-box:hover {
   background-color: #e0e0e0; /* Background color on hover */
 }
+
 .color-section {
   display: flex;
   align-items: center; /* Ensures vertical alignment */
