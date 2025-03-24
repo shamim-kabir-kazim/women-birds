@@ -86,6 +86,7 @@ const ViewInventory = () => {
             <th>Price</th>
             <th>Brand</th>
             <th>Slug</th>
+            <th>Type</th>
             <th>Image</th>
             <th>Created At</th>
             <th>Updated At</th>
@@ -102,6 +103,7 @@ const ViewInventory = () => {
               <td>{item.price}</td>
               <td>{item.brand}</td>
               <td>{item.slug}</td>
+              <td>{item.type}</td>
               <td>
                 <img
                   src={item.primary_img_url}

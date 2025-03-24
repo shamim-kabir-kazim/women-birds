@@ -19,6 +19,7 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
     brand: '',
     slug: '',
     primary_img_url: '',
+    type: '' // Add the type field here
   });
   const [productDetails, setProductDetails] = useState([]);
   const [extraImages, setExtraImages] = useState([]);
@@ -232,7 +233,6 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
       onUpdate();
       onClose();
     } catch (error) {
-      console.error('Error updating product:', error);
       setError(error.message);
     }
   };
@@ -387,6 +387,15 @@ const PopUpdate = ({ productId, onClose, onUpdate }) => {
                   type="text"
                   name="brand"
                   value={formData.brand}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Type:
+                <input
+                  type="text"
+                  name="type"
+                  value={formData.type}
                   onChange={handleChange}
                 />
               </label>

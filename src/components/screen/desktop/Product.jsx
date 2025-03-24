@@ -57,9 +57,14 @@ const Product = ({ productId }) => {
           throw new Error('Failed to fetch product details');
         }
         const data = await response.json();
+        console.log('Product Details:', data); // Log the entire response
         setProductDetails(data);
         setAvailableSizes([...new Set(data.map(detail => detail.size))]);
         setAvailableColors([...new Set(data.map(detail => detail.color))]);
+        
+        // Log all color hex codes to the console
+        const colorCodes = [...new Set(data.map(detail => detail.color_hex))];
+        console.log('Color Hex Codes:', colorCodes);
       } catch (error) {
         setError(error.message);
       }
@@ -158,7 +163,7 @@ const Product = ({ productId }) => {
       const response = await axios.post('/api/add-to-cart', {
         product_id: productId,
         color: selectedColor,
-        color_code: selectedColorCode,
+        color_code: selectedColorCode, // Use selectedColorCode for the hex value
         size: selectedSize,
         quantity: quantity
       }, {
@@ -247,7 +252,7 @@ const Product = ({ productId }) => {
                 className={`color-box ${selectedColor === color ? 'selected' : ''}`}
                 style={{ backgroundColor: color, border: selectedColor === color ? '3px solid #000' : '1px solid #ccc' }}
                 title={color}
-                onClick={() => handleColorChange(color, color)} // Assuming color is the color code here
+                onClick={() => handleColorChange(color, productDetails.find(detail => detail.color === color).color_hex)} // Use the correct hex code
               ></div>
             ))}
           </div>
@@ -275,18 +280,18 @@ const Product = ({ productId }) => {
 
           <div className="style-tips">
             <p className="section-header" onClick={toggleStyleTips}>
-              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="dropdown icon" />
             </p>
             {isStyleTipsOpen && (
               <ul>
-                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit to ensure maximum comfort and style.</li>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit for maximum comfort.</li>
               </ul>
             )}
           </div>
 
           <div className="shipping-returns">
             <p className="section-header" onClick={toggleShippingReturns}>
-              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="dropdown icon" />
             </p>
             {isShippingReturnsOpen && (
               <ul>
@@ -298,7 +303,7 @@ const Product = ({ productId }) => {
 
           <div className="faqs">
             <p className="section-header" onClick={toggleFaqs}>
-              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="dropdown icon" />
+              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="dropdown icon" />
             </p>
             {isFaqsOpen && (
               <ul>

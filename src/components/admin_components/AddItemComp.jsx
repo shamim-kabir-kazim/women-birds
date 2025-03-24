@@ -12,7 +12,8 @@ const AddItemComp = () => {
         sold_out: false,
         brand: '',
         slug: '',
-        primary_img_url: ''
+        primary_img_url: '',
+        type: '' // Add the type field here
     });
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -125,6 +126,12 @@ const AddItemComp = () => {
                 <div className="ad-fi-div">
                     <label className="ad-fi-label">Slug:</label>
                     <input className="ad-fi-input" type="text" name="slug" value={productData.slug} onChange={handleChange} required />
+                </div>
+            </div>
+            <div className="ad-fi-row">
+                <div className="ad-fi-div">
+                    <label className="ad-fi-label">Type:</label>
+                    <input className="ad-fi-input" type="text" name="type" value={productData.type} onChange={handleChange} required />
                 </div>
             </div>
             <div className="ass-inline">
