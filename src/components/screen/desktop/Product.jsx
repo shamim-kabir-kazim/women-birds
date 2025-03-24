@@ -217,10 +217,20 @@ const Product = ({ productId }) => {
         </div>
 
         <div className="product-card">
-          <div className="product-heads">{product.product_name}</div>
-          
-          <p className="price">${product.price}</p>
 
+          <div className="pro-name">
+            <div className="product-heads">{product.product_name}</div>
+            </div>
+
+          
+
+          <div className="pro-price">
+          <p className="price">${product.price}</p>
+          </div>
+
+          
+
+          <div className="pro-size">
           <div className="size-section">
             <div className="product-heads">Size:</div>
             
@@ -237,6 +247,9 @@ const Product = ({ productId }) => {
               </label>
             ))}
           </div>
+          </div>
+
+          <div className="pro-color">
 
           <div className="color-section">
             <div className="product-heads">Color:</div>
@@ -259,6 +272,11 @@ const Product = ({ productId }) => {
               ></div>
             ))}
           </div>
+          </div>
+
+
+
+          <div className="pro-quantity">
 
           <div className="quantity-section">
             <div className="product-heads">Quantity:</div>
@@ -267,6 +285,11 @@ const Product = ({ productId }) => {
             <input type="text" value={quantity} readOnly />
             <button onClick={() => handleQuantityChange('increment')}>+</button>
           </div>
+          
+          </div>
+
+
+
 
           <div className="action-buttons">
             <button className="buy-now">BUY NOW</button>
