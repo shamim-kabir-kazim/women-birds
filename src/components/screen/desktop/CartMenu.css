@@ -81,6 +81,7 @@
   object-fit: cover; /* Ensures the image covers the dimensions without distortion */
   border-radius: 5px; /* Optional: Adds slightly rounded corners */
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .cart-item-details {
@@ -92,14 +93,33 @@
   color: #431934;
   margin-bottom: 10px;
 }
+
+.delete-button {
+  width: 50%;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+}
+
 .prc {
   font-weight: bold;
   text-align: end;
 }
+
 .subtotal {
   margin-top: 5px;
   font-weight: bold;
 }
+
 .container-cart {
   display: flex;
   justify-content: space-between;
@@ -127,6 +147,7 @@
   border-radius: 50px;
   cursor: pointer;
 }
+
 .empty-cart-text {
   font-size: 1.5rem;
   color: #333;

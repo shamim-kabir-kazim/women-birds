@@ -217,11 +217,13 @@ const Product = ({ productId }) => {
         </div>
 
         <div className="product-card">
-          <h2>{product.product_name}</h2>
+          <div className="product-heads">{product.product_name}</div>
+          
           <p className="price">${product.price}</p>
 
           <div className="size-section">
-            <h3 className="product-heads">Size:</h3>
+            <div className="product-heads">Size:</div>
+            
             {availableSizes.map((size) => (
               <label key={size}>
                 <input
@@ -237,12 +239,21 @@ const Product = ({ productId }) => {
           </div>
 
           <div className="color-section">
-            <h3 className="product-heads">Color:</h3>
+            <div className="product-heads">Color:</div>
+            
             {availableColors.map((color) => (
               <div
                 key={color}
                 className={`color-box ${selectedColor === color ? 'selected' : ''}`}
-                style={{ backgroundColor: color, border: selectedColor === color ? '3px solid #000' : '1px solid #ccc' }}
+                style={{ 
+                  backgroundColor: color, 
+                  border: selectedColor === color ? '1px solid #000' : '1px solid #ccc', 
+                  borderRadius: '100px',
+                  width: '25px',
+                  height: '25px' 
+                }}
+                
+                
                 title={color}
                 onClick={() => handleColorChange(color, productDetails.find(detail => detail.color === color).color_hex)} // Use the correct hex code
               ></div>
@@ -250,7 +261,8 @@ const Product = ({ productId }) => {
           </div>
 
           <div className="quantity-section">
-            <h3 className="product-heads">Quantity:</h3>
+            <div className="product-heads">Quantity:</div>
+            
             <button onClick={() => handleQuantityChange('decrement')}>-</button>
             <input type="text" value={quantity} readOnly />
             <button onClick={() => handleQuantityChange('increment')}>+</button>

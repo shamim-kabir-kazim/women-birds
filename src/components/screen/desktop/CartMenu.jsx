@@ -117,7 +117,7 @@ const CartMenu = ({ isOpen, closeCart }) => {
                 <p>Color: {item.color}</p>
                 <p>Quantity: {item.quantity}</p>
                 <p className="prc">{item.price} TK</p>
-                <button onClick={() => handleDelete(item.product_id, item.color, item.size)}>Delete</button>
+                <button className="delete-button" onClick={() => handleDelete(item.product_id, item.color, item.size)}>Delete</button>
               </div>
             </div>
           ))

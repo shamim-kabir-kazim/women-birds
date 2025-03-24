@@ -18,6 +18,7 @@
   width: 100%;
   max-width: 1900px;
   margin-top: 20px;
+  gap: 20px;
 
 }
 
@@ -65,7 +66,7 @@
   padding: 0px;
   font-family: Arial, sans-serif;
   color: #431934;
-  margin-left: 40px;
+
   align-items: flex-start;
   text-align: left;
   width: max-content;
@@ -116,22 +117,21 @@
 .color-section {
   display: flex;
   align-items: center; /* Ensures vertical alignment */
+  justify-content: center;
   gap: 10px; /* Space between text and color boxes */
+  
 }
 
-.product-head {
-  margin: 0; /* Remove any default margins */
-  padding: 0; /* Remove any default padding */
-  font-size: 16px; /* Adjust font size */
-  line-height: 1; /* Ensure consistent line spacing */
-  display: flex; /* Use flexbox for alignment */
+.product-heads {
+  font-weight: bold;
+  color: #431934;
 }
 
 .color-box {
-  width: 30px;
-  height: 30px;
+  width: 10px;
+  height: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 100px;
   cursor: pointer;
   transition: border 0.3s ease; /* Smooth hover effect */
 }
