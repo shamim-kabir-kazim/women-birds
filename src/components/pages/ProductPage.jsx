@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Product from '../screen/desktop/Product';
+import ItemList from '../screen/desktop/ItemList';
 import './ProductPage.css';
 import Sepa from '../screen/desktop/Sepa';
 
@@ -8,6 +9,8 @@ const ProductPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [productId, setProductId] = useState(null);
+  const [productType, setProductType] = useState(null);
+  const [relatedItems, setRelatedItems] = useState([]);
 
   useEffect(() => {
     const extractProductId = () => {
@@ -26,6 +29,55 @@ const ProductPage = () => {
     }
   }, [location, navigate]);
 
+  useEffect(() => {
+    const fetchProductType = async () => {
+      try {
+        const response = await fetch(`/api/view-product/${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch product');
+        }
+        const data = await response.json();
+        console.log(`Fetched product type: ${data.type}`); // Log the product type
+        setProductType(data.type);
+      } catch (error) {
+        console.error('Error fetching product type:', error);
+      }
+    };
+
+    if (productId) {
+      fetchProductType();
+    }
+  }, [productId]);
+
+  useEffect(() => {
+    const fetchRelatedItems = async () => {
+      try {
+        const response = await fetch(`/api/viewrelatedproduct?type=${productType}&exclude=${productId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch related products');
+        }
+        const data = await response.json();
+        console.log(`Fetched related products: ${JSON.stringify(data)}`); // Log the related products
+        setRelatedItems(data.map(item => ({
+          product_id: item.product_id,
+          product_name: item.product_name,
+          price: item.price,
+          image: encodeURI(item.primary_img_url),
+        })));
+      } catch (error) {
+        console.error('Error fetching related products:', error);
+      }
+    };
+
+    if (productType) {
+      fetchRelatedItems();
+    }
+  }, [productType, productId]);
+
+  const handleItemClick = (id) => {
+    navigate(`/Details?id=${id}`);
+  };
+
   if (!productId) {
     return null;
   }
@@ -35,8 +87,8 @@ const ProductPage = () => {
       <Sepa />
       <Product productId={productId} />
       <Sepa />
-      // here load the items 
-
+      <h2>Related Products</h2>
+      <ItemList items={relatedItems} onItemClick={handleItemClick} />
     </div>
   );
 };
