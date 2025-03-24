@@ -34,6 +34,9 @@ const ProductPage = () => {
     <div className="home-div" style={{ width: '100%', height: '100%' }}>
       <Sepa />
       <Product productId={productId} />
+      <Sepa />
+      // here load the items 
+
     </div>
   );
 };
