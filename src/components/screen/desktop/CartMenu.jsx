@@ -1,8 +1,31 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './CartMenu.css';
 
-const CartMenu = ({ isOpen, closeCart, cartItems }) => {
+const CartMenu = ({ isOpen, closeCart }) => {
   const cartRef = useRef(null);
+  const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get('/api/view-cart', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+          }
+        });
+        setCartItems(response.data);
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    };
+
+    if (isOpen) {
+      fetchCartItems();
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,6 +51,25 @@ const CartMenu = ({ isOpen, closeCart, cartItems }) => {
 
   const calculateSubtotal = () =>
     cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const handleDelete = async (product_id, color, size) => {
+    try {
+      await axios.delete('/api/delete-cart-item', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+        },
+        data: { product_id, color, size }
+      });
+      setCartItems(cartItems.filter(item => !(item.product_id === product_id && item.color === color && item.size === size)));
+    } catch (error) {
+      console.error('Error deleting cart item:', error);
+    }
+  };
+
+  const handleImageClick = (product_id) => {
+    navigate(`/Details?id=${product_id}`);
+    closeCart();
+  };
 
   return (
     <div
@@ -64,16 +106,18 @@ const CartMenu = ({ isOpen, closeCart, cartItems }) => {
       <div className="separator"></div>
       <div className="cart-items">
         {cartItems.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p className="empty-cart-text">Your cart is empty</p>
         ) : (
           cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <img src={item.image} alt={item.name} />
+            <div className="cart-item" key={item.cartid}>
+              <img src={item.primary_img_url} alt={item.product_name} onClick={() => handleImageClick(item.product_id)} />
               <div className="cart-item-details">
-                <p>{item.name}</p>
+                <p>{item.product_name}</p>
                 <p>Size: {item.size}</p>
+                <p>Color: {item.color}</p>
                 <p>Quantity: {item.quantity}</p>
                 <p className="prc">{item.price} TK</p>
+                <button onClick={() => handleDelete(item.product_id, item.color, item.size)}>Delete</button>
               </div>
             </div>
           ))

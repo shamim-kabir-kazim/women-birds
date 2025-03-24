@@ -127,3 +127,9 @@
   border-radius: 50px;
   cursor: pointer;
 }
+.empty-cart-text {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}

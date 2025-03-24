@@ -12,6 +12,7 @@ const ProductPage = () => {
   const [productId, setProductId] = useState(null);
   const [productType, setProductType] = useState(null);
   const [relatedItems, setRelatedItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const extractProductId = () => {
@@ -42,6 +43,8 @@ const ProductPage = () => {
         setProductType(data.type);
       } catch (error) {
         console.error('Error fetching product type:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -79,8 +82,8 @@ const ProductPage = () => {
     window.location.href = `/Details?id=${id}`;
   };
 
-  if (!productId) {
-    return null;
+  if (loading || !productId) {
+    return <div style={{ backgroundColor: 'white', width: '100%', height: '100%' }}></div>;
   }
 
   return (
@@ -88,7 +91,7 @@ const ProductPage = () => {
       <Sepa />
       <Product productId={productId} />
 
-      <TextHed text={"Related Products"} />
+      {!loading && <TextHed text={"Related Products"} />}
       
       <ItemList items={relatedItems} onItemClick={handleItemClick} />
     </div>
