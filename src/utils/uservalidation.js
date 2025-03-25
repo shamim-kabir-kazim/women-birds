@@ -7,13 +7,13 @@ export const validateUser = async () => {
       throw new Error('No token provided');
     }
 
-    const response = await axios.get('/api/xuv', {
+    const response = await axios.get('/api/validate', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
 
-    if (response.status === 200 && response.data.valid) {
+    if (response.status === 200 && response.data.status === 'ok') {
       return true;
     } else {
       throw new Error('User validation failed');

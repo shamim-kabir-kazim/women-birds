@@ -24,8 +24,6 @@ const Product = ({ productId }) => {
   const [isSizeValid, setIsSizeValid] = useState(true);
   const [isColorValid, setIsColorValid] = useState(true);
   const [isOrderPopupOpen, setIsOrderPopupOpen] = useState(false);
-  const [userAddress, setUserAddress] = useState('');
-  const [userPhoneNumber, setUserPhoneNumber] = useState('');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -77,25 +75,10 @@ const Product = ({ productId }) => {
       }
     };
 
-    const fetchUserDetails = async () => {
-      try {
-        const response = await axios.get('/account-details');
-        if (response.status !== 200) {
-          throw new Error('Failed to fetch user details');
-        }
-        const data = response.data.user;
-        setUserAddress(data.address);
-        setUserPhoneNumber(data.phone_number);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
     if (productId) {
       fetchProduct();
       fetchSideImages();
       fetchProductDetails();
-      fetchUserDetails(); // Fetch user details
     }
   }, [productId]);
 
@@ -230,14 +213,15 @@ const Product = ({ productId }) => {
     setIsOrderPopupOpen(true);
   };
 
-  const handleConfirmOrder = async () => {
+  const handleConfirmOrder = async (userAddress, userPhoneNumber) => {
     try {
       const response = await axios.post('/xuorder', {
         product_id: productId,
         color: selectedColor,
         size: selectedSize,
         quantity: quantity,
-        address: userAddress
+        address: userAddress,
+        phone_number: userPhoneNumber
       });
 
       if (response.status === 200) {
@@ -359,18 +343,18 @@ const Product = ({ productId }) => {
 
           <div className={`style-tips ${isStyleTipsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleStyleTips}>
-              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="Dropdown" />
             </p>
             {isStyleTipsOpen && (
               <ul>
-                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and color for your outfit.</li>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and color to complement your body shape and skin tone.</li>
               </ul>
             )}
           </div>
 
           <div className={`shipping-returns ${isShippingReturnsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleShippingReturns}>
-              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="Dropdown" />
             </p>
             {isShippingReturnsOpen && (
               <ul>
@@ -382,7 +366,7 @@ const Product = ({ productId }) => {
 
           <div className={`faqs ${isFaqsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleFaqs}>
-              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com.png"} alt="Dropdown" />
             </p>
             {isFaqsOpen && (
               <ul>
@@ -408,7 +392,6 @@ const Product = ({ productId }) => {
           selectedSize={selectedSize}
           selectedColor={selectedColor}
           quantity={quantity}
-          userAddress={userAddress}
           onConfirm={handleConfirmOrder}
           onClose={() => setIsOrderPopupOpen(false)}
         />

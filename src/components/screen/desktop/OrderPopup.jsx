@@ -1,7 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './OrderPopup.css';
+import axios from 'axios';
 
-const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity, userAddress, userPhoneNumber, onConfirm, onClose }) => {
+const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity, onConfirm, onClose }) => {
+  const [userAddress, setUserAddress] = useState('');
+  const [userPhoneNumber, setUserPhoneNumber] = useState('');
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.log('No token found');
+        return;
+      }
+
+      console.log('Token found:', token);
+
+      try {
+        const response = await fetch('/api/account-details', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch user details: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log('Response from server:', data);
+
+        if (data.valid && data.user) {
+          console.log('User data received:', data.user);
+          setUserAddress(data.user.address);
+          setUserPhoneNumber(data.user.phone_number);
+        } else {
+          console.log('Failed to fetch user details');
+        }
+      } catch (error) {
+        console.error('Error fetching user details:', error.message);
+        setError(error.message);
+      }
+    };
+
+    fetchUserDetails();
+  }, []);
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -21,7 +68,7 @@ const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity,
           <p><strong>Phone Number:</strong> {userPhoneNumber}</p>
         </div>
         <div className="modal-actions">
-          <button className="confirm-order" onClick={onConfirm}>Confirm Order</button>
+          <button className="confirm-order" onClick={() => onConfirm(userAddress, userPhoneNumber)}>Confirm Order</button>
           <button className="close-modal" onClick={onClose}>Close</button>
         </div>
       </div>
