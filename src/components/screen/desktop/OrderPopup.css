@@ -1,90 +1,195 @@
+/* Light Business-Standard Order Confirmation Design */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Slightly lighter overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: #fafafa; /* Very light gray background */
+  padding: 40px;
+  border-radius: 10px;
+  width: 800px;
+  max-width: 95%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  color: #555; /* Lighter gray text */
+  font-family: 'Arial', sans-serif;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  .modal-content {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 500px;
-    max-width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: modalFadeIn 0.3s;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .modal-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .modal-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 20px;
-  }
-  
-  .product-info p {
-    margin: 5px 0;
-  }
-  
-  .modal-user-info {
-    margin-top: 20px;
-  }
-  
-  .modal-user-info p {
-    margin: 5px 0;
-  }
-  
-  .modal-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .confirm-order, .close-modal {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .confirm-order {
-    background: #28a745;
-    color: #fff;
-  }
-  
-  .confirm-order:hover {
-    background: #218838;
-  }
-  
-  .close-modal {
-    background: #dc3545;
-    color: #fff;
-  }
-  
-  .close-modal:hover {
-    background: #c82333;
-  }
-  
-  @keyframes modalFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}
+
+/* Close Icon */
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 26px;
+  color: #888; /* Lighter gray */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-icon:hover {
+  color: #66b0ff; /* Soft blue on hover */
+}
+
+/* Header Styling */
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #66b0ff; /* Softer blue */
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.company-info h3 {
+  font-size: 22px;
+  color: #66b0ff;
+  margin-bottom: 5px;
+}
+
+.company-info p, .order-info p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #777; /* Lighter secondary text */
+}
+
+.order-info strong {
+  color: #222; /* Softer black for emphasis */
+}
+
+/* Product Section with Image */
+.product-section {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.modal-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5; /* Very light gray border */
+}
+
+.product-details {
+  flex: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9f9f9; /* Very light gray table background */
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background: #a3ccff; /* Lighter blue header */
+  color: #fff;
+  font-weight: 600;
+}
+
+td {
+  border-bottom: 1px solid #ececec; /* Even lighter border */
+}
+
+/* Customer Section */
+.customer-section {
+  margin-bottom: 30px;
+}
+
+.customer-section h4 {
+  font-size: 20px;
+  color: #66b0ff;
+  margin-bottom: 10px;
+}
+
+.customer-section p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #777;
+}
+
+.customer-section strong {
+  color: #222;
+}
+
+/* Total Section */
+.total-section {
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.total-section p {
+  font-size: 18px;
+  margin: 8px 0;
+  color: #777;
+}
+
+.total-section strong {
+  color: #222;
+}
+
+.total-section hr {
+  border: none;
+  border-top: 2px solid #a3ccff; /* Lighter blue line */
+  margin: 10px 0;
+}
+
+/* Button Styling */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-order {
+  background: #66b0ff; /* Light blue button */
+  color: #fff;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.confirm-order:hover {
+  background: #4d9bff; /* Slightly darker light blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}

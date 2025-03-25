@@ -169,6 +169,12 @@ const Product = ({ productId }) => {
       return;
     }
 
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+      alert('No token found. Please log in again.');
+      return;
+    }
+
     try {
       const response = await axios.post('/api/add-to-cart', {
         product_id: productId,
@@ -176,6 +182,10 @@ const Product = ({ productId }) => {
         color_code: selectedColorCode, // Use selectedColorCode for the hex value
         size: selectedSize,
         quantity: quantity
+      }, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (response.status === 200) {
