@@ -71,6 +71,25 @@ const CartMenu = ({ isOpen, closeCart }) => {
     closeCart();
   };
 
+  const handlePlaceOrder = async () => {
+    try {
+      const response = await axios.post('/api/place-order', {}, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+        }
+      });
+
+      if (response.status === 200) {
+        alert('Order placed successfully!');
+        setCartItems([]);
+      } else {
+        alert('Failed to place order.');
+      }
+    } catch (error) {
+      console.error('Error placing order:', error);
+    }
+  };
+
   return (
     <div
       className={`cart-menu ${isOpen ? 'open' : ''}`}
@@ -133,7 +152,7 @@ const CartMenu = ({ isOpen, closeCart }) => {
           <div>{calculateSubtotal()} TK</div>
         </div>
       </div>
-      <div className="place-order" onClick={() => alert('Order placed!')}>
+      <div className="place-order" onClick={handlePlaceOrder}>
         PLACE ORDER
       </div>
     </div>
