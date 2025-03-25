@@ -289,7 +289,7 @@ const Product = ({ productId }) => {
             </ul>
           </div>
 
-          <div className="style-tips">
+          <div className={`style-tips ${isStyleTipsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleStyleTips}>
               <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
@@ -300,7 +300,7 @@ const Product = ({ productId }) => {
             )}
           </div>
 
-          <div className="shipping-returns">
+          <div className={`shipping-returns ${isShippingReturnsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleShippingReturns}>
               <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
@@ -312,7 +312,7 @@ const Product = ({ productId }) => {
             )}
           </div>
 
-          <div className="faqs">
+          <div className={`faqs ${isFaqsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleFaqs}>
               <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
