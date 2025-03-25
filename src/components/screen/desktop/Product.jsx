@@ -20,6 +20,8 @@ const Product = ({ productId }) => {
   const [isShippingReturnsOpen, setIsShippingReturnsOpen] = useState(false);
   const [isFaqsOpen, setIsFaqsOpen] = useState(false);
   const [notification, setNotification] = useState({ visible: false, message: '' });
+  const [isSizeValid, setIsSizeValid] = useState(true);
+  const [isColorValid, setIsColorValid] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -84,6 +86,7 @@ const Product = ({ productId }) => {
       setAvailableColors([...new Set(productDetails.map(detail => detail.color))]);
     } else {
       setSelectedSize(size);
+      setIsSizeValid(true);
       try {
         const response = await fetch(`/api/available-colors/${productId}/${size}`);
         if (!response.ok) {
@@ -108,6 +111,7 @@ const Product = ({ productId }) => {
     } else {
       setSelectedColor(color);
       setSelectedColorCode(colorCode);
+      setIsColorValid(true);
       try {
         const response = await fetch(`/api/available-sizes/${productId}/${color}`);
         if (!response.ok) {
@@ -141,13 +145,17 @@ const Product = ({ productId }) => {
 
   const handleAddToCart = async () => {
     if (!selectedSize) {
+      setIsSizeValid(false);
       showNotification('Please select a size');
       return;
     }
+
     if (!selectedColor) {
+      setIsColorValid(false);
       showNotification('Please select a color');
       return;
     }
+
     if (quantity <= 0) {
       showNotification('Quantity must be greater than zero');
       return;
@@ -216,73 +224,56 @@ const Product = ({ productId }) => {
 
           <div className="pro-name">
             <div className="product-heads">{product.product_name}</div>
-            </div>
-
-          
+          </div>
 
           <div className="pro-price">
-          <p className="price">${product.price}</p>
+            <p className="price">${product.price}</p>
           </div>
 
-          
-
-          <div className="pro-size">
-          <div className="size-section">
-            <div className="product-heads">Size:</div>
-            
-            {availableSizes.map((size) => (
-              <div
-                key={size}
-                className={`size-box ${selectedSize === size ? 'selected' : ''}`}
-                onClick={() => handleSizeChange(size)}
-              >
-                {size}
-              </div>
-            ))}
-          </div>
+          <div className={`pro-size ${!isSizeValid ? 'highlight' : ''}`}>
+            <div className="size-section">
+              <div className="product-heads">Size:</div>
+              {availableSizes.map((size) => (
+                <div
+                  key={size}
+                  className={`size-box ${selectedSize === size ? 'selected' : ''}`}
+                  onClick={() => handleSizeChange(size)}
+                >
+                  {size}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="pro-color">
-
-          <div className="color-section">
-            <div className="product-heads">Color:</div>
-            
-            {availableColors.map((color) => (
-              <div
-                key={color}
-                className={`color-box ${selectedColor === color ? 'selected' : ''}`}
-                style={{ 
-                  backgroundColor: color, 
-                  border: selectedColor === color ? '1px solid #000' : '1px solid #ccc', 
-                  borderRadius: '100px',
-                  width: '25px',
-                  height: '25px' 
-                }}
-                
-                
-                title={color}
-                onClick={() => handleColorChange(color, productDetails.find(detail => detail.color === color).color_hex)} // Use the correct hex code
-              ></div>
-            ))}
+          <div className={`pro-color ${!isColorValid ? 'highlight' : ''}`}>
+            <div className="color-section">
+              <div className="product-heads">Color:</div>
+              {availableColors.map((color) => (
+                <div
+                  key={color}
+                  className={`color-box ${selectedColor === color ? 'selected' : ''}`}
+                  style={{ 
+                    backgroundColor: color, 
+                    border: selectedColor === color ? '1px solid #000' : '1px solid #ccc', 
+                    borderRadius: '100px',
+                    width: '25px',
+                    height: '25px' 
+                  }}
+                  title={color}
+                  onClick={() => handleColorChange(color, productDetails.find(detail => detail.color === color).color_hex)} // Use the correct hex code
+                ></div>
+              ))}
+            </div>
           </div>
-          </div>
-
-
 
           <div className="pro-quantity">
-
-          <div className="quantity-section">
-            <div className="product-heads">Quantity:</div>
-            
-            <button onClick={() => handleQuantityChange('decrement')}>-</button>
-            <input type="text" value={quantity} readOnly />
-            <button onClick={() => handleQuantityChange('increment')}>+</button>
+            <div className="quantity-section">
+              <div className="product-heads">Quantity:</div>
+              <button onClick={() => handleQuantityChange('decrement')}>-</button>
+              <input type="text" value={quantity} readOnly />
+              <button onClick={() => handleQuantityChange('increment')}>+</button>
+            </div>
           </div>
-          
-          </div>
-
-
-
 
           <div className="action-buttons">
             <button className="buy-now">BUY NOW</button>

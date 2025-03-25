@@ -319,6 +319,39 @@
   90% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+.pro-size, .pro-color, .pro-name, .pro-price, .pro-quantity {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 8px; /* Rounded edges */
+}
+
+.pro-size.highlight, .pro-color.highlight {
+  box-shadow: 0 0 10px rgba(140, 23, 105, 0.5);
+}
+
+.pro-size.highlight .size-section, .pro-color.highlight .color-section {
+  opacity: 1;
+}
+
+.pro-size:not(.highlight) .size-section, .pro-color:not(.highlight) .color-section {
+  opacity: 1;
+}
+
+
+.size-box, .color-box {
+  padding: 5px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.size-box.selected, .color-box.selected {
+  box-shadow: none; /* Remove shadow when selected */
+}
   @media (max-width: 1500px) {
     .image-gallery {
       max-width: 75%; /* Reduce max-width for better fit */
