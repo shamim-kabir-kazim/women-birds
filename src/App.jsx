@@ -26,6 +26,7 @@ import Adminpage from './components/adminpages/Adminpage';
 import AdminLoginPage from './components/adminpages/AdminLoginPage';
 import AdminRegPage from './components/adminpages/AdminRegPage';
 import VerifyJWT from './components/VerifyJWT';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 
 function App() {
   const [images, setImages] = useState([]);
@@ -80,8 +81,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductListpage />} />
-          <Route path="/account" element={<AccountPage />} />
-          <Route path="/Favorite" element={<FavrtPage />} />
+          <Route path="/account" element={<ProtectedRoute element={AccountPage} />} />
+          <Route path="/Favorite" element={<ProtectedRoute element={FavrtPage} />} />
           <Route path="/Details" element={<ProductPage />} />
           <Route path="/user" element={<LoginPage />} />
           <Route path="/Information/*" element={<MobileAboutDynamicPage />} />

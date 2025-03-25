@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Product.css';
 import axios from 'axios';
+import { validateUser } from '../../../utils/uservalidation'; // Update with the correct relative path
 
 const Product = ({ productId }) => {
   const [product, setProduct] = useState(null);
@@ -152,24 +153,19 @@ const Product = ({ productId }) => {
       return;
     }
 
-    try {
-      const token = localStorage.getItem('jwtToken');
-      console.log('JWT Token:', token);
-      if (!token) {
-        showNotification('User not authenticated');
-        return;
-      }
+    const isValidUser = await validateUser();
+    if (!isValidUser) {
+      window.location.href = '/user'; // Redirect to login page
+      return;
+    }
 
+    try {
       const response = await axios.post('/api/add-to-cart', {
         product_id: productId,
         color: selectedColor,
         color_code: selectedColorCode, // Use selectedColorCode for the hex value
         size: selectedSize,
         quantity: quantity
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
       });
 
       if (response.status === 200) {
@@ -304,18 +300,18 @@ const Product = ({ productId }) => {
 
           <div className="style-tips">
             <p className="section-header" onClick={toggleStyleTips}>
-              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
             {isStyleTipsOpen && (
               <ul>
-                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and color for your body shape and personal style. Experiment with different styling options to create multiple looks with the same piece.</li>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit for your body type and occasion.</li>
               </ul>
             )}
           </div>
 
           <div className="shipping-returns">
             <p className="section-header" onClick={toggleShippingReturns}>
-              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
             {isShippingReturnsOpen && (
               <ul>
@@ -327,7 +323,7 @@ const Product = ({ productId }) => {
 
           <div className="faqs">
             <p className="section-header" onClick={toggleFaqs}>
-              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
+              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
             </p>
             {isFaqsOpen && (
               <ul>
