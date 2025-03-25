@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Product.css';
 import axios from 'axios';
 import { validateUser } from '../../../utils/uservalidation'; // Update with the correct relative path
+import OrderPopup from './OrderPopup'; // Import the OrderPopup component
 
 const Product = ({ productId }) => {
   const [product, setProduct] = useState(null);
@@ -22,6 +23,9 @@ const Product = ({ productId }) => {
   const [notification, setNotification] = useState({ visible: false, message: '' });
   const [isSizeValid, setIsSizeValid] = useState(true);
   const [isColorValid, setIsColorValid] = useState(true);
+  const [isOrderPopupOpen, setIsOrderPopupOpen] = useState(false);
+  const [userAddress, setUserAddress] = useState('');
+  const [userPhoneNumber, setUserPhoneNumber] = useState('');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -73,10 +77,25 @@ const Product = ({ productId }) => {
       }
     };
 
+    const fetchUserDetails = async () => {
+      try {
+        const response = await axios.get('/account-details');
+        if (response.status !== 200) {
+          throw new Error('Failed to fetch user details');
+        }
+        const data = response.data.user;
+        setUserAddress(data.address);
+        setUserPhoneNumber(data.phone_number);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     if (productId) {
       fetchProduct();
       fetchSideImages();
       fetchProductDetails();
+      fetchUserDetails(); // Fetch user details
     }
   }, [productId]);
 
@@ -184,6 +203,55 @@ const Product = ({ productId }) => {
     }
   };
 
+  const handleBuyNow = async () => {
+    if (!selectedSize) {
+      setIsSizeValid(false);
+      showNotification('Please select a size');
+      return;
+    }
+
+    if (!selectedColor) {
+      setIsColorValid(false);
+      showNotification('Please select a color');
+      return;
+    }
+
+    if (quantity <= 0) {
+      showNotification('Quantity must be greater than zero');
+      return;
+    }
+
+    const isValidUser = await validateUser();
+    if (!isValidUser) {
+      window.location.href = '/user'; // Redirect to login page
+      return;
+    }
+
+    setIsOrderPopupOpen(true);
+  };
+
+  const handleConfirmOrder = async () => {
+    try {
+      const response = await axios.post('/xuorder', {
+        product_id: productId,
+        color: selectedColor,
+        size: selectedSize,
+        quantity: quantity,
+        address: userAddress
+      });
+
+      if (response.status === 200) {
+        alert('Order placed successfully');
+      } else {
+        throw new Error('Failed to place order');
+      }
+    } catch (error) {
+      alert('Failed to place order');
+    } finally {
+      setIsOrderPopupOpen(false);
+    }
+  };
+
   const toggleStyleTips = () => {
     setIsStyleTipsOpen(!isStyleTipsOpen);
   };
@@ -276,7 +344,7 @@ const Product = ({ productId }) => {
           </div>
 
           <div className="action-buttons">
-            <button className="buy-now">BUY NOW</button>
+            <button className="buy-now" onClick={handleBuyNow}>BUY NOW</button>
             <button className="add-to-cart" onClick={handleAddToCart}>ADD TO CART</button>
           </div>
           
@@ -291,18 +359,18 @@ const Product = ({ productId }) => {
 
           <div className={`style-tips ${isStyleTipsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleStyleTips}>
-              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
+              <strong>Style & Tips</strong> <img className="dropdown-icon" src={isStyleTipsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
             </p>
             {isStyleTipsOpen && (
               <ul>
-                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and fit for your body type and occasion.</li>
+                <li>Wear it with confidence and pair it with matching accessories for a complete look. Follow the latest trends and mix and match for a unique style statement. Choose the right size and color for your outfit.</li>
               </ul>
             )}
           </div>
 
           <div className={`shipping-returns ${isShippingReturnsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleShippingReturns}>
-              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
+              <strong>Shipping & Returns</strong> <img className="dropdown-icon" src={isShippingReturnsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
             </p>
             {isShippingReturnsOpen && (
               <ul>
@@ -314,14 +382,14 @@ const Product = ({ productId }) => {
 
           <div className={`faqs ${isFaqsOpen ? 'open' : ''}`}>
             <p className="section-header" onClick={toggleFaqs}>
-              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} alt="toggle" />
+              <strong>FAQs</strong> <img className="dropdown-icon" src={isFaqsOpen ? "https://i.postimg.cc/PrjnF92m/dropdown-arrow-svgrepo-com-1.png" : "https://i.postimg.cc/0201gnBh/dropdown-arrow-svgrepo-com-1.png"} />
             </p>
             {isFaqsOpen && (
               <ul>
                 <li><strong>What if I want to exchange or return my order?</strong></li>
                 <li>Kindly be advised that due to the nature of this product, we regret to inform you that it is non-returnable.</li>
                 <li><strong>Will I Receive a Quality Product by Women Bird?</strong></li>
-                <li>As an international brand, we adhere to strict quality and design benchmarks. Every Women Birds product goes through a 5 step Quality Control process to ensure that you receive the best.</li>
+                <li>As an international brand, we adhere to strict quality and design benchmarks. Every Women Birds product goes through a 5 step Quality Control process to ensure that you receive the highest quality product.</li>
                 <li><a href="https://women-bird.com/faqs">Read More FAQ's</a></li>
               </ul>
             )}
@@ -332,6 +400,18 @@ const Product = ({ productId }) => {
         <div className="notification">
           <p>{notification.message}</p>
         </div>
+      )}
+      {isOrderPopupOpen && (
+        <OrderPopup
+          product={product}
+          mainImage={mainImage}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+          quantity={quantity}
+          userAddress={userAddress}
+          onConfirm={handleConfirmOrder}
+          onClose={() => setIsOrderPopupOpen(false)}
+        />
       )}
     </div>
   );
