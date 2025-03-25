@@ -224,26 +224,9 @@ const Product = ({ productId }) => {
   };
 
   const handleConfirmOrder = async (userAddress, userPhoneNumber) => {
-    try {
-      const response = await axios.post('/xuorder', {
-        product_id: productId,
-        color: selectedColor,
-        size: selectedSize,
-        quantity: quantity,
-        address: userAddress,
-        phone_number: userPhoneNumber
-      });
-
-      if (response.status === 200) {
-        alert('Order placed successfully');
-      } else {
-        throw new Error('Failed to place order');
-      }
-    } catch (error) {
-      alert('Failed to place order');
-    } finally {
-      setIsOrderPopupOpen(false);
-    }
+    // Simplified: No API call here; OrderPopup.jsx handles it
+    alert('Order placed successfully');
+    setIsOrderPopupOpen(false);
   };
 
   const toggleStyleTips = () => {
@@ -283,7 +266,6 @@ const Product = ({ productId }) => {
         </div>
 
         <div className="product-card">
-
           <div className="pro-name">
             <div className="product-heads">{product.product_name}</div>
           </div>
@@ -395,18 +377,18 @@ const Product = ({ productId }) => {
           <p>{notification.message}</p>
         </div>
       )}
-{isOrderPopupOpen && (
-  <OrderPopup
-    product={product}
-    productId={productId} // Add this prop
-    mainImage={mainImage}
-    selectedSize={selectedSize}
-    selectedColor={selectedColor}
-    quantity={quantity}
-    onConfirm={handleConfirmOrder}
-    onClose={() => setIsOrderPopupOpen(false)}
-  />
-)}
+      {isOrderPopupOpen && (
+        <OrderPopup
+          product={product}
+          productId={productId}
+          mainImage={mainImage}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+          quantity={quantity}
+          onConfirm={handleConfirmOrder}
+          onClose={() => setIsOrderPopupOpen(false)}
+        />
+      )}
     </div>
   );
 };

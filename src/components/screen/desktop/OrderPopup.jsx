@@ -63,7 +63,7 @@ const OrderPopup = ({ product, productId, mainImage, selectedSize, selectedColor
       }
 
       const orderData = {
-        product_id: productId, // Use the directly passed productId
+        product_id: productId,
         color: selectedColor,
         size: selectedSize,
         quantity,
@@ -72,7 +72,7 @@ const OrderPopup = ({ product, productId, mainImage, selectedSize, selectedColor
 
       console.log('Order data being sent:', orderData);
 
-      const response = await axios.post('/api/xuorder', orderData, {
+      const response = await axios.post('http://localhost:3000/api/xuorder', orderData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
