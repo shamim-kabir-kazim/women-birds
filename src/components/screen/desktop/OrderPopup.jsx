@@ -3,12 +3,11 @@ import './OrderPopup.css';
 import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 
-const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity, onConfirm, onClose }) => {
+const OrderPopup = ({ product, productId, mainImage, selectedSize, selectedColor, quantity, onConfirm, onClose }) => {
   const [userAddress, setUserAddress] = useState('');
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
   const [error, setError] = useState(null);
 
-  // Use actual current date
   const currentDate = new Date();
   const deliveryDate = new Date(currentDate);
   deliveryDate.setDate(currentDate.getDate() + 3);
@@ -54,6 +53,43 @@ const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity,
 
     fetchUserDetails();
   }, []);
+
+  const handleConfirmOrder = async () => {
+    try {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.log('No token found');
+        return;
+      }
+
+      const orderData = {
+        product_id: productId, // Use the directly passed productId
+        color: selectedColor,
+        size: selectedSize,
+        quantity,
+        address: userAddress,
+      };
+
+      console.log('Order data being sent:', orderData);
+
+      const response = await axios.post('/api/xuorder', orderData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.data.valid) {
+        console.log('Order placed successfully');
+        onConfirm(userAddress, userPhoneNumber);
+      } else {
+        console.log('Failed to place order:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error placing order:', error.message);
+      setError(error.message);
+    }
+  };
 
   return (
     <div className="modal">
@@ -115,7 +151,7 @@ const OrderPopup = ({ product, mainImage, selectedSize, selectedColor, quantity,
         </div>
 
         <div className="modal-actions">
-          <button className="confirm-order" onClick={() => onConfirm(userAddress, userPhoneNumber)}>
+          <button className="confirm-order" onClick={handleConfirmOrder}>
             Confirm Order
           </button>
         </div>

@@ -395,17 +395,18 @@ const Product = ({ productId }) => {
           <p>{notification.message}</p>
         </div>
       )}
-      {isOrderPopupOpen && (
-        <OrderPopup
-          product={product}
-          mainImage={mainImage}
-          selectedSize={selectedSize}
-          selectedColor={selectedColor}
-          quantity={quantity}
-          onConfirm={handleConfirmOrder}
-          onClose={() => setIsOrderPopupOpen(false)}
-        />
-      )}
+{isOrderPopupOpen && (
+  <OrderPopup
+    product={product}
+    productId={productId} // Add this prop
+    mainImage={mainImage}
+    selectedSize={selectedSize}
+    selectedColor={selectedColor}
+    quantity={quantity}
+    onConfirm={handleConfirmOrder}
+    onClose={() => setIsOrderPopupOpen(false)}
+  />
+)}
     </div>
   );
 };
