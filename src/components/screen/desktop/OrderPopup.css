@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -12,34 +12,79 @@
   }
   
   .modal-content {
-    background: white;
+    background: #fff;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s;
   }
   
-  .modal-image {
-    max-width: 100%;
-    height: auto;
+  .modal-header {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
   }
   
-  .confirm-order {
-    background-color: orange;
-    border: none;
-    color: white;
-    padding: 10px 20px;
+  .modal-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .product-info p {
+    margin: 5px 0;
+  }
+  
+  .modal-user-info {
     margin-top: 20px;
+  }
+  
+  .modal-user-info p {
+    margin: 5px 0;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .confirm-order, .close-modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
   }
   
+  .confirm-order {
+    background: #28a745;
+    color: #fff;
+  }
+  
+  .confirm-order:hover {
+    background: #218838;
+  }
+  
   .close-modal {
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
+    background: #dc3545;
+    color: #fff;
+  }
+  
+  .close-modal:hover {
+    background: #c82333;
+  }
+  
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
