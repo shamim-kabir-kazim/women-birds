@@ -188,32 +188,11 @@ const MyDetails = ({ formData: initialFormData, onBack }) => {
                   </div>
                 </div>
               </div>
-              <div className="dd-form-colo">
-                <h3 className="dd-section-title">
-                  <span className="dd-icon-text">
-                    <FaCreditCard /> Billing Address
-                  </span>
-                </h3>
-                <div className="dd-form-row">
-                  <div className="dd-full-width">
-                    <label className="dd-label-row">
-                      <span className="dd-icon-text">Address</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="billingAddress"
-                      value={formData.billingAddress}
-                      onChange={handleChange}
-                      className="dd-form-text"
-                    />
-                  </div>
-                </div>
-              </div>
               <div className="dd-button-container">
                 <button type="button" className="dd-cute-button-back" onClick={onBack}>
                   <FaArrowLeft /> Back
                 </button>
-                <button type="submit" className="dd-cute-button-save">
+                <button type="button" className="dd-cute-button-save" onClick={handleSubmit}>
                   <FaSave /> Save
                 </button>
               </div>

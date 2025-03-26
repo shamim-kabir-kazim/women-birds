@@ -27,7 +27,7 @@
 .dd-form-rowo {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   padding: 20px;
   gap: 20px;
@@ -38,6 +38,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+.dd-form-colo {
+ margin-bottom: 10px;
 }
 
 .dd-section-title {
@@ -116,6 +119,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  align-items: center; /* Ensure buttons are aligned vertically */
 }
 
 .dd-cute-button-back,
@@ -125,28 +129,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
   font-size: 16px; /* Adjust the font size as needed */
+  transition: opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Add transition for hover effect */
 }
 
 .dd-cute-button-back {
-  background-color: #f0f0f0; /* Adjust the background color as needed */
-  border: 1px solid #ccc; /* Adjust the border as needed */
-  color: #333; /* Adjust the text color as needed */
+  background-color: white !important; /* Set the background color to white */
+  border: 1px solid #ccc; /* Add border */
+  color: #431934 !important; /* Set the text color */
 }
 
 .dd-cute-button-save {
-  background-color: #4CAF50; /* Adjust the background color as needed */
-  border: none;
-  color: white; /* Adjust the text color as needed */
+  background-color: #431934 !important; /* Set the background color */
+  border: none !important; /* Ensure no border */
+  color: white !important; /* Set the text color */
 }
 
-.dd-cute-button-back:hover,
+.dd-cute-button-back:hover {
+  background-color: #f0f0f0 !important; /* Change the background color on hover */
+  color: #431934 !important; /* Ensure the text color remains the same */
+}
+
 .dd-cute-button-save:hover {
-  opacity: 0.9; /* Adjust the hover effect as needed */
+  background-color: #5e2a47 !important; /* Change the background color on hover */
 }
-
-
-
 .dd-error {
   color: #ff6b6b;
   font-size: 14px;
@@ -187,6 +194,4 @@
     flex: none;
     width: 100%;
   }
-
-
 }
