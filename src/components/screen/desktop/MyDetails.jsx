@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './MyDetails.css';
 import axios from 'axios';
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaSave } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaSave, FaArrowLeft } from 'react-icons/fa';
 
-const MyDetails = ({ formData: initialFormData }) => {
+const MyDetails = ({ formData: initialFormData, onBack }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -74,7 +74,7 @@ const MyDetails = ({ formData: initialFormData }) => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/update-details',
+        'http://localhost:3000/api/xuudetails',
         {
           first_name: formData.firstName,
           last_name: formData.lastName,
@@ -105,116 +105,119 @@ const MyDetails = ({ formData: initialFormData }) => {
     <div className="dd-account-container">
       <div className="dd-left-side">
         <form onSubmit={handleSubmit}>
-        <div className="dd-form-rowo">
-          <div className="dd-form-column">
-            <h3 className="dd-section-title">
-              <span className="dd-icon-text">
-                <FaUser /> Personal Information
-              </span>
-            </h3>
-            {error && <p className="dd-error">{error}</p>}
-            <div className="dd-form-row">
-              <div className="dd-first">
-                <label className="dd-label-row">
-                  <span className="dd-icon-text">First Name</span>
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="dd-form-text"
-                />
-              </div>
-              <div className="dd-last">
-                <label className="dd-label-row">
-                  <span className="dd-icon-text">Last Name</span>
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="dd-form-text"
-                />
-              </div>
-            </div>
-            <div className="dd-form-row">
-              <div className="dd-full-width">
-                <label className="dd-label-row">
-                  <span className="dd-icon-text">E-mail</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="dd-form-text"
-                />
-              </div>
-              <div className="dd-full-width">
-                <label className="dd-label-row">
-                  <span className="dd-icon-text">Phone</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="dd-form-text"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="dd-form-column">
-            <div className="dd-form-colo">
+          <div className="dd-form-rowo">
+            <div className="dd-form-column">
               <h3 className="dd-section-title">
                 <span className="dd-icon-text">
-                  <FaMapMarkerAlt /> Shipping Address
+                  <FaUser /> Personal Information
                 </span>
               </h3>
+              {error && <p className="dd-error">{error}</p>}
               <div className="dd-form-row">
-                <div className="dd-full-width">
+                <div className="dd-first">
                   <label className="dd-label-row">
-                    <span className="dd-icon-text">Address</span>
+                    <span className="dd-icon-text">First Name</span>
                   </label>
                   <input
                     type="text"
-                    name="shippingAddress"
-                    value={formData.shippingAddress}
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="dd-form-text"
+                  />
+                </div>
+                <div className="dd-last">
+                  <label className="dd-label-row">
+                    <span className="dd-icon-text">Last Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="dd-form-text"
+                  />
+                </div>
+              </div>
+              <div className="dd-form-row">
+                <div className="dd-full-width">
+                  <label className="dd-label-row">
+                    <span className="dd-icon-text">E-mail</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="dd-form-text"
+                  />
+                </div>
+                <div className="dd-full-width">
+                  <label className="dd-label-row">
+                    <span className="dd-icon-text">Phone</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleChange}
                     className="dd-form-text"
                   />
                 </div>
               </div>
             </div>
-            <div className="dd-form-colo">
-              <h3 className="dd-section-title">
-                <span className="dd-icon-text">
-                  <FaCreditCard /> Billing Address
-                </span>
-              </h3>
-              <div className="dd-form-row">
-                <div className="dd-full-width">
-                  <label className="dd-label-row">
-                    <span className="dd-icon-text">Address</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="billingAddress"
-                    value={formData.billingAddress}
-                    onChange={handleChange}
-                    className="dd-form-text"
-                  />
+            <div className="dd-form-column">
+              <div className="dd-form-colo">
+                <h3 className="dd-section-title">
+                  <span className="dd-icon-text">
+                    <FaMapMarkerAlt /> Shipping Address
+                  </span>
+                </h3>
+                <div className="dd-form-row">
+                  <div className="dd-full-width">
+                    <label className="dd-label-row">
+                      <span className="dd-icon-text">Address</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="shippingAddress"
+                      value={formData.shippingAddress}
+                      onChange={handleChange}
+                      className="dd-form-text"
+                    />
+                  </div>
                 </div>
               </div>
+              <div className="dd-form-colo">
+                <h3 className="dd-section-title">
+                  <span className="dd-icon-text">
+                    <FaCreditCard /> Billing Address
+                  </span>
+                </h3>
+                <div className="dd-form-row">
+                  <div className="dd-full-width">
+                    <label className="dd-label-row">
+                      <span className="dd-icon-text">Address</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="billingAddress"
+                      value={formData.billingAddress}
+                      onChange={handleChange}
+                      className="dd-form-text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="dd-button-container">
+                <button type="button" className="dd-cute-button back" onClick={onBack}>
+                  <FaArrowLeft /> Back
+                </button>
+                <button type="submit" className="dd-cute-button save">
+                  <FaSave /> Save
+                </button>
+              </div>
             </div>
-            <div className="dd-button-container">
-              <button type="submit" className="dd-cute-button save">
-                <FaSave /> Save
-              </button>
-            </div>
-          </div>
           </div>
         </form>
       </div>
