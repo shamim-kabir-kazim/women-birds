@@ -5,6 +5,7 @@ import './MyOrders.css';
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [expandedOrder, setExpandedOrder] = useState(null);
+  const [notification, setNotification] = useState('');
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -43,11 +44,14 @@ const MyOrders = () => {
       if (response.data.valid) {
         console.log('Order cancelled successfully');
         setOrders(orders.filter(order => order.order_id !== order_id));
+        setNotification('Order cancelled successfully');
       } else {
         console.log('Failed to cancel order:', response.data.message);
+        setNotification('Cannot cancel the order');
       }
     } catch (error) {
       console.error('Error cancelling order:', error);
+      setNotification('Cannot cancel the order');
     }
   };
 
@@ -72,6 +76,7 @@ const MyOrders = () => {
   return (
     <div className="my-orders">
       <h1 className="order-form-title">My Orders</h1>
+      {notification && <div className="notification">{notification}</div>}
       {orders.map((order) => (
         <div className="order-card" key={order.order_id}>
           <div> <img src={order.primary_img_url} alt={order.productName} className="order-image" /></div>
