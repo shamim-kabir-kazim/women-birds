@@ -7,21 +7,23 @@ const MyOrders = () => {
   const [expandedOrder, setExpandedOrder] = useState(null);
   const [notification, setNotification] = useState('');
 
+  const fetchOrders = async () => {
+    try {
+      const response = await axios.get('/api/get-orders', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+        }
+      });
+
+      // Sort orders by created_at date before setting the state
+      const sortedOrders = response.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      setOrders(sortedOrders);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const response = await axios.get('/api/get-orders', {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
-          }
-        });
-
-        setOrders(response.data);
-      } catch (error) {
-        console.error('Error fetching orders:', error);
-      }
-    };
-
     fetchOrders();
   }, []);
 
@@ -43,15 +45,18 @@ const MyOrders = () => {
 
       if (response.data.valid) {
         console.log('Order cancelled successfully');
-        setOrders(orders.filter(order => order.order_id !== order_id));
         setNotification('Order cancelled successfully');
+        fetchOrders(); // Refresh the order list
+        setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
       } else {
         console.log('Failed to cancel order:', response.data.message);
         setNotification('Cannot cancel the order');
+        setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
       }
     } catch (error) {
       console.error('Error cancelling order:', error);
       setNotification('Cannot cancel the order');
+      setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
     }
   };
 

@@ -8,9 +8,14 @@
 
 .terms-heading {
   color: #444;
+  text-align: left;
   margin-bottom: 2%;
 }
-
+.terms-subheading {
+  color: #8ea3da;
+  text-align: left;
+  margin-bottom: 2%;
+}
 .terms-paragraph {
   margin-bottom: 1%;
 }

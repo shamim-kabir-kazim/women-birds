@@ -126,11 +126,19 @@
 
 /* Delivery note styling */
 .delivery-note {
-  font-size: 10px;
+  font-size: 14px;
   color: #888;
   margin-left: 5px;
 }
-
+.notification {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 25px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 /* Responsive design */
 @media (max-width: 1080px) {
   /* Tablet view */

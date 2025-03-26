@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MyDetails from './MyDetails'; // Import the MyDetails component
+import MyDetails from './MyDetails';
 import './MyAccount.css';
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard, FaEdit, FaSave } from 'react-icons/fa';
 
 const MyAccount = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +9,8 @@ const MyAccount = () => {
     lastName: '',
     email: '',
     phone: '',
-    address: '',
+    shippingAddress: '',
+    billingAddress: '',
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -17,149 +19,190 @@ const MyAccount = () => {
   useEffect(() => {
     const fetchAccountDetails = async () => {
       const token = localStorage.getItem('jwtToken');
-      if (!token) {
-        console.log('No token found');
-        return;
-      }
-
-      console.log('Token found:', token);
+      if (!token) return;
 
       try {
         const response = await fetch('http://localhost:3000/api/account-details', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
+            'Authorization': `Bearer ${token}`,
+          },
         });
-
         const data = await response.json();
-        console.log('Response from server:', data);
-
         if (data.valid && data.user) {
-          console.log('User data received:', data.user);
           setFormData({
             firstName: data.user.first_name,
             lastName: data.user.last_name,
             email: data.user.email,
             phone: data.user.phone_number,
-            address: data.user.address,
+            shippingAddress: data.user.shipping_address || data.user.address,
+            billingAddress: data.user.billing_address || '',
           });
-        } else {
-          console.log('Failed to fetch user details');
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
       }
     };
-
     fetchAccountDetails();
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data Submitted:', formData);
-    setIsUpdated(true); // Show MyDetails after updating
+    setIsUpdated(true);
+    setIsEditing(false);
   };
 
-  if (isUpdated) {
-    return <MyDetails formData={formData} />; // Replace form with MyDetails
-  }
+  if (isUpdated) return <MyDetails formData={formData} />;
 
   return (
-    <div className="xvr-form-container">
-      <div className="xvr-maccount-user-details">
+    <div className="xvr-account-container">
+      <div className="xvr-left-side">
+        <form onSubmit={handleSubmit}>
+        <div className="xvr-form-column">
+          <h3 className="xvr-section-title">
+            <span className="xvr-icon-text">
+              <FaUser /> Personal Information
+            </span>
+          </h3>
+          <div className="xvr-form-row">
+            <div className="xvr-first">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                  First Name
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.firstName}</span>
+              )}
+            </div>
+            <div className="xvr-last">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                  Last Name
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.lastName}</span>
+              )}
+            </div>
+          </div>
+         
+          <div className="xvr-form-row">
+            <div className="xvr-full-width">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                   E-mail
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="email" name="email" value={formData.email} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.email}</span>
+              )}
+            </div>
+            <div className="xvr-full-width">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                   Phone
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.phone}</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="xvr-form-column">
+        <div className="xvr-form-colo">
+          <h3 className="xvr-section-title">
+            <span className="xvr-icon-text">
+              <FaMapMarkerAlt /> Shipping Address
+            </span>
+          </h3>
+          <div className="xvr-form-row">
+            <div className="xvr-full-width">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                   Address
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="text" name="shippingAddress" value={formData.shippingAddress} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.shippingAddress}</span>
+              )}
+            </div>
+          </div>
+          </div>
+
+          <div className="xvr-form-colo">
+          <h3 className="xvr-section-title">
+            <span className="xvr-icon-text">
+              <FaCreditCard /> Billing Address
+            </span>
+          </h3>
+          <div className="xvr-form-row">
+            <div className="xvr-full-width">
+              <label className="xvr-label-row">
+                <span className="xvr-icon-text">
+                  Address
+                </span>
+              </label>
+              {isEditing ? (
+                <input type="text" name="billingAddress" value={formData.billingAddress} onChange={handleChange} className="xvr-form-text" />
+              ) : (
+                <span className="xvr-form-text">{formData.billingAddress || 'Same as Shipping'}</span>
+              )}
+            </div>
+          </div>
+          </div>
+          
+          <div className="xvr-button-container">
+            {!isEditing ? (
+              <button type="button" onClick={() => setIsEditing(true)} className="xvr-cute-button edit">
+                <FaEdit /> Edit
+              </button>
+            ) : (
+              <button type="submit" className="xvr-cute-button save">
+                <FaSave /> Save
+              </button>
+            )}
+          </div>
+
+          </div>
+        </form>
+      </div>
+
+      <div className="xvr-right-side">
         <div className="xvr-maccount-profile-picture">
           <img src="https://i.postimg.cc/NMgmfhgS/user-circle-svgrepo-com.png" alt="Profile" />
         </div>
         <div className="xvr-maccount-user-info">
           <h2>{formData.firstName} {formData.lastName}</h2>
-          <p>{formData.email}</p>
+          <p>
+            <span className="xvr-icon-text">
+              <FaEnvelope /> {formData.email}
+            </span>
+          </p>
+          <p>
+            <span className="xvr-icon-text">
+              <FaPhone /> {formData.phone}
+            </span>
+          </p>
         </div>
-        <form className="xvr-details-form" onSubmit={handleSubmit}>
-          <div className="xvr-form-row">
-            <div className="xvr-first">
-              <label>First Name</label><br />
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="xvr-form-input"
-                disabled={!isEditing}
-              />
-            </div>
-            <div className="xvr-last">
-              <label>Last Name</label><br />
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="xvr-form-input"
-                disabled={!isEditing}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label>E-mail</label><br />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="xvr-form-input"
-              disabled={!isEditing}
-            />
-          </div>
-
-          <div>
-            <label>Phone</label><br />
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="xvr-form-input"
-              disabled={!isEditing}
-            />
-          </div>
-
-          <div>
-            <label>Address</label><br />
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              className="xvr-form-input"
-              disabled={!isEditing}
-            />
-          </div>
-
-          {!isEditing ? (
-            <button
-              type="button"
-              className="xvr-form-button"
-              onClick={() => setIsEditing(true)}
-            >
-              Edit
-            </button>
-          ) : (
-            <button type="submit" className="xvr-form-button">
-              Update
-            </button>
-          )}
-        </form>
       </div>
     </div>
   );
