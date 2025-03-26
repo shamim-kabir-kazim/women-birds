@@ -74,13 +74,14 @@ const MyOrders = () => {
       <h1 className="order-form-title">My Orders</h1>
       {orders.map((order) => (
         <div className="order-card" key={order.order_id}>
-          <img src={order.primary_img_url} alt={order.productName} className="order-image" />
+          <div> <img src={order.primary_img_url} alt={order.productName} className="order-image" /></div>
           <div className="order-details">
             <h2>{order.productName}</h2>
             <div className="order-info">
               <p><strong>Order number:</strong> {order.order_id}</p>
               <p><strong>Order date:</strong> {formatDate(order.created_at)}</p>
               <p><strong>Total:</strong> ${order.total_amount}</p>
+              <p><strong>Price:</strong> ${order.total_amount / order.quantity}</p> {/* Added price calculation */}
               <p>
                 <strong>Status:</strong>{' '}
                 <span className={`status-${order.status.toLowerCase()}`}>
