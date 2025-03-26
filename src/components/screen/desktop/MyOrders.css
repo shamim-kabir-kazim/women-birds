@@ -72,7 +72,17 @@
   align-items: flex-end;
 }
 
-.view-order,
+.view-order {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #431934;
+  color: #fff;
+}
+
 .cancel-order {
   padding: 8px 16px;
   border: none;
@@ -80,27 +90,15 @@
   width: 150px;
   cursor: pointer;
   font-size: 14px;
-}
-
-.view-order {
-  background-color: #431934;
-  color: #fff;
-  margin-bottom: 10px;
-}
-
-.cancel-order {
   background-color: transparent;
   color: #431934;
   border: 1px solid #431934;
 }
 
+.view-order:hover,
 .cancel-order:hover {
   background-color: #431934;
   color: #fff;
-}
-
-.view-order:hover {
-  background-color: #431934;
 }
 
 /* Status colors */
@@ -154,7 +152,8 @@
   .order-actions {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px;
     width: 100%;
   }
 
@@ -162,6 +161,12 @@
   .cancel-order {
     width: auto;
     font-size: 16px;
+  }
+  order-image-details-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

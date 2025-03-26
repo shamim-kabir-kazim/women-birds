@@ -74,6 +74,7 @@ const MyOrders = () => {
       <h1 className="order-form-title">My Orders</h1>
       {orders.map((order) => (
         <div className="order-card" key={order.order_id}>
+          
           <div> <img src={order.primary_img_url} alt={order.productName} className="order-image" /></div>
           <div className="order-details">
             <h2>{order.productName}</h2>
@@ -100,6 +101,10 @@ const MyOrders = () => {
                 </>
               )}
             </div>
+
+
+
+
           </div>
           <div className="order-actions">
             <button
