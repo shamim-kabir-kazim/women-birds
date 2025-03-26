@@ -111,37 +111,41 @@
   display: block;
 }
 
+/* Button Container */
 .dd-button-container {
-  margin-top: 40px;
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 
-.dd-cute-button {
+.dd-cute-button-back,
+.dd-cute-button-save {
+  width: 100px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 500;
+  justify-content: center;
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+.dd-cute-button-back {
+  background-color: #f0f0f0; /* Adjust the background color as needed */
+  border: 1px solid #ccc; /* Adjust the border as needed */
+  color: #333; /* Adjust the text color as needed */
+}
+
+.dd-cute-button-save {
+  background-color: #4CAF50; /* Adjust the background color as needed */
   border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(67, 25, 52, 0.2);
+  color: white; /* Adjust the text color as needed */
+}
+
+.dd-cute-button-back:hover,
+.dd-cute-button-save:hover {
+  opacity: 0.9; /* Adjust the hover effect as needed */
 }
 
 
-.dd-cute-button.save {
-  background-color: #d6b8c8;
-  color: #431934;
-}
-
-.dd-cute-button.save:hover {
-  background-color: #c4a3b4;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(214, 184, 200, 0.3);
-}
 
 .dd-error {
   color: #ff6b6b;
@@ -184,12 +188,5 @@
     width: 100%;
   }
 
-  .dd-button-container {
-    justify-content: center;
-  }
 
-  .dd-cute-button {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
 }

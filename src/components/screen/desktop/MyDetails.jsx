@@ -210,10 +210,10 @@ const MyDetails = ({ formData: initialFormData, onBack }) => {
                 </div>
               </div>
               <div className="dd-button-container">
-                <button type="button" className="dd-cute-button back" onClick={onBack}>
+                <button type="button" className="dd-cute-button-back" onClick={onBack}>
                   <FaArrowLeft /> Back
                 </button>
-                <button type="submit" className="dd-cute-button save">
+                <button type="submit" className="dd-cute-button-save">
                   <FaSave /> Save
                 </button>
               </div>
