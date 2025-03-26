@@ -73,9 +73,24 @@ const CartMenu = ({ isOpen, closeCart }) => {
 
   const handlePlaceOrder = async () => {
     try {
-      const response = await axios.post('/api/place-order', {}, {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.log('No token found');
+        return;
+      }
+
+      const orderData = {
+        cartItems: cartItems.map(item => ({
+          product_id: item.product_id,
+          color: item.color,
+          size: item.size,
+          quantity: item.quantity
+        }))
+      };
+
+      const response = await axios.post('/api/place-order', orderData, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+          'Authorization': `Bearer ${token}`
         }
       });
 

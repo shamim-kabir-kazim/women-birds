@@ -15,10 +15,11 @@
 .modal-content {
   position: relative;
   background: #fafafa; /* Very light gray background */
-  padding: 40px;
+  padding: 10px;
   border-radius: 10px;
   width: 800px;
-  max-width: 95%;
+  max-width: 90%;
+  height: auto;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Softer shadow */
   color: #555; /* Lighter gray text */
   font-family: 'Arial', sans-serif;
@@ -64,7 +65,7 @@ h2 {
 .header-section {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .company-info h3 {
