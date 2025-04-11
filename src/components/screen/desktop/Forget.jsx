@@ -44,11 +44,16 @@ const Forget = ({ onClose }) => {
   // Handle changing the password
   const handleChangePassword = async (e) => {
     e.preventDefault();
+
+    // Check if passwords match on the frontend
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match');
       setMessage('');
       return;
     }
+
+    // Debugging: Log the payload being sent to the backend
+    console.log("Payload being sent:", { email, otp, newPassword });
 
     try {
       const response = await axios.post('http://localhost:3000/api/user/change-password', {
