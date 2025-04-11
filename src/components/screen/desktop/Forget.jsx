@@ -52,9 +52,6 @@ const Forget = ({ onClose }) => {
       return;
     }
 
-    // Debugging: Log the payload being sent to the backend
-    console.log("Payload being sent:", { email, otp, newPassword });
-
     try {
       const response = await axios.post('http://localhost:3000/api/user/change-password', {
         email,
@@ -63,7 +60,14 @@ const Forget = ({ onClose }) => {
       });
       setMessage(response.data.message);
       setError('');
-      setStep(1); // Reset the flow after successful password change
+
+      // Close the popup after successful password change
+      if (response.status === 200) {
+        onClose();
+      }
+
+      // Reset the flow after successful password change
+      setStep(1);
       setEmail('');
       setOtp('');
       setNewPassword('');
