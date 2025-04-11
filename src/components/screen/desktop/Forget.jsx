@@ -15,11 +15,10 @@ const Forget = ({ onClose }) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:3000/api/user/send-otp', { email });
-      setMessage('OTP sent to your email.');
+      setStep(2); // Move to the OTP verification step regardless of success or failure
     } catch (err) {
-
+      setStep(2); // Ensure the OTP input box is shown even if sending fails
     }
-    setStep(2); // Move to the OTP verification step regardless of success or failure
   };
 
   // Handle verifying OTP
@@ -27,11 +26,9 @@ const Forget = ({ onClose }) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/api/user/verify-otp', { email, otp });
-      setMessage(response.data.message);
       setStep(3); // Move to the password reset step
     } catch (err) {
-      console.error('Error verifying OTP:', err);
-      setMessage('Invalid or expired OTP. Please try again.');
+      setMessage('Invalid or expired OTP.');
     }
   };
 
@@ -46,16 +43,14 @@ const Forget = ({ onClose }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/api/user/change-password', {
+      await axios.post('http://localhost:3000/api/user/change-password', {
         email,
         otp,
         newPassword,
       });
-      setMessage(response.data.message);
       onClose(); // Close the popup after a successful password change
     } catch (err) {
-      console.error('Error changing password:', err);
-      setMessage('Failed to change password. Please try again.');
+      setMessage('Failed to change password.');
     }
   };
 
@@ -132,7 +127,6 @@ const Forget = ({ onClose }) => {
             </button>
           </form>
         )}
-        {message && <p className="success-message">{message}</p>}
       </div>
     </div>
   );
