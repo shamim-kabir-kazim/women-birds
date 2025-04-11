@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Forget from "./Forget"; // Import Forget Component
 import "./Login.css";
 
 const Login = ({ onShowCreate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showForget, setShowForget] = useState(false); // State to toggle Forget Component
 
   useEffect(() => {
     if (error) {
@@ -22,14 +24,10 @@ const Login = ({ onShowCreate }) => {
     try {
       const response = await axios.post('http://localhost:3000/api/user/login', { username: email, password });
       const { token } = response.data;
-      
+
       // Store the token in local storage
       localStorage.setItem('jwtToken', token);
       console.log('Stored JWT:', token);
-
-      // Check if token is the same after storage
-      const storedToken = localStorage.getItem('jwtToken');
-      console.log('Retrieved JWT:', storedToken);
 
       // Redirect to account page
       window.location.href = '/account';
@@ -46,9 +44,9 @@ const Login = ({ onShowCreate }) => {
           style={{
             alignSelf: 'stretch',
             textAlign: 'center',
-            paddingBottom:'1px',
+            paddingBottom: '1px',
             color: '#431934',
-            fontSize: '2.5vw', // Adjust font size based on viewport width
+            fontSize: '2.5vw',
             fontFamily: 'Marcellus SC',
             fontWeight: '400',
             wordWrap: 'break-word',
@@ -84,7 +82,15 @@ const Login = ({ onShowCreate }) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <a href="#" className="bqc-forgot-password">
+                {/* Add onClick event to show Forget Component */}
+                <a
+                  href="#"
+                  className="bqc-forgot-password"
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent default behavior of <a>
+                    setShowForget(true); // Show Forget Password Component
+                  }}
+                >
                   Forget password ?
                 </a>
                 <button type="submit" className="bqc-login-button">
@@ -114,6 +120,8 @@ const Login = ({ onShowCreate }) => {
           </div>
         </div>
       </div>
+      {/* Render Forget Component */}
+      {showForget && <Forget onClose={() => setShowForget(false)} />}
     </div>
   );
 };

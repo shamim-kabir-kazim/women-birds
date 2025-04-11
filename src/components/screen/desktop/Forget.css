@@ -1,0 +1,84 @@
+/* Overlay covering the entire screen */
+.forget-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Popup container */
+  .forget-popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Close button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #f44336; /* Red background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 50%; /* Makes it round */
+    font-size: 18px;
+    line-height: 30px; /* Centers the "X" */
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close-button:hover {
+    background: #d32f2f; /* Darker red on hover */
+  }
+  
+  /* Success message */
+  .success-message {
+    color: green;
+    margin-top: 10px;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  /* Input field */
+  .forget-popup input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Submit button */
+  .forget-popup button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #431934;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .forget-popup button[type="submit"]:hover {
+    background-color: #5d264a;
+  }
