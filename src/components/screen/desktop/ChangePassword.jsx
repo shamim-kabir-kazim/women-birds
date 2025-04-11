@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ChangePassword.css';
 
-const ChangePassword = ({ email }) => {
+const ChangePassword = ({ email, otp }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -13,6 +13,7 @@ const ChangePassword = ({ email }) => {
     try {
       const response = await axios.post('http://localhost:3000/api/user/change-password', {
         email,
+        otp,
         newPassword,
         confirmPassword,
       });
@@ -20,7 +21,7 @@ const ChangePassword = ({ email }) => {
       setError('');
     } catch (err) {
       console.error('Error changing password:', err);
-      setError('Failed to change password. Please try again.');
+      setError(err.response?.data?.message || 'Failed to change password. Please try again.');
       setMessage('');
     }
   };

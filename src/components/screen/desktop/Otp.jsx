@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ChangePassword from './ChangePassword'; // Import the change password component
 import './Otp.css';
 
-const Otp = ({ email, onOtpVerified }) => {
+const Otp = ({ email }) => {
   const [otp, setOtp] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [otpVerified, setOtpVerified] = useState(false); // Track OTP verification status
+  const [newPassword, setNewPassword] = useState(''); // For new password input
+  const [confirmPassword, setConfirmPassword] = useState(''); // For confirm password input
 
+  // Handle OTP verification
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
@@ -16,10 +18,33 @@ const Otp = ({ email, onOtpVerified }) => {
       setMessage(response.data.message);
       setError('');
       setOtpVerified(true); // Mark OTP as verified
-      onOtpVerified(); // Call the parent callback
     } catch (err) {
       console.error('Error verifying OTP:', err);
       setError('Invalid or expired OTP');
+      setMessage('');
+    }
+  };
+
+  // Handle password change
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      setError('Passwords do not match');
+      setMessage('');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/user/change-password', {
+        email,
+        otp,
+        newPassword,
+      });
+      setMessage(response.data.message);
+      setError('');
+    } catch (err) {
+      console.error('Error changing password:', err);
+      setError(err.response?.data?.message || 'Failed to change password. Please try again.');
       setMessage('');
     }
   };
@@ -48,7 +73,30 @@ const Otp = ({ email, onOtpVerified }) => {
           {error && <p className="error-message">{error}</p>}
         </>
       ) : (
-        <ChangePassword email={email} /> // Show the change password form
+        <>
+          <h2 className="change-password-title">Change Password</h2>
+          <form onSubmit={handleChangePassword} className="change-password-form">
+            <input
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+              className="password-input"
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="password-input"
+            />
+            <button type="submit" className="password-button">Update Password</button>
+          </form>
+          {message && <p className="success-message">{message}</p>}
+          {error && <p className="error-message">{error}</p>}
+        </>
       )}
     </div>
   );
