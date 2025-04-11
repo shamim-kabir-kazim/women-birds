@@ -8,22 +8,18 @@ const Forget = ({ onClose }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
   const [step, setStep] = useState(1); // Track the current step (1: Enter Email, 2: Enter OTP, 3: Change Password)
 
   // Handle sending OTP
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/user/send-otp', { email });
-      setMessage(response.data.message);
-      setError('');
-      setStep(2); // Move to the OTP verification step
+      await axios.post('http://localhost:3000/api/user/send-otp', { email });
+      setMessage('OTP sent to your email.');
     } catch (err) {
-      console.error('Error sending OTP:', err);
-      setError('Unable to send OTP. Please try again.');
-      setMessage('');
+
     }
+    setStep(2); // Move to the OTP verification step regardless of success or failure
   };
 
   // Handle verifying OTP
@@ -32,12 +28,10 @@ const Forget = ({ onClose }) => {
     try {
       const response = await axios.post('http://localhost:3000/api/user/verify-otp', { email, otp });
       setMessage(response.data.message);
-      setError('');
       setStep(3); // Move to the password reset step
     } catch (err) {
       console.error('Error verifying OTP:', err);
-      setError('Invalid or expired OTP. Please try again.');
-      setMessage('');
+      setMessage('Invalid or expired OTP. Please try again.');
     }
   };
 
@@ -47,13 +41,9 @@ const Forget = ({ onClose }) => {
 
     // Check if passwords match on the frontend
     if (newPassword !== confirmPassword) {
-      setError('Passwords do not match');
-      setMessage('');
+      setMessage('Passwords do not match');
       return;
     }
-
-    // Debugging: Log the payload being sent to the backend
-    console.log("Payload being sent:", { email, otp, newPassword });
 
     try {
       const response = await axios.post('http://localhost:3000/api/user/change-password', {
@@ -62,16 +52,10 @@ const Forget = ({ onClose }) => {
         newPassword,
       });
       setMessage(response.data.message);
-      setError('');
-      setStep(1); // Reset the flow after successful password change
-      setEmail('');
-      setOtp('');
-      setNewPassword('');
-      setConfirmPassword('');
+      onClose(); // Close the popup after a successful password change
     } catch (err) {
       console.error('Error changing password:', err);
-      setError(err.response?.data?.message || 'Failed to change password. Please try again.');
-      setMessage('');
+      setMessage('Failed to change password. Please try again.');
     }
   };
 
@@ -149,7 +133,6 @@ const Forget = ({ onClose }) => {
           </form>
         )}
         {message && <p className="success-message">{message}</p>}
-        {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );
