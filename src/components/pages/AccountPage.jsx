@@ -4,8 +4,14 @@ import AccountInfo from '../screen/desktop/AccountInfo';
 import MobileAccount from '../screen/desktop/MobileAccount';
 import Sepa from '../screen/desktop/Sepa';
 
+// White space loading component
+const Loading = () => {
+  return <div style={{ backgroundColor: 'white', height: '100vh', width: '100%' }} />;
+};
+
 const AccountPage = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State to track loading
   const navigate = useNavigate();
 
   const handleResize = () => {
@@ -45,6 +51,7 @@ const AccountPage = () => {
         navigate('/user');
       } else {
         console.log('User is valid');
+        setIsLoading(false); // Stop loading when validation is complete
       }
     } catch (error) {
       console.error('User validation failed:', error);
@@ -63,6 +70,11 @@ const AccountPage = () => {
     // Cleanup event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Render the Loading component if still validating the user
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="account-midll">
