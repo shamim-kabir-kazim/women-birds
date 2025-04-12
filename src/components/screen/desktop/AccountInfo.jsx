@@ -64,7 +64,7 @@ const AccountInfo = () => {
         handleLogout();
         return (
           <div className="cvb-content">
-           Log out
+           
           </div>
         );
     }
