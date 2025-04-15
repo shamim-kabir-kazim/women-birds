@@ -45,7 +45,6 @@ const ProductListpage = () => {
         {category ? category : 'All Categories'}
       </div>
       <ProductList items={items} />
-      <FilterBar />
     </div>
   );
 };

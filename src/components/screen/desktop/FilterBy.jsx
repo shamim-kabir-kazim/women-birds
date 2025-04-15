@@ -59,7 +59,7 @@ const FilterBy = () => {
                 <ul>
                   <li>Shirts</li>
                   <li>Pants</li>
-                  <li>Dresses</li>
+                  <li>Dressesll</li>
                 </ul>
               </div>
             )}
