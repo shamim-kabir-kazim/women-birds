@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PriceRange from './PriceRange';
 import './ProductList.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import icons
 import ItemList from './ItemList';
 
-const ProductList = ({ items }) => {
+const ProductList = ({ items, category }) => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [texts, setTexts] = useState(['Initial text 1', 'Initial text 2']);
   const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
+  const [resetTrigger, setResetTrigger] = useState(false); // State to reset PriceRange
+
+  useEffect(() => {
+    // Reset the price range and filtered items when the category changes
+    setFilteredItems(items);
+    setResetTrigger((prev) => !prev); // Toggle the trigger to reset the range
+  }, [category, items]);
 
   const toggleFilter = (filter) => {
     setActiveFilter(activeFilter === filter ? null : filter);
@@ -53,7 +60,10 @@ const ProductList = ({ items }) => {
           </div>
           {/* Price Range */}
           <div className="filter-item-range">
-            <PriceRange onFilterByPrice={handleFilterByPrice} />
+            <PriceRange
+              onFilterByPrice={handleFilterByPrice}
+              resetTrigger={resetTrigger} // Pass reset trigger to PriceRange
+            />
           </div>
 
           {/* Product Type Filter */}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './PriceRange.css';
 
-const PriceRange = ({ onFilterByPrice }) => {
+const PriceRange = ({ onFilterByPrice, resetTrigger }) => {
   const initialMinPrice = 0;
-  const initialMaxPrice = 1000;
+  const initialMaxPrice = 15000; // Updated max range to 15000
 
   const [sliderMinValue] = useState(initialMinPrice);
   const [sliderMaxValue] = useState(initialMaxPrice);
@@ -17,6 +17,7 @@ const PriceRange = ({ onFilterByPrice }) => {
 
   const minGap = 5;
 
+  // Update the slider and input values when the slider moves
   const slideMin = (e) => {
     const value = parseInt(e.target.value, 10);
     if (value >= sliderMinValue && maxVal - value >= minGap) {
@@ -33,9 +34,51 @@ const PriceRange = ({ onFilterByPrice }) => {
     }
   };
 
-  const handleFilter = () => {
-    onFilterByPrice(minVal, maxVal); // Call the parent function with selected range
+  // Allow any valid number in the input boxes
+  const handleMinInputChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value) && value >= sliderMinValue) {
+      setMinInput(value);
+    } else {
+      setMinInput(''); // Allow clearing the input
+    }
   };
+
+  const handleMaxInputChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value) && value <= sliderMaxValue) {
+      setMaxInput(value);
+    } else {
+      setMaxInput(''); // Allow clearing the input
+    }
+  };
+
+  // Reset or filter based on input when "Go" is pressed
+  const handleFilter = () => {
+    const min = parseInt(minInput, 10);
+    const max = parseInt(maxInput, 10);
+
+    // Reset sliders if min > max
+    if (min > max || isNaN(min) || isNaN(max)) {
+      setMinVal(initialMinPrice);
+      setMaxVal(initialMaxPrice);
+      setMinInput(initialMinPrice);
+      setMaxInput(initialMaxPrice);
+    } else {
+      // Update the slider values and trigger the filter
+      setMinVal(min);
+      setMaxVal(max);
+      onFilterByPrice(min, max);
+    }
+  };
+
+  // Reset the price range when resetTrigger changes
+  useEffect(() => {
+    setMinVal(initialMinPrice);
+    setMaxVal(initialMaxPrice);
+    setMinInput(initialMinPrice);
+    setMaxInput(initialMaxPrice);
+  }, [resetTrigger]);
 
   useEffect(() => {
     const setSliderTrack = () => {
@@ -83,10 +126,11 @@ const PriceRange = ({ onFilterByPrice }) => {
           <input
             type="number"
             value={minInput}
-            onChange={(e) => setMinInput(parseInt(e.target.value, 10))}
+            onChange={handleMinInputChange}
             className="min-input"
             min={sliderMinValue}
-            max={maxVal - minGap}
+            max={sliderMaxValue}
+            placeholder="Min"
           />
         </div>
         <div className="to">To</div>
@@ -94,10 +138,11 @@ const PriceRange = ({ onFilterByPrice }) => {
           <input
             type="number"
             value={maxInput}
-            onChange={(e) => setMaxInput(parseInt(e.target.value, 10))}
+            onChange={handleMaxInputChange}
             className="max-input"
-            min={minVal + minGap}
+            min={sliderMinValue}
             max={sliderMaxValue}
+            placeholder="Max"
           />
         </div>
         <button className="go" onClick={handleFilter}>
