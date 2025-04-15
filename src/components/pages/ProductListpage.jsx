@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductList from '../screen/desktop/ProductList';
 import Sepa from '../screen/desktop/Sepa';
-import FilterBar from '../screen/desktop/FilterBar';
 import './ProductListpage.css';
 
 const ProductListpage = () => {
@@ -44,7 +43,7 @@ const ProductListpage = () => {
       <div className="styled-heading">
         {category ? category : 'All Categories'}
       </div>
-      <ProductList items={items} />
+      <ProductList items={items} category={category} />
     </div>
   );
 };

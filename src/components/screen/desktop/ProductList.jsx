@@ -4,9 +4,36 @@ import './ProductList.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import icons
 import ItemList from './ItemList';
 
+// Mapping of categories to their respective product types
+const productTypeMapping = {
+  sale: [
+    "Discounted Items",
+    "Clearance Sale",
+    "Special Offers",
+  ],
+  dress: [
+    "Salwar Kameez",
+    "Anarkali",
+    "Gowns",
+    "Saree",
+    "Kurtis",
+    "Western Dresses",
+    "Party Wear",
+    "Casual Wear",
+  ],
+  jewellery: [
+    "Necklaces",
+    "Earrings",
+    "Bangles",
+    "Rings",
+    "Sets (e.g., full bridal set)",
+    "Artificial Jewelry",
+    "Gold-Plated / Kundan / Polki",
+  ],
+};
+
 const ProductList = ({ items, category }) => {
   const [activeFilter, setActiveFilter] = useState(null);
-  const [texts, setTexts] = useState(['Initial text 1', 'Initial text 2']);
   const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
   const [resetTrigger, setResetTrigger] = useState(false); // State to reset PriceRange
 
@@ -27,25 +54,21 @@ const ProductList = ({ items, category }) => {
     setFilteredItems(filtered);
   };
 
+  // Get the product types for the current category
+  const productTypes = productTypeMapping[category] || [];
+
   return (
     <div className="pro-midll">
       <div className="product-list-container">
         {/* Filter Section */}
         <div className="filter-section">
           <h2>FILTER BY</h2>
-          {/* Price Type Filter */}
+          {/* Price Filter */}
           <div className="filter-item">
-            <div
-              className="filter-title"
-              onClick={() => toggleFilter('productPrice')}
-            >
+            <div className="filter-title" onClick={() => toggleFilter('productPrice')}>
               PRICE
               <span className="icon">
-                {activeFilter === 'productPrice' ? (
-                  <FaChevronUp />
-                ) : (
-                  <FaChevronDown />
-                )}
+                {activeFilter === 'productPrice' ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </div>
             {activeFilter === 'productPrice' && (
@@ -58,8 +81,9 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
-          {/* Price Range */}
-          <div className="filter-item-range">
+
+                    {/* Price Range */}
+                    <div className="filter-item-range">
             <PriceRange
               onFilterByPrice={handleFilterByPrice}
               resetTrigger={resetTrigger} // Pass reset trigger to PriceRange
@@ -68,32 +92,25 @@ const ProductList = ({ items, category }) => {
 
           {/* Product Type Filter */}
           <div className="filter-item">
-            <div
-              className="filter-title"
-              onClick={() => toggleFilter('productType')}
-            >
+            <div className="filter-title" onClick={() => toggleFilter('productType')}>
               PRODUCT TYPE
               <span className="icon">
-                {activeFilter === 'productType' ? (
-                  <FaChevronUp />
-                ) : (
-                  <FaChevronDown />
-                )}
+                {activeFilter === 'productType' ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </div>
             {activeFilter === 'productType' && (
               <div className="filter-submenu">
                 <ul>
-                  <li>Shirts</li>
-                  <li>Pants</li>
-                  <li>Dresses</li>
+                  {productTypes.map((type) => (
+                    <li key={type}>{type}</li>
+                  ))}
                 </ul>
               </div>
             )}
           </div>
 
-          {/* Fabric Filter */}
-          <div className="filter-item">
+                    {/* Fabric Filter */}
+                    <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('fabric')}>
               FABRIC
               <span className="icon">
@@ -110,9 +127,8 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
-
-          {/* Color Filter */}
-          <div className="filter-item">
+                    {/* Color Filter */}
+                    <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('color')}>
               COLOR
               <span className="icon">
@@ -129,9 +145,10 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
+          
 
-          {/* Size Filter */}
-          <div className="filter-item">
+             {/* Size Filter */}
+             <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('size')}>
               SIZE
               <span className="icon">
@@ -148,21 +165,15 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
+
+          {/* Additional Filters (e.g., Fabric, Color, Size) */}
+          {/* ... */}
         </div>
 
         {/* Content List Section */}
         <div className="content-list">
-          {/* result */}
           <div className="content-item">
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                padding: '0px',
-                width: '100%',
-              }}
-            >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px', width: '100%' }}>
               <div className="result">{filteredItems.length} results</div>
               <div className="relevance">
                 <label className="relelabel">Sorted By :</label>
@@ -182,14 +193,6 @@ const ProductList = ({ items, category }) => {
             <div className="content-item">
               <ItemList items={filteredItems} />
             </div>
-          </div>
-
-          {/* Text Below the Product */}
-          <div className="content-item-txt">
-            <div className="text-div">{texts[0]}</div>
-          </div>
-          <div className="content-item-txt">
-            <div className="text-div">{texts[1]}</div>
           </div>
         </div>
       </div>
