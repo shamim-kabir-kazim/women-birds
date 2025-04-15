@@ -7,9 +7,17 @@ import ItemList from './ItemList';
 const ProductList = ({ items }) => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [texts, setTexts] = useState(['Initial text 1', 'Initial text 2']);
+  const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
 
   const toggleFilter = (filter) => {
     setActiveFilter(activeFilter === filter ? null : filter);
+  };
+
+  const handleFilterByPrice = (minPrice, maxPrice) => {
+    const filtered = items.filter(
+      (item) => item.price >= minPrice && item.price <= maxPrice
+    );
+    setFilteredItems(filtered);
   };
 
   return (
@@ -45,7 +53,7 @@ const ProductList = ({ items }) => {
           </div>
           {/* Price Range */}
           <div className="filter-item-range">
-            <PriceRange />
+            <PriceRange onFilterByPrice={handleFilterByPrice} />
           </div>
 
           {/* Product Type Filter */}
@@ -145,28 +153,28 @@ const ProductList = ({ items }) => {
                 width: '100%',
               }}
             >
-              <div className="result">999 results</div>
+              <div className="result">{filteredItems.length} results</div>
               <div className="relevance">
                 <label className="relelabel">Sorted By :</label>
                 <select className="releSelect">
                   <option value="relevance">Relevance</option>
-                  <option value="relevance">Price:Hight To Low</option>
-                  <option value="relevance">Price:Low To High</option>
-                  <option value="relevance">Discount:Hight To Low</option>
-                  <option value="relevance">Discount:Low To High</option>
-                  {/* Add more sorting options here if needed */}
+                  <option value="priceHighToLow">Price: High To Low</option>
+                  <option value="priceLowToHigh">Price: Low To High</option>
+                  <option value="discountHighToLow">Discount: High To Low</option>
+                  <option value="discountLowToHigh">Discount: Low To High</option>
                 </select>
               </div>
             </div>
           </div>
-          {/* proct show */}
+
+          {/* Product Show */}
           <div style={{ padding: '0px', overflow: 'hidden' }}>
             <div className="content-item">
-              <ItemList items={items} />
+              <ItemList items={filteredItems} />
             </div>
           </div>
 
-          {/* text below the product */}
+          {/* Text Below the Product */}
           <div className="content-item-txt">
             <div className="text-div">{texts[0]}</div>
           </div>
