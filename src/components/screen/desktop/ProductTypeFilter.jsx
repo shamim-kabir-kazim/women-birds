@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import './ProductTypeFilter.css'; // Assuming you have a CSS file for styling
 
 const productTypeMapping = {
   Sarees: [
@@ -115,22 +116,52 @@ const productTypeMapping = {
   ],
 };
 
-const ProductTypeFilter = ({ activeFilter, toggleFilter, category }) => {
-  const productTypes = productTypeMapping[category] || [];
+const ProductTypeFilter = ({ activeFilter, toggleFilter, onFilterChange }) => {
+  const handleMainTypeChange = (category) => {
+    onFilterChange(category);
+  };
+
+  const handleSubTypeChange = (subtype) => {
+    onFilterChange(subtype);
+  };
 
   return (
     <div className="filter-item">
-      <div className="filter-title" onClick={() => toggleFilter('productType')}>
-        PRODUCT TYPE
-        <span className="icon">{activeFilter === 'productType' ? <FaChevronUp /> : <FaChevronDown />}</span>
+      <div
+        className="filter-title"
+        onClick={() => toggleFilter('productType')}
+      >
+        <span className="filter-title-text">PRODUCT TYPE</span>
+        <span className="icon">
+          {activeFilter === 'productType' ? <FaChevronUp /> : <FaChevronDown />}
+        </span>
       </div>
       {activeFilter === 'productType' && (
         <div className="filter-submenu">
-          <ul>
-            {productTypes.map((type) => (
-              <li key={type}>{type}</li>
-            ))}
-          </ul>
+          {Object.entries(productTypeMapping).map(([category, subtypes]) => (
+            <div key={category} className="filter-category">
+              <div className="filter-main-type">
+                <input
+                  type="checkbox"
+                  onChange={() => handleMainTypeChange(category)}
+                  className="filter-checkbox"
+                />
+                <span className="filter-main-type-text">{category}</span>
+              </div>
+              <ul>
+                {subtypes.map((subtype) => (
+                  <li key={subtype} className="filter-subtype">
+                    <input
+                      type="checkbox"
+                      onChange={() => handleSubTypeChange(subtype)}
+                      className="filter-checkbox"
+                    />
+                    <span className="filter-subtype-text">{subtype}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       )}
     </div>
