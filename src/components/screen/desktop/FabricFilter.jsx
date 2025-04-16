@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import './FabricFilter.css';
 
-const FabricFilter = ({ activeFilter, toggleFilter }) => (
+const FabricFilter = ({ activeFilter, toggleFilter, onFilterChange }) => (
   <div className="filter-item">
     <div className="filter-title" onClick={() => toggleFilter('fabric')}>
       FABRIC
@@ -9,24 +10,34 @@ const FabricFilter = ({ activeFilter, toggleFilter }) => (
     </div>
     {activeFilter === 'fabric' && (
       <div className="filter-submenu">
-<ul>
-  <li>Pure Silk</li>
-  <li>Georgette</li>
-  <li>Net</li>
-  <li>Chiffon</li>
-  <li>Velvet</li>
-  <li>Lawn Cotton</li>
-  <li>Raw Silk</li>
-  <li>Art Silk</li>
-  <li>Organza</li>
-  <li>Rayon</li>
-  <li>Crepe</li>
-  <li>Muslin</li>
-  <li>Cotton</li>
-  <li>Tissue Silk</li>
-  <li>Brocade</li>
-</ul>
-
+        <ul>
+          {[
+            "Pure Silk",
+            "Georgette",
+            "Net",
+            "Chiffon",
+            "Velvet",
+            "Lawn Cotton",
+            "Raw Silk",
+            "Art Silk",
+            "Organza",
+            "Rayon",
+            "Crepe",
+            "Muslin",
+            "Cotton",
+            "Tissue Silk",
+            "Brocade",
+          ].map((fabric) => (
+            <li key={fabric} className="filter-subtype">
+              <input
+                type="checkbox"
+                onChange={() => onFilterChange(fabric)}
+                className="filter-checkbox"
+              />
+              <span className="filter-subtype-text">{fabric}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     )}
   </div>
