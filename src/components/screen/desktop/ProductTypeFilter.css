@@ -3,39 +3,6 @@
     margin-bottom: 10px;
   }
   
-  .filter-title {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 12px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-  }
-  
-  .filter-title:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .filter-title-text {
-    flex-grow: 1;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .icon {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .filter-submenu {
-    padding: 16px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 8px;
-  }
   
   .filter-category {
     margin-bottom: 16px;

@@ -5,7 +5,7 @@ import FabricFilter from './FabricFilter';
 import ColorFilter from './ColorFilter';
 import SizeFilter from './SizeFilter';
 
-const FilterMenu = ({ category, productTypeMapping, onFilterByPrice, resetTrigger }) => {
+const FilterMenu = ({ category, onFilterByPrice, resetTrigger }) => {
   const [activeFilter, setActiveFilter] = useState(null);
 
   const toggleFilter = (filter) => {
@@ -24,7 +24,7 @@ const FilterMenu = ({ category, productTypeMapping, onFilterByPrice, resetTrigge
       <ProductTypeFilter
         activeFilter={activeFilter}
         toggleFilter={toggleFilter}
-        category={category}
+        category={category} // Pass category here
       />
       <FabricFilter activeFilter={activeFilter} toggleFilter={toggleFilter} />
       <ColorFilter activeFilter={activeFilter} toggleFilter={toggleFilter} />

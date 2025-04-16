@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css';
 import ItemList from './ItemList';
-import FilterMenu from './FilterMenu'; // Import the FilterMenu component
+import FilterMenu from './FilterMenu';
 
 const ProductList = ({ items, category }) => {
-  const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
-  const [resetTrigger, setResetTrigger] = useState(false); // State to reset filters
-  const [sortOption, setSortOption] = useState('relevance'); // State for Sort By menu
+  const [filteredItems, setFilteredItems] = useState(items);
+  const [resetTrigger, setResetTrigger] = useState(false);
+  const [sortOption, setSortOption] = useState('relevance');
 
   useEffect(() => {
-    // Reset the filters and items when the category changes
     setFilteredItems(items);
-    setResetTrigger((prev) => !prev); // Toggle the trigger to reset filters
-    setSortOption('relevance'); // Reset sort option
+    setResetTrigger((prev) => !prev);
+    setSortOption('relevance');
   }, [category, items]);
 
   const handleFilterByPrice = (minPrice, maxPrice) => {
@@ -37,7 +36,6 @@ const ProductList = ({ items, category }) => {
   return (
     <div className="pro-midll">
       <div className="product-list-container">
-        {/* Use FilterMenu component */}
         <FilterMenu
           category={category}
           onFilterByPrice={handleFilterByPrice}
