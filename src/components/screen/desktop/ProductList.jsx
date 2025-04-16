@@ -36,11 +36,15 @@ const ProductList = ({ items, category }) => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
   const [resetTrigger, setResetTrigger] = useState(false); // State to reset PriceRange
+  const [sortOption, setSortOption] = useState('relevance'); // State for Sort By menu
+  const [priceMenuOption, setPriceMenuOption] = useState(null); // State for Price Menu
 
   useEffect(() => {
     // Reset the price range and filtered items when the category changes
     setFilteredItems(items);
     setResetTrigger((prev) => !prev); // Toggle the trigger to reset the range
+    setSortOption('relevance'); // Reset sort option
+    setPriceMenuOption(null); // Reset price menu option
   }, [category, items]);
 
   const toggleFilter = (filter) => {
@@ -52,6 +56,29 @@ const ProductList = ({ items, category }) => {
       (item) => item.price >= minPrice && item.price <= maxPrice
     );
     setFilteredItems(filtered);
+  };
+
+  const handlePriceMenuClick = (option) => {
+    setPriceMenuOption(option);
+    applySorting(option);
+  };
+
+  const handleSortChange = (event) => {
+    const selectedOption = event.target.value;
+    setSortOption(selectedOption);
+    applySorting(selectedOption);
+  };
+
+  const applySorting = (option) => {
+    let sortedItems = [...filteredItems];
+    if (option === 'priceHighToLow' || option === 'High to Low') {
+      sortedItems.sort((a, b) => b.price - a.price);
+    } else if (option === 'priceLowToHigh' || option === 'Low to High') {
+      sortedItems.sort((a, b) => a.price - b.price);
+    } else if (option === 'Combine') {
+      sortedItems.sort((a, b) => b.price - a.price); // Example: Sorting by one criterion
+    }
+    setFilteredItems(sortedItems);
   };
 
   // Get the product types for the current category
@@ -74,16 +101,16 @@ const ProductList = ({ items, category }) => {
             {activeFilter === 'productPrice' && (
               <div className="filter-submenu">
                 <ul>
-                  <li>High to Low</li>
-                  <li>Low to High</li>
-                  <li>Combine</li>
+                  <li onClick={() => handlePriceMenuClick('High to Low')}>High to Low</li>
+                  <li onClick={() => handlePriceMenuClick('Low to High')}>Low to High</li>
+                  <li onClick={() => handlePriceMenuClick('Combine')}>Combine</li>
                 </ul>
               </div>
             )}
           </div>
 
-                    {/* Price Range */}
-                    <div className="filter-item-range">
+          {/* Price Range */}
+          <div className="filter-item-range">
             <PriceRange
               onFilterByPrice={handleFilterByPrice}
               resetTrigger={resetTrigger} // Pass reset trigger to PriceRange
@@ -109,8 +136,8 @@ const ProductList = ({ items, category }) => {
             )}
           </div>
 
-                    {/* Fabric Filter */}
-                    <div className="filter-item">
+          {/* Fabric Filter */}
+          <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('fabric')}>
               FABRIC
               <span className="icon">
@@ -127,8 +154,9 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
-                    {/* Color Filter */}
-                    <div className="filter-item">
+
+          {/* Color Filter */}
+          <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('color')}>
               COLOR
               <span className="icon">
@@ -145,10 +173,9 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
-          
 
-             {/* Size Filter */}
-             <div className="filter-item">
+          {/* Size Filter */}
+          <div className="filter-item">
             <div className="filter-title" onClick={() => toggleFilter('size')}>
               SIZE
               <span className="icon">
@@ -165,9 +192,6 @@ const ProductList = ({ items, category }) => {
               </div>
             )}
           </div>
-
-          {/* Additional Filters (e.g., Fabric, Color, Size) */}
-          {/* ... */}
         </div>
 
         {/* Content List Section */}
@@ -177,7 +201,7 @@ const ProductList = ({ items, category }) => {
               <div className="result">{filteredItems.length} results</div>
               <div className="relevance">
                 <label className="relelabel">Sorted By :</label>
-                <select className="releSelect">
+                <select className="releSelect" value={sortOption} onChange={handleSortChange}>
                   <option value="relevance">Relevance</option>
                   <option value="priceHighToLow">Price: High To Low</option>
                   <option value="priceLowToHigh">Price: Low To High</option>
