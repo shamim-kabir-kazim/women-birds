@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import './ProductTypeFilter.css'; // Reuse the CSS from ProductTypeFilter for consistent styling
+import './FilterStyles.css';
 
 const colors = [
   { name: 'White', hex: '#FFFFFF' },

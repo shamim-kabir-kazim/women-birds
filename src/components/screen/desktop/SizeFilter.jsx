@@ -1,6 +1,6 @@
 import React from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import "./SizeFilter.css";
+import './FilterStyles.css';
 
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 

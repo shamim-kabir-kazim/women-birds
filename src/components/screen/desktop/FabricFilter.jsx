@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import "./ProductTypeFilter.css";
+import './FilterStyles.css';
 
 const FabricFilter = ({ activeFilter, toggleFilter, onFilterChange }) => (
   <div className="filter-item">

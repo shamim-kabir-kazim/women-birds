@@ -1,0 +1,63 @@
+/* General Filter Styles */
+.filter-item {
+    margin-bottom: 15px; /* Spacing between filter items */
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .filter-title {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #495057;
+    transition: color 0.3s ease;
+  }
+  
+  .filter-title:hover {
+    color: #431934; /* Highlighted color on hover */
+  }
+  .filter-main-type {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+  }
+  
+  .filter-main-type-text {
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+  
+  .filter-submenu {
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    color: #495057;
+  }
+  
+  .filter-submenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .filter-submenu li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #431934;
+    transition: color 0.3s ease;
+  }
+  
+  .filter-submenu li:hover {
+    color: #6b2b55;
+  }
+  
+  .filter-checkbox {
+    margin-right: 5px;
+  }
+  

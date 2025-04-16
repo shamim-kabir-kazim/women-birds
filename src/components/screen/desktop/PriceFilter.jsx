@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import PriceRange from './PriceRange';
+import './FilterStyles.css';
 
 const PriceFilter = ({ activeFilter, toggleFilter, onFilterByPrice, resetTrigger }) => (
   <div className="filter-item">

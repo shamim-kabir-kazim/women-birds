@@ -1,6 +1,6 @@
 import React from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import "./ProductTypeFilter.css";
+import './FilterStyles.css';
 
 const productTypeMapping = {
   Sarees: [
@@ -128,6 +128,12 @@ const ProductTypeFilter = ({ activeFilter, toggleFilter, onFilterChange, categor
     filtersToShow = {
       Sarees: productTypeMapping.Sarees,
       Lehengas: productTypeMapping.Lehengas,
+      ThreePiece: productTypeMapping.ThreePiece,
+      CoupleSet: productTypeMapping.CoupleSet,
+      Occasionals: productTypeMapping.Occasionals,
+      MehendiWear: productTypeMapping.MehendiWear,
+      HaldiWear: productTypeMapping.HaldiWear,
+      
     };
   } else if (category === "jewellery") {
     // Include only the Jewellery main type
