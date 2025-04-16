@@ -1,55 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import PriceRange from './PriceRange';
 import './ProductList.css';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import icons
 import ItemList from './ItemList';
-
-// Mapping of categories to their respective product types
-const productTypeMapping = {
-  sale: [
-    "Discounted Items",
-    "Clearance Sale",
-    "Special Offers",
-  ],
-  dress: [
-    "Salwar Kameez",
-    "Anarkali",
-    "Gowns",
-    "Saree",
-    "Kurtis",
-    "Western Dresses",
-    "Party Wear",
-    "Casual Wear",
-  ],
-  jewellery: [
-    "Necklaces",
-    "Earrings",
-    "Bangles",
-    "Rings",
-    "Sets (e.g., full bridal set)",
-    "Artificial Jewelry",
-    "Gold-Plated / Kundan / Polki",
-  ],
-};
+import FilterMenu from './FilterMenu'; // Import the FilterMenu component
 
 const ProductList = ({ items, category }) => {
-  const [activeFilter, setActiveFilter] = useState(null);
   const [filteredItems, setFilteredItems] = useState(items); // Store filtered items
-  const [resetTrigger, setResetTrigger] = useState(false); // State to reset PriceRange
+  const [resetTrigger, setResetTrigger] = useState(false); // State to reset filters
   const [sortOption, setSortOption] = useState('relevance'); // State for Sort By menu
-  const [priceMenuOption, setPriceMenuOption] = useState(null); // State for Price Menu
 
   useEffect(() => {
-    // Reset the price range and filtered items when the category changes
+    // Reset the filters and items when the category changes
     setFilteredItems(items);
-    setResetTrigger((prev) => !prev); // Toggle the trigger to reset the range
+    setResetTrigger((prev) => !prev); // Toggle the trigger to reset filters
     setSortOption('relevance'); // Reset sort option
-    setPriceMenuOption(null); // Reset price menu option
   }, [category, items]);
-
-  const toggleFilter = (filter) => {
-    setActiveFilter(activeFilter === filter ? null : filter);
-  };
 
   const handleFilterByPrice = (minPrice, maxPrice) => {
     const filtered = items.filter(
@@ -58,166 +22,42 @@ const ProductList = ({ items, category }) => {
     setFilteredItems(filtered);
   };
 
-  const handlePriceMenuClick = (option) => {
-    setPriceMenuOption(option);
-    applySorting(option);
-  };
-
   const handleSortChange = (event) => {
     const selectedOption = event.target.value;
     setSortOption(selectedOption);
-    applySorting(selectedOption);
-  };
-
-  const applySorting = (option) => {
     let sortedItems = [...filteredItems];
-    if (option === 'priceHighToLow' || option === 'High to Low') {
+    if (selectedOption === 'priceHighToLow') {
       sortedItems.sort((a, b) => b.price - a.price);
-    } else if (option === 'priceLowToHigh' || option === 'Low to High') {
+    } else if (selectedOption === 'priceLowToHigh') {
       sortedItems.sort((a, b) => a.price - b.price);
-    } else if (option === 'Combine') {
-      sortedItems.sort((a, b) => b.price - a.price); // Example: Sorting by one criterion
     }
     setFilteredItems(sortedItems);
   };
 
-  // Get the product types for the current category
-  const productTypes = productTypeMapping[category] || [];
-
   return (
     <div className="pro-midll">
       <div className="product-list-container">
-        {/* Filter Section */}
-        <div className="filter-section">
-          <h2>FILTER BY</h2>
-          {/* Price Filter */}
-          <div className="filter-item">
-            <div className="filter-title" onClick={() => toggleFilter('productPrice')}>
-              PRICE
-              <span className="icon">
-                {activeFilter === 'productPrice' ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </div>
-            {activeFilter === 'productPrice' && (
-              <div className="filter-submenu">
-                <ul>
-                  <li onClick={() => handlePriceMenuClick('High to Low')}>High to Low</li>
-                  <li onClick={() => handlePriceMenuClick('Low to High')}>Low to High</li>
-                  <li onClick={() => handlePriceMenuClick('Combine')}>Combine</li>
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Price Range */}
-          <div className="filter-item-range">
-            <PriceRange
-              onFilterByPrice={handleFilterByPrice}
-              resetTrigger={resetTrigger} // Pass reset trigger to PriceRange
-            />
-          </div>
-
-          {/* Product Type Filter */}
-          <div className="filter-item">
-            <div className="filter-title" onClick={() => toggleFilter('productType')}>
-              PRODUCT TYPE
-              <span className="icon">
-                {activeFilter === 'productType' ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </div>
-            {activeFilter === 'productType' && (
-              <div className="filter-submenu">
-                <ul>
-                  {productTypes.map((type) => (
-                    <li key={type}>{type}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Fabric Filter */}
-          <div className="filter-item">
-            <div className="filter-title" onClick={() => toggleFilter('fabric')}>
-              FABRIC
-              <span className="icon">
-                {activeFilter === 'fabric' ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </div>
-            {activeFilter === 'fabric' && (
-              <div className="filter-submenu">
-                <ul>
-                  <li>Cotton</li>
-                  <li>Polyester</li>
-                  <li>Silk</li>
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Color Filter */}
-          <div className="filter-item">
-            <div className="filter-title" onClick={() => toggleFilter('color')}>
-              COLOR
-              <span className="icon">
-                {activeFilter === 'color' ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </div>
-            {activeFilter === 'color' && (
-              <div className="filter-submenu">
-                <ul>
-                  <li>Red</li>
-                  <li>Blue</li>
-                  <li>Green</li>
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Size Filter */}
-          <div className="filter-item">
-            <div className="filter-title" onClick={() => toggleFilter('size')}>
-              SIZE
-              <span className="icon">
-                {activeFilter === 'size' ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </div>
-            {activeFilter === 'size' && (
-              <div className="filter-submenu">
-                <ul>
-                  <li>Small</li>
-                  <li>Medium</li>
-                  <li>Large</li>
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Content List Section */}
+        {/* Use FilterMenu component */}
+        <FilterMenu
+          category={category}
+          onFilterByPrice={handleFilterByPrice}
+          resetTrigger={resetTrigger}
+        />
         <div className="content-list">
           <div className="content-item">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px', width: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
               <div className="result">{filteredItems.length} results</div>
               <div className="relevance">
-                <label className="relelabel">Sorted By :</label>
-                <select className="releSelect" value={sortOption} onChange={handleSortChange}>
+                <label>Sorted By:</label>
+                <select value={sortOption} onChange={handleSortChange}>
                   <option value="relevance">Relevance</option>
                   <option value="priceHighToLow">Price: High To Low</option>
                   <option value="priceLowToHigh">Price: Low To High</option>
-                  <option value="discountHighToLow">Discount: High To Low</option>
-                  <option value="discountLowToHigh">Discount: Low To High</option>
                 </select>
               </div>
             </div>
           </div>
-
-          {/* Product Show */}
-          <div style={{ padding: '0px', overflow: 'hidden' }}>
-            <div className="content-item">
-              <ItemList items={filteredItems} />
-            </div>
-          </div>
+          <ItemList items={filteredItems} />
         </div>
       </div>
     </div>
