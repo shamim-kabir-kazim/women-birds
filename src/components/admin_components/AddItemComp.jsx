@@ -9,59 +9,60 @@ const typeOptions = [
 
 const subTypeOptions = {
     Sarees: [
-        "Banarasi Saree", "Katan Saree", "Jamdani Saree", "Silk Saree", 
-        "Muslin Saree", "Georgette Saree", "Tissue Saree", "Half Silk Saree", 
-        "Embroidered Saree", "Designer Saree", "Bridal Saree", "Handloom Saree", 
-        "Partywear Saree"
+        "banarasi-saree", "katan-saree", "jamdani-saree", "silk-saree",
+        "muslin-saree", "georgette-saree", "tissue-saree", "half-silk-saree",
+        "embroidered-saree", "designer-saree", "bridal-saree", "handloom-saree",
+        "partywear-saree"
     ],
     Lehengas: [
-        "Bridal Lehenga", "A-Line Lehenga", "Circular / Flared Lehenga", 
-        "Fishtail / Mermaid Lehenga", "Panelled Lehenga", "Sharara Cut Lehenga", 
-        "Velvet Lehenga", "Net / Chiffon Lehenga", "Embroidered Lehenga", 
-        "Semi-Stitched Lehenga", "Lehenga with Dupatta", 
-        "Simple/Light Lehenga (for guests)"
+        "bridal-lehenga", "a-line-lehenga", "circular-lehenga", 
+        "fishtail-lehenga", "panelled-lehenga", "sharara-cut-lehenga", 
+        "velvet-lehenga", "net-lehenga", "embroidered-lehenga", 
+        "semi-stitched-lehenga", "lehenga-with-dupatta", 
+        "simple-lehenga"
     ],
     ThreePiece: [
-        "Embroidered Three-Piece", "Cotton Three-Piece", "Silk Three-Piece", 
-        "Lawn Three-Piece", "Chikan / Hand Work", "Partywear Three-Piece", 
-        "Long Kameez Three-Piece", "Anarkali Three-Piece", "Palazzo Set", 
-        "Pant Style Three-Piece", "Kurti with Dupatta Set"
+        "embroidered-threepiece", "cotton-threepiece", "silk-threepiece", 
+        "lawn-threepiece", "chikan-threepiece", "partywear-threepiece", 
+        "long-kameez-threepiece", "anarkali-threepiece", "palazzo-set", 
+        "pant-style-threepiece", "kurti-dupatta-set"
     ],
     Occasionals: [
-        "Gown / Maxi Dress", "Designer Salwar Kameez", "Embroidered Kurtis", 
-        "Stylish Three-Piece", "Party Saree", "Modern Lehenga", 
-        "Sharara / Gharara", "Kaftan Dress", "Tunic & Palazzo Sets", 
-        "Ready-to-Wear Suits"
+        "gown", "designer-salwar", "embroidered-kurti", 
+        "stylish-threepiece", "party-saree", "modern-lehenga", 
+        "sharara-gharara", "kaftan-dress", "tunic-palazzo-set", 
+        "readywear-suit"
     ],
     Jewelry: [
-        "Bridal Jewelry Set", "Gold-Plated Jewelry", "Kundan Jewelry", 
-        "Pearl Jewelry", "Necklace Sets", "Maang Tikka / Matha Patti", 
-        "Nose Ring (Nath)", "Bangles / Kadas", "Earrings (Jhumka, Stud, Chandbali)", 
-        "Anklets (Payel)", "Rings", "Bridal Chura", "Waist Belt (Kamarbandh)"
+        "bridal-jewelry", "goldplated-jewelry", "kundan-jewelry", 
+        "pearl-jewelry", "necklace-set", "maangtikka", 
+        "nose-ring", "bangles", "earrings", 
+        "anklets", "rings", "bridal-chura", "waist-belt"
     ],
     Accessories: [
-        "Bridal Dupatta", "Potli Bag / Clutch", "Bindis", "Hair Accessories", 
-        "Footwear / Sandals", "Hijab / Scarves (if modest fashion included)", 
-        "Bridal Gloves", "Bridal Hair Extensions", "Safety Pins & Saree Pins", 
-        "Scent / Attar (optional but traditional)"
+        "bridal-dupatta", "potli-bag", "bindis", "hair-accessories", 
+        "footwear", "hijab-scarves", 
+        "bridal-gloves", "hair-extensions", "safety-pins", 
+        "attar"
     ],
     MehendiWear: [
-        "Floral Printed Lehenga", "Light Embroidered Saree", 
-        "Simple Gharara / Sharara", "Bright-Colored Three-Piece", 
-        "Kurti with Skirt", "Kaftan", "Mehendi-Themed Gown", 
-        "Yellow-Green Sets", "Floral Jewelry Sets", "Minimal Dupatta Looks"
+        "floral-lehenga", "light-saree", 
+        "simple-gharara", "bright-threepiece", 
+        "kurti-skirt", "kaftan", "mehendi-gown", 
+        "yellow-green-set", "floral-jewelry", "minimal-dupatta"
     ],
     HaldiWear: [
-        "Yellow Cotton Saree", "Light Lehenga in Yellow", "Simple Gharara", 
-        "Kurti & Dupatta Set", "Floral Crown / Accessories", 
-        "Yellow Three-Piece", "Gown with Haldi Theme", 
-        "Haldi Jewelry Set (floral or artificial)"
+        "yellow-saree", "yellow-lehenga", "simple-gharara", 
+        "kurti-dupatta", "floral-accessories", 
+        "yellow-threepiece", "haldi-gown", 
+        "haldi-jewelry"
     ],
     CoupleSet: [
-        "Matching Saree & Panjabi Set", "Bride & Groom Coordinated Lehenga–Sherwani", 
-        "Color-Matched Couple Wear", "Couple T-Shirt (for casual pre-events)", 
-        "Engagement Set", "Reception Matching Look"
+        "matching-saree-panjabi", "lehenga-sherwani", 
+        "color-matched-wear", "couple-tshirt", 
+        "engagement-set", "reception-look"
     ]
+    
     // Add more subtypes as needed
 };
 
