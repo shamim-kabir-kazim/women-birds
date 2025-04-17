@@ -62,8 +62,6 @@ const subTypeOptions = {
         "color-matched-wear", "couple-tshirt", 
         "engagement-set", "reception-look"
     ]
-    
-    // Add more subtypes as needed
 };
 
 const AddItemComp = () => {
@@ -77,14 +75,25 @@ const AddItemComp = () => {
         brand: '',
         primary_img_url: '',
         type: '',
-        sub_type: ''
+        sub_type: []
     });
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
 
     useEffect(() => {
         localStorage.getItem('jwtToken');
     }, []);
+
+    useEffect(() => {
+        if (selectedFile) {
+            const objectUrl = URL.createObjectURL(selectedFile);
+            setImagePreview(objectUrl);
+            return () => URL.revokeObjectURL(objectUrl);
+        } else {
+            setImagePreview(productData.primary_img_url || null);
+        }
+    }, [selectedFile, productData.primary_img_url]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -155,79 +164,183 @@ const AddItemComp = () => {
         setProductData((prevData) => ({
             ...prevData,
             type: selectedType,
-            sub_type: '' // Reset sub_type when type changes
+            sub_type: []
         }));
     };
 
+    const handleTagToggle = (tag) => {
+        setProductData((prevData) => {
+            const updatedSubTypes = prevData.sub_type.includes(tag)
+                ? prevData.sub_type.filter((subType) => subType !== tag)
+                : [...prevData.sub_type, tag];
+            return {
+                ...prevData,
+                sub_type: updatedSubTypes
+            };
+        });
+    };
+
+    const calculateSalePrice = () => {
+        if (productData.price && productData.sale_percentage) {
+            const price = parseFloat(productData.price);
+            const discount = parseFloat(productData.sale_percentage);
+            return (price - (price * discount / 100)).toFixed(2);
+        }
+        return productData.price || 'N/A';
+    };
+
     return (
-        <form className="ad-fi-form" onSubmit={handleSubmit}>
-            <div className="ad-fi-row">
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">SKU:</label>
-                    <input className="ad-fi-input" type="text" name="sku" value={productData.sku} onChange={handleChange} required />
+        <div className="product-add-container">
+            <form className="product-form" onSubmit={handleSubmit}>
+                <div className="form-row">
+                    <div className="form-group">
+                        <label className="form-label">SKU:</label>
+                        <input className="form-input" type="text" name="sku" value={productData.sku} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Product Name:</label>
+                        <input className="form-input" type="text" name="product_name" value={productData.product_name} onChange={handleChange} required />
+                    </div>
                 </div>
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">Product Name:</label>
-                    <input className="ad-fi-input" type="text" name="product_name" value={productData.product_name} onChange={handleChange} required />
+                <div className="form-group image-group">
+                    <label className="form-label">Primary Image URL:</label>
+                    <input className="form-input" type="text" name="primary_img_url" value={productData.primary_img_url} onChange={handleChange} required />
+                    <input className="form-file-input" type="file" onChange={handleFileChange} />
+                    <button className="form-button" type="button" onClick={handleImageUpload}>Upload Image</button>
                 </div>
-            </div>
-            <div className="ad-fi-fi-img-div">
-                <label className="ad-fi-label">Primary Image URL:</label>
-                <input className="ad-fi-input" type="text" name="primary_img_url" value={productData.primary_img_url} onChange={handleChange} required />
-                <input className="ad-fi-file-input" type="file" onChange={handleFileChange} />
-                <button className="ad-fi-button" type="button" onClick={handleImageUpload}>Upload Image</button>
-            </div>
-            <div className="ad-fi-div">
-                <label className="ad-fi-label">Description:</label>
-                <textarea className="ad-fi-textarea" name="description" value={productData.description} onChange={handleChange} required></textarea>
-            </div>
-            <div className="ad-fi-row">
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">Price:</label>
-                    <input className="ad-fi-input" type="number" name="price" value={productData.price} onChange={handleChange} required />
+                <div className="form-group">
+                    <label className="form-label">Description:</label>
+                    <textarea className="form-textarea" name="description" value={productData.description} onChange={handleChange} required></textarea>
                 </div>
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">Sale Percentage:</label>
-                    <input className="ad-fi-input" type="number" name="sale_percentage" value={productData.sale_percentage} onChange={handleChange} />
+                <div className="form-row">
+                    <div className="form-group">
+                        <label className="form-label">Price:</label>
+                        <input className="form-input" type="number" name="price" value={productData.price} onChange={handleChange} required />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label">Sale Percentage:</label>
+                        <input className="form-input" type="number" name="sale_percentage" value={productData.sale_percentage} onChange={handleChange} />
+                    </div>
                 </div>
-            </div>
-            <div className="ad-fi-row">
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">Brand:</label>
-                    <input className="ad-fi-input" type="text" name="brand" value={productData.brand} onChange={handleChange} required />
+                <div className="form-row">
+                    <div className="form-group">
+                        <label className="form-label">Brand:</label>
+                        <input className="form-input" type="text" name="brand" value={productData.brand} onChange={handleChange} required />
+                    </div>
                 </div>
-            </div>
-            <div className="ad-fi-div">
-                <label className="ad-fi-label">Type:</label>
-                <select className="ad-fi-input" name="type" value={productData.type} onChange={handleTypeChange} required>
-                    <option value="">Select Type</option>
-                    {typeOptions.map((type) => (
-                        <option key={type} value={type}>{type}</option>
-                    ))}
-                </select>
-            </div>
-            {productData.type && subTypeOptions[productData.type] && (
-                <div className="ad-fi-div">
-                    <label className="ad-fi-label">Sub Type:</label>
-                    <select className="ad-fi-input" name="sub_type" value={productData.sub_type} onChange={handleChange}>
-                        <option value="">Select Sub Type</option>
-                        {subTypeOptions[productData.type].map((subType) => (
-                            <option key={subType} value={subType}>{subType}</option>
+                <div className="form-group">
+                    <label className="form-label">Type:</label>
+                    <select className="form-input" name="type" value={productData.type} onChange={handleTypeChange} required>
+                        <option value="">Select Type</option>
+                        {typeOptions.map((type) => (
+                            <option key={type} value={type}>{type}</option>
                         ))}
                     </select>
                 </div>
-            )}
-
-            <div className="ass-inline">
-                <div className="chiki-1">
-                    <input className="chiki" type="checkbox" name="sold_out" checked={productData.sold_out} onChange={handleChange} /> 
+                {productData.type && subTypeOptions[productData.type] && (
+                    <div className="form-group">
+                        <label className="form-label">Sub Type (Tags):</label>
+                        <div className="tag-container">
+                            {subTypeOptions[productData.type].map((subType) => (
+                                <span
+                                    key={subType}
+                                    className={`tag ${productData.sub_type.includes(subType) ? 'selected' : ''}`}
+                                    onClick={() => handleTagToggle(subType)}
+                                >
+                                    {subType}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+                <div className="checkbox-group">
+                    <div className="checkbox-wrapper">
+                        <input className="checkbox-input" type="checkbox" name="sold_out" checked={productData.sold_out} onChange={handleChange} /> 
+                    </div>
+                    <div className="checkbox-label">
+                        Sold Out
+                    </div>          
                 </div>
-                <div className="chiki-1">
-                    Sold Out
-                </div>          
+                <button className="form-button submit-button" type="submit">Add Product</button>
+            </form>
+            <div className="product-preview">
+                <h2 className="preview-title">Product Preview</h2>
+                <div className="product-card">
+                    <div className="form-row">
+                        {imagePreview ? (
+                            <img src={imagePreview} alt={productData.product_name || 'Product'} className="product-image" />
+                        ) : (
+                            <div className="image-placeholder">No Image Selected</div>
+                        )}
+                        <div className="product-main-details">
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-tag"></i> Product Name:
+                                </div>
+                                <h3 className="product-name">{productData.product_name || 'Product Name'}</h3>
+                            </div>
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-dollar-sign"></i> Price:
+                                </div>
+                                <div className="product-price-container">
+                                    <span className="product-price">${calculateSalePrice()}</span>
+                                    {productData.sale_percentage && (
+                                        <span className="original-price">Was: ${productData.price}</span>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-trademark"></i> Brand:
+                                </div>
+                                <p className="product-brand">{productData.brand || 'N/A'}</p>
+                            </div>
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-info-circle"></i> Description:
+                                </div>
+                                <p className="product-description">{productData.description || 'No description provided'}</p>
+                            </div>
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-barcode"></i> SKU:
+                                </div>
+                                <p className="product-sku">{productData.sku || 'N/A'}</p>
+                            </div>
+                            <div className="info-box">
+                                <div className="info-label">
+                                    <i className="fas fa-box"></i> Status:
+                                </div>
+                                <p className="product-status">{productData.sold_out ? 'Sold Out' : 'In Stock'}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="product-details">
+                        <div className="info-box">
+                            <div className="info-label">
+                                <i className="fas fa-list"></i> Type:
+                            </div>
+                            <p className="product-type">{productData.type || 'N/A'}</p>
+                        </div>
+                        <div className="info-box">
+                            <div className="info-label">
+                                <i className="fas fa-tags"></i> Tags:
+                            </div>
+                            <p className="product-subtype">
+                                {productData.sub_type.length > 0 ? (
+                                    <span className="tag-container">
+                                        {productData.sub_type.map((subType) => (
+                                            <span key={subType} className="tag selected">{subType}</span>
+                                        ))}
+                                    </span>
+                                ) : 'None'}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button className="ad-fi-button" type="submit">Add Product</button>
-        </form>
+        </div>
     );
 };
 
